@@ -10,5 +10,4 @@ public class Player {
 		userInput = in.nextLine();
 		System.out.println(userInput);
 	}
-
 }
