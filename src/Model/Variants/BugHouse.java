@@ -7,7 +7,7 @@ public class BugHouse extends Variant {
 		super();
 	}
 
-	public boolean move(String Origin, String Destination) {
+	public boolean move(String origin, String destination) {
 		// TODO Auto-generated method stub
 		return false;
 	}

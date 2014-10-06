@@ -1,13 +1,14 @@
 package Controller;
 
+import java.util.Scanner;
+
 public class Player {
+	String userInput;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		System.out.println("hello world");
-
+	public void getInput() {
+		Scanner in = new Scanner(System.in);
+		userInput = in.nextLine();
+		System.out.println(userInput);
 	}
 
 }

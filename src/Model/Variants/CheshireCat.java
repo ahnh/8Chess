@@ -7,11 +7,6 @@ public class CheshireCat extends Variant {
 		super();
 	}
 
-	public boolean move(String Origin, String Destination) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	protected boolean validateMove() {
 		// TODO Auto-generated method stub
 		return false;
@@ -23,6 +18,12 @@ public class CheshireCat extends Variant {
 	}
 
 	protected boolean checkWin() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean move(String origin, String destination) {
 		// TODO Auto-generated method stub
 		return false;
 	}

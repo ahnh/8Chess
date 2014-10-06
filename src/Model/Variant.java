@@ -7,7 +7,7 @@ public abstract class Variant {
 	public void draw() {
 	}
 
-	public abstract boolean move(String Origin, String Destination);
+	public abstract boolean move(String origin, String destination);
 
 	protected abstract boolean validateMove();
 
