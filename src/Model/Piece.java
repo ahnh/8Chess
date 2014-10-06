@@ -1,6 +1,5 @@
 package Model;
 
-
 import java.awt.Point;
 
 public class Piece {
@@ -13,7 +12,7 @@ public class Piece {
 	public Piece(int color, int type, Point coords) {
 		this.color = color;
 		this.type = type;
-		this.coords = coords;
+//		this.coords = coords; // maybe just change to two ints row and col
 		setName();
 	}
 	

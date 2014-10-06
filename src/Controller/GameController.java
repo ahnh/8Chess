@@ -5,6 +5,7 @@ import Model.Game;
 public class GameController {
 	public GameController() {
 	}
+
 	public static void main(String[] args) {
 		Game game = new Game();
 		game.Start();
