@@ -4,20 +4,25 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 public class Board {
-	private Piece[][] board;
-	private ArrayList<Piece> pieces;
+	private Tile[][] board;
+	private ArrayList<Tile> tiles;
 
 	public Board() {
 		// TODO: depends on variants
-		board = new Piece[8][8];
-		pieces = new ArrayList<Piece>();
-		clearBoard();
+		board = new Tile[8][8];
+	}
+	
+	public Board(int width, int height) {
+		// TODO: depends on variants
+		board = new Tile[width][height];
 	}
 
-	public void update() {
-
+	public void placePiece(Piece piece, Point pos) {
+		Tile tile = new Tile(piece);
+		board[pos.x][pos.y] = tile;
+		tiles.add(tile);
 	}
-
+	/*
 	public void setup() {
 		// depends on the variants?
 		// classic
@@ -72,5 +77,5 @@ public class Board {
 			System.out.println();
 		}
 		System.out.println("  a b c d e f g h");
-	}
+	}*/
 }

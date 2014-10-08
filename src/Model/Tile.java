@@ -1,10 +1,12 @@
 package Model;
 
 public class Tile {
-	private Piece myPiece;
-	private boolean isActive;
+	private Piece piece;
+	private boolean exist;
 	
-	public Tile() {
+	public Tile(Piece piece) {
+		this.piece = piece;
+		this.exist = true;
 	}
 	
 }
