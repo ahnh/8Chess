@@ -20,4 +20,9 @@ public class ViewText extends View {
 		
 		
 	}
+	
+	public void displayGameOver( String player ){
+		
+		System.out.println( "Congratulations " + player + ", you win!" );
+	}
 }

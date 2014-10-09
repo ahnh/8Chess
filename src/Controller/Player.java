@@ -12,6 +12,6 @@ public class Player {
 		
 		input = scan.nextLine();
 		
-		return input;
+		return input.trim();
 	}
 }

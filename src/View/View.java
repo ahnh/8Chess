@@ -10,7 +10,12 @@ public abstract class View {
 		
 	}
 	
+	// General display game state update
+	public abstract void display( List<Board> board );
+	
+	// Give a message to the player
 	public abstract void displayMessage( String msg );
 	
-	public abstract void display( List<Board> board );
+	// Alter view to a game over state
+	public abstract void displayGameOver( String winner );
 }

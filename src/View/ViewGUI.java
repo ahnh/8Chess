@@ -20,4 +20,9 @@ public class ViewGUI extends View {
 		
 		
 	}
+	
+	public void displayGameOver( String player ){
+		
+		
+	}
 }
