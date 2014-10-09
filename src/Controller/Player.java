@@ -3,11 +3,15 @@ package Controller;
 import java.util.Scanner;
 
 public class Player {
-	String userInput;
 
-	public void getInput() {
-		Scanner in = new Scanner(System.in);
-		userInput = in.nextLine();
-		System.out.println(userInput);
+	Scanner scan = new Scanner(System.in);
+	
+	public String getInput() {
+		
+		String input = null;
+		
+		input = scan.nextLine();
+		
+		return input;
 	}
 }
