@@ -34,6 +34,9 @@ public abstract class Piece {
 	public char getDisplayChar() {
 		return displayChar;
 	}
+	public String getDisplayStr() {
+		return displayChar + "";
+	}
 	public void setDisplayChar(char displayChar) {
 		this.displayChar = displayChar;
 	}

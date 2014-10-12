@@ -10,18 +10,18 @@ public class Tile {
 	}
 
 	@Override
-	public char toString() {
+	public String toString() {
 		if (piece == null)
 		{
-			return '_';
+			return "_";
 		}
 		else if (piece != null && exist)
 		{
-			return piece.getDisplayChar();
+			return piece.getDisplayStr();
 		}
 		else
 		{
-			return ' ';
+			return " ";
 		}
 	}
 }
