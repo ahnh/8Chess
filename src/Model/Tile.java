@@ -8,5 +8,20 @@ public class Tile {
 		this.piece = piece;
 		this.exist = true;
 	}
-	
+
+	@Override
+	public String toString() {
+		if (piece == null)
+		{
+			return "_";
+		}
+		else if (piece != null && exist)
+		{
+			return "e";
+		}
+		else
+		{
+			return "x";
+		}
+	}
 }

@@ -19,4 +19,28 @@ public abstract class Piece {
 	{
 		this.cusPos = newPos;
 	}
+	public int getTeam() {
+		return team;
+	}
+	public void setTeam(int team) {
+		this.team = team;
+	}
+	public Point getCusPos() {
+		return cusPos;
+	}
+	public void setCusPos(Point cusPos) {
+		this.cusPos = cusPos;
+	}
+	public char getDisplayChar() {
+		return displayChar;
+	}
+	public void setDisplayChar(char displayChar) {
+		this.displayChar = displayChar;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 }
