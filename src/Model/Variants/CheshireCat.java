@@ -1,9 +1,12 @@
 package Model.Variants;
 
+import java.util.List;
+
+import Model.Board;
 import Model.Variant;
 
 public class CheshireCat extends Variant {
-	public CheshireCat() {
+	public CheshireCat(List<Board> boards) {
 		super();
 	}
 

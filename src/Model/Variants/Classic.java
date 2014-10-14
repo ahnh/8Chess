@@ -1,9 +1,12 @@
 package Model.Variants;
 
+import java.util.List;
+
+import Model.Board;
 import Model.Variant;
 
 public class Classic extends Variant {
-	public Classic() {
+	public Classic(List<Board> boards) {
 		super();
 	}
 

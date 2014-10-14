@@ -1,9 +1,12 @@
 package Model.Variants;
 
+import java.util.List;
+
+import Model.Board;
 import Model.Variant;
 
 public class JediKnight extends Variant {
-	public JediKnight() {
+	public JediKnight(List<Board> boards) {
 		super();
 	}
 
