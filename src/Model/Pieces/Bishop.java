@@ -13,8 +13,14 @@ public class Bishop extends Piece{
 	}
 
 	@Override
-	public boolean checkDestination(Point cusPos) {
-		// TODO Auto-generated method stub
+	public boolean checkDestination(Point pos) {
+		if (!preCheckDestination(pos))
+			return false;
+		
+		//check diagonal move
+		if (Math.abs(pos.x - curPos.x) < 8 && Math.abs(pos.x - curPos.x) == Math.abs(pos.y - curPos.y))
+			return true;
+		
 		return false;
 	}
 

@@ -15,8 +15,13 @@ public class Knight extends Piece{
 	}
 
 	@Override
-	public boolean checkDestination(Point cusPos) {
-		// TODO Auto-generated method stub
+	public boolean checkDestination(Point pos) {
+		if (!preCheckDestination(pos))
+			return false;
+		
+		if (curPos.distance(pos) == 5.0f)
+			return true;
+		
 		return false;
 	}
 

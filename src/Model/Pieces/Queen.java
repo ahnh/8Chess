@@ -14,7 +14,22 @@ public class Queen extends Piece{
 	}
 
 	@Override
-	public boolean checkDestination(Point cusPos) {
+	public boolean checkDestination(Point pos) {
+		if (!preCheckDestination(pos))
+			return false;
+		
+		// check diagonal move
+		if (Math.abs(pos.x - curPos.x) < 8 && Math.abs(pos.x - curPos.x) == Math.abs(pos.y - curPos.y))
+			return true;
+		
+		// check horizontal move
+		if (curPos.x == pos.x && Math.abs(pos.y-curPos.y) < 8)
+			return true;
+		
+		// check vertical move
+		if (curPos.y == pos.y && Math.abs(pos.x-curPos.x) < 8)
+			return true;
+		
 		return false;
 	}
 

@@ -14,7 +14,20 @@ public class Rook extends Piece{
 	}
 
 	@Override
-	public boolean checkDestination(Point cusPos) {
+	public boolean checkDestination(Point pos) {
+		if (!preCheckDestination(pos))
+			return false;
+		
+		if (curPos.distance(pos) > 7)
+			return false;
+		
+		// check horizontal move
+		if (curPos.x == pos.x && Math.abs(pos.y-curPos.y) < 8)
+			return true;
+		
+		// check vertical move
+		if (curPos.y == pos.y && Math.abs(pos.x-curPos.x) < 8)
+			return true;
 		
 		return false;
 	}

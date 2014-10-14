@@ -5,19 +5,26 @@ import java.util.ArrayList;
 
 public abstract class Piece {
 	protected int team;
-	protected Point cusPos;
+	protected Point curPos;
 	protected char displayChar;
 	protected String name;
 	
 	public Piece(int team, Point curPos) {
 		this.team = team;
-		this.cusPos = curPos;
+		this.curPos = curPos;
 	}
-	public abstract boolean checkDestination(Point cusPos);
+	public abstract boolean checkDestination(Point pos);
+	
+	public boolean preCheckDestination(Point pos)
+	{
+		if (pos.equals(curPos))
+			return false;
+		return true;
+	}
 	public abstract ArrayList<Point> getAvailDestination();
 	public void updatePosition(Point newPos)
 	{
-		this.cusPos = newPos;
+		this.curPos = newPos;
 	}
 	public int getTeam() {
 		return team;
@@ -26,10 +33,10 @@ public abstract class Piece {
 		this.team = team;
 	}
 	public Point getCusPos() {
-		return cusPos;
+		return curPos;
 	}
-	public void setCusPos(Point cusPos) {
-		this.cusPos = cusPos;
+	public void setCusPos(Point newPos) {
+		this.curPos = newPos;
 	}
 	public char getDisplayChar() {
 		return displayChar;
