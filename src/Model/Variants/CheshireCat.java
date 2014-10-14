@@ -1,5 +1,6 @@
 package Model.Variants;
 
+import java.awt.Point;
 import java.util.List;
 
 import Model.Board;
@@ -10,24 +11,8 @@ public class CheshireCat extends Variant {
 		super();
 	}
 
-	protected boolean validateMove() {
-		// TODO Auto-generated method stub
-		return false;
+	public int checkMove(Board board, Point start, Point end, int currentTeam){
+		return 0;
 	}
 
-	protected boolean validateRules() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	protected boolean checkWin() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean move(String origin, String destination) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }
