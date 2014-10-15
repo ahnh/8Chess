@@ -23,8 +23,8 @@ public class Classic extends Variant {
 		rules.add(new Castling());
 	}
 	private void initBoard(Board board) {
-		int team = 1;
 		// Team 1
+		int team = 1;
 		board.getTile(new Point(0,0)).setPiece(new Rook(team));
 		board.getTile(new Point(1,0)).setPiece(new Knight(team));
 		board.getTile(new Point(2,0)).setPiece(new Bishop(team));
