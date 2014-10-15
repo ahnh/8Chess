@@ -1,7 +1,5 @@
 package View;
 
-import java.util.List;
-
 import Model.Board;
 
 public class ViewGUI extends View {
@@ -16,13 +14,14 @@ public class ViewGUI extends View {
 		
 	}
 	
-	public void display( List<Board> board ){
+	public void display( Board board ){
 		
 		
 	}
 	
-	public void displayGameOver( String player ){
+	public void displayGameOver( int winner, Board board ){
 		
 		
+		this.display( board );
 	}
 }

@@ -14,8 +14,8 @@ public class GameController {
 	
 	public GameController() {
 		
-		player = new Player();
-		game = new Game();
+		player = null;
+		game = null;
 		view = null;
 	}
 	
@@ -38,22 +38,63 @@ public class GameController {
 		
 		do {
 			
-			input = player.getInput();
+			input = player.getTextInput();
 			
 			if ( input.compareTo( "1" ) == 0 ){
 				
 				view = new ViewText();
+				player = new Player( 0 );
 				valid = true;
 			}
 			else if ( input.compareTo( "2" ) == 0 ){
 				
 				view = new ViewGUI();
+				player = new Player( 1 );
 				valid = true;
 			}
-			else {
+			
+		} while ( !valid );
+		
+		valid = false;
+		
+		// Determine game variant before starting
+		System.out.println( "Enter the chess variant to play:" );
+		System.out.println( "1. Classic." );
+		System.out.println( "2. Bughouse." );
+		System.out.println( "3. Cheshire Cat." );
+		System.out.println( "4. Suicide." );
+		System.out.println( "5. Jedi Knight." );
+		
+		do {
+			
+			input = player.getTextInput();
+			
+			if ( input.compareTo( "1" ) == 0 ){
 				
-				valid = false;
+				game = new Game( 2 );
+				valid = true;
 			}
+			else if ( input.compareTo( "2" ) == 0 ){
+				
+				game = new Game( 0 );
+				valid = true;
+			}
+			else if ( input.compareTo( "3" ) == 0 ){
+				
+				game = new Game( 1 );
+				valid = true;
+			}
+			else if ( input.compareTo( "4" ) == 0 ){
+				
+				game = new Game( 4 );
+				valid = true;
+			}
+			else if ( input.compareTo( "5" ) == 0 ){
+				
+				game = new Game( 3 );
+				valid = true;
+			}
+			
 		} while ( !valid );
 		
 		gameloop();
@@ -66,13 +107,15 @@ public class GameController {
 		int moveValid = 0;
 		boolean gameInProgress = true;
 		
+		view.displayMessage( "Game started. Use \"exit\" to quit at any time.");
+		
 		while ( gameInProgress ){
 			
-			view.displayMessage( "Enter your move." );
+			view.displayMessage( "Enter your move, player " + game.getCurrentTeam() + "." );
 			
 			// Wait for valid move
 			do {
-				view.display( game.getBoards() );
+				view.display( game.getActiveBoard() );
 				
 				move = player.getInput();
 				
@@ -98,9 +141,13 @@ public class GameController {
 				
 				gameInProgress = false;
 			}
+			else {
+				
+				//game.nextTurn();
+			}
 		}
 		
-		view.displayGameOver( winner ); // How do I know who won the game?
+		view.displayGameOver( game.getCurrentTeam(), game.getActiveBoard() ); // How do I know who won the game?
 	}
 	
 	public static Point[] convertMoveFormat( String moveStr ){
