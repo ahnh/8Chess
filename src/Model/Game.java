@@ -39,11 +39,18 @@ public class Game {
 	
 	public int move(Point start, Point end){
 		Board board = getActiveBoard();
-		moves.push(new Move(start, end, board.getTile(start).getPiece()));
+		Piece piece = board.getTile(start).getPiece();
 		
-		if (!board.checkMove(moves.peek(), this.getCurrentTeam())) {
+		if (piece == null || piece.getTeam() != getCurrentTeam())
 			return Rule.INVALID_MOVE;
-		}
+		
+		moves.push(new Move(start, end, piece));
+		
+		// Check if the piece can make the move
+		if (!board.checkMove(moves.peek(), this.getCurrentTeam()))
+			return Rule.INVALID_MOVE;
+		
+		// Check that the move doesn't violate any rules or end the game
 		int returnVal = activeVariant.checkMove(board, moves, this.getCurrentTeam());
 		if (returnVal == Rule.VALID_MOVE){
 			board.move(moves.peek());
