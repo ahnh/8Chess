@@ -1,5 +1,7 @@
 package Views;
 
+import java.awt.Point;
+
 import Model.Board;
 
 public class ViewText extends ViewBase {
@@ -16,7 +18,13 @@ public class ViewText extends ViewBase {
 	
 	public void display( Board board ){
 		
-		board.printBoard();
+		for (int i = 0; i < board.getHeight(); i++){
+			for (int j = 0; j < board.getWidth(); j++){
+				
+				System.out.print( board.getTile( new Point(j,i) ) );
+			}
+			System.out.println();
+		}
 	}
 	
 	public void displayGameOver( int winner, Board board ){

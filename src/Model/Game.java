@@ -54,7 +54,7 @@ public class Game {
 	public Board getActiveBoard() {
 		// The active board is determined by the active team. 
 		// With 2 players per board, the active board will always be currentTeam/2  		
-		return this.boards.get(Math.floorDiv(this.currentTeam, 2));
+		return this.boards.get( (int)Math.floor(this.currentTeam / 2));
 	}
 	
 	public int getCurrentTeam() {

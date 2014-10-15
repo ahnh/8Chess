@@ -6,15 +6,21 @@ import java.util.ArrayList;
 public class Board {
 	private Tile[][] board;
 	private ArrayList<Tile> tiles;
+	private int height;
+	private int width;
 
 	public Board() {
 		// TODO: depends on variants
 		board = new Tile[8][8];
+		height = 8;
+		width = 8;
 	}
 	
-	public Board(int width, int height) {
+	public Board(int w, int h) {
 		// TODO: depends on variants
-		board = new Tile[width][height];
+		board = new Tile[w][h];
+		height = h;
+		width = w;
 	}
 
 	public void placePiece(Piece piece, Point pos) {
@@ -30,6 +36,14 @@ public class Board {
 			System.err.println("Attempted to access a position that doesn't exist on the board: " + pos.x + ", " + pos.y);
 			return null;
 		}
+	}
+	
+	public int getHeight(){
+		return height;
+	}
+	
+	public int getWidth(){
+		return width;
 	}
 	
 	public void move(Move move) {
