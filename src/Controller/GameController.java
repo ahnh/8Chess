@@ -161,8 +161,9 @@ public class GameController {
 				
 				String token = tokens.nextToken();
 				
-				move[i].x = alphaToIndex( token.charAt(0) );
-				move[i].y = Integer.parseInt( token.charAt(1) + "" );
+				// -1 to convert to array coordinates
+				move[i].x = alphaToIndex( token.charAt(0) ) - 1;
+				move[i].y = Integer.parseInt( token.charAt(1) + "" ) - 1;
 			}
 		}
 		
