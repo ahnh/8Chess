@@ -7,8 +7,8 @@ public class Player {
 	Scanner scan;
 	int inType;
 	
-	public static int TEXT_INPUT = 0;
-	public static int GUI_INPUT = 1;
+	public static final int TEXT_INPUT = 0;
+	public static final int GUI_INPUT = 1;
 	
 	public Player( int inputType ){
 		
