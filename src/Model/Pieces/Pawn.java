@@ -7,15 +7,15 @@ import Model.Piece;
 
 public class Pawn extends Piece {
 
-	public Pawn(int team, Point curPos) {
-		super(team, curPos);
+	public Pawn(int team) {
+		super(team);
 		this.displayChar = 'P';
 		this.name = "Pawn";
 	}
 
 	@Override
-	public boolean checkDestination(Point pos) {
-		if (!preCheckDestination(pos))
+	public boolean checkDestination(Point pos, Point curPos) {
+		if (!preCheckDestination(pos, curPos))
 			return false;
 		// team 0 = white
 		// team 1 = black

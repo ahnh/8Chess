@@ -7,15 +7,15 @@ import Model.Piece;
 
 public class Rook extends Piece{
 
-	public Rook(int team, Point curPos) {
-		super(team, curPos);
+	public Rook(int team) {
+		super(team);
 		this.displayChar = 'R';
 		this.name = "Rook";
 	}
 
 	@Override
-	public boolean checkDestination(Point pos) {
-		if (!preCheckDestination(pos))
+	public boolean checkDestination(Point pos, Point curPos) {
+		if (!preCheckDestination(pos, curPos))
 			return false;
 		
 		if (curPos.distance(pos) > 7)

@@ -7,15 +7,15 @@ import Model.Piece;
 
 public class King extends Piece{
 
-	public King(int team, Point curPos) {
-		super(team, curPos);
+	public King(int team) {
+		super(team);
 		this.displayChar = 'K';
 		this.name = "King";
 	}
 
 	@Override
-	public boolean checkDestination(Point pos) {
-		if (!preCheckDestination(pos))
+	public boolean checkDestination(Point pos, Point curPos) {
+		if (!preCheckDestination(pos, curPos))
 			return false;
 		
 		// check 1 move around

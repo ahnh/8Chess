@@ -7,15 +7,15 @@ import Model.Piece;
 
 public class Queen extends Piece{
 
-	public Queen(int team, Point curPos) {
-		super(team, curPos);
+	public Queen(int team) {
+		super(team);
 		this.displayChar = 'Q';
 		this.name = "Queen";
 	}
 
 	@Override
-	public boolean checkDestination(Point pos) {
-		if (!preCheckDestination(pos))
+	public boolean checkDestination(Point pos, Point curPos) {
+		if (!preCheckDestination(pos, curPos))
 			return false;
 		
 		// check diagonal move

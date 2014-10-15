@@ -7,16 +7,16 @@ import Model.Piece;
 
 public class Knight extends Piece{
 
-	public Knight(int team, Point curPos) {
-		super(team, curPos);
+	public Knight(int team) {
+		super(team);
 		this.displayChar = 'N';
 		this.name = "Knight";
 
 	}
 
 	@Override
-	public boolean checkDestination(Point pos) {
-		if (!preCheckDestination(pos))
+	public boolean checkDestination(Point pos, Point curPos) {
+		if (!preCheckDestination(pos, curPos))
 			return false;
 		
 		if (curPos.distance(pos) == 5.0f)
