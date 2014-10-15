@@ -155,6 +155,9 @@ public class GameController {
 		Point[] move = new Point[2];
 		StringTokenizer tokens = new StringTokenizer( moveStr, " \t\n-" );
 		
+		move[0] = new Point(-1,-1);
+		move[1] = new Point(-1,-1);
+		
 		for ( int i = 0; i < 2; i ++){
 			
 			if ( tokens.hasMoreTokens() ){
