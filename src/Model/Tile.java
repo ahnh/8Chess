@@ -9,6 +9,14 @@ public class Tile {
 		this.exist = true;
 	}
 
+	public Piece getPiece() {
+		return piece;
+	}
+	
+	public void setPiece(Piece newPiece) {
+		piece = newPiece;
+	}
+	
 	@Override
 	public String toString() {
 		if (piece == null)

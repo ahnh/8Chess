@@ -31,6 +31,16 @@ public class Board {
 			return null;
 		}
 	}
+	
+	public void move(Move move) {
+		Tile origin = board[move.getStart().x][move.getStart().y];
+		Tile destination = board[move.getEnd().x][move.getEnd().y];
+		Piece toMove = origin.getPiece();
+		origin.setPiece(null);
+		
+		// TODO: Add Capture logic here
+		destination.setPiece(toMove);
+	}
 	/*
 	public void setup() {
 		// depends on the variants?
