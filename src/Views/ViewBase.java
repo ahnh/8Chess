@@ -4,10 +4,7 @@ import Model.Board;
 
 public abstract class ViewBase {
 	
-	public ViewBase(){
-		
-		
-	}
+	public ViewBase(){}
 	
 	// General display game state update
 	public abstract void display( Board board );
