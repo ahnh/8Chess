@@ -8,8 +8,17 @@ public abstract class Piece {
 	protected char displayChar;
 	protected String name;
 	
-	public Piece(int team) {
+	public Piece(int team, char disChar, String pName) {
 		this.team = team;
+		
+		if (team%2 == 1){
+			this.displayChar = Character.toLowerCase(disChar);
+		}
+		else{
+			this.displayChar = Character.toUpperCase(disChar);
+		}
+		
+		this.name = pName;
 	}
 	public abstract boolean checkDestination(Point pos, Point curPos);
 	

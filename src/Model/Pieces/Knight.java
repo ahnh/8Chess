@@ -8,9 +8,7 @@ import Model.Piece;
 public class Knight extends Piece{
 
 	public Knight(int team) {
-		super(team);
-		this.displayChar = 'N';
-		this.name = "Knight";
+		super(team,'N',"Knight");
 
 	}
 

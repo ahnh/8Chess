@@ -8,9 +8,7 @@ import Model.Piece;
 public class King extends Piece{
 
 	public King(int team) {
-		super(team);
-		this.displayChar = 'K';
-		this.name = "King";
+		super(team,'K',"King");
 	}
 
 	@Override
