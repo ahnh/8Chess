@@ -24,6 +24,9 @@ public class Game {
 		case 3:
 			activeVariant = new JediKnight(boards);
 			break;
+		case 4:
+			activeVariant = new Suicide(boards);
+			break;
 		}
 		
 		currentTeam = 1; // Players start at 1 - X
