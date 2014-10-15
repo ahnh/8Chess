@@ -13,7 +13,7 @@ public class Classic extends Variant {
 	public Classic(List<Board> boards) {
 		super( 2 );
 		
-		boards.add(new Board(Board.STD_WIDTH, Board.STD_HEIGHT));
+		boards.add(new Board());
 		
 		// Add Rules
 		rules.add(new Castling());

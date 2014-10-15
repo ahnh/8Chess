@@ -5,28 +5,28 @@ import java.util.ArrayList;
 
 public class Board {
 	private Tile[][] board;
-	private ArrayList<Tile> tiles;
 	private int height;
 	private int width;
+	public static final int STD_WIDTH = 8;
+	public static final int STD_HEIGHT = 8;
 
 	public Board() {
-		// TODO: depends on variants
-		board = new Tile[8][8];
-		height = 8;
-		width = 8;
+		this(Board.STD_WIDTH, Board.STD_HEIGHT);
 	}
 	
 	public Board(int w, int h) {
-		// TODO: depends on variants
 		board = new Tile[w][h];
+		for (int x = 0; x < w; x++) {
+			for (int y = 0; y < h; y++) {
+				board[x][y] = new Tile();
+			}
+		}
 		height = h;
 		width = w;
 	}
 
 	public void placePiece(Piece piece, Point pos) {
-		Tile tile = new Tile(piece);
-		board[pos.x][pos.y] = tile;
-		tiles.add(tile);
+		board[pos.x][pos.y].setPiece(piece);
 	}
 	
 	public Tile getTile(Point pos) {
