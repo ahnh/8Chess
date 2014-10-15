@@ -22,6 +22,15 @@ public class Board {
 		board[pos.x][pos.y] = tile;
 		tiles.add(tile);
 	}
+	
+	public Tile getTile(Point pos) {
+		if (board[pos.x][pos.y] != null){
+			return board[pos.x][pos.y];
+		} else {
+			System.err.println("Attempted to access a position that doesn't exist on the board: " + pos.x + ", " + pos.y);
+			return null;
+		}
+	}
 	/*
 	public void setup() {
 		// depends on the variants?
