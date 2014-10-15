@@ -38,7 +38,7 @@ public class GameController {
 		
 		do {
 			
-			input = player.getTextInput();
+			input = Player.getTextInput();
 			
 			if ( input.compareTo( "1" ) == 0 ){
 				

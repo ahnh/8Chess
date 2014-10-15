@@ -40,11 +40,12 @@ public class Player {
 	}
 	
 	// For getting console text only (pre game start)
-	public String getTextInput() {
+	public static String getTextInput() {
 		
+		Scanner sc = new Scanner(System.in);
 		String input = null;
 		
-		input = scan.nextLine();
+		input = sc.nextLine();
 		
 		return input.trim();
 	}
