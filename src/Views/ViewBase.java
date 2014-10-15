@@ -1,10 +1,10 @@
-package View;
+package Views;
 
 import Model.Board;
 
-public abstract class View {
+public abstract class ViewBase {
 	
-	public View(){
+	public ViewBase(){
 		
 		
 	}

@@ -4,13 +4,13 @@ import java.awt.Point;
 import java.util.StringTokenizer;
 
 import Model.Game;
-import View.*;
+import Views.*;
 
 public class GameController {
 	
 	Player player;
 	Game game;
-	View view;
+	ViewBase view;
 	
 	public GameController() {
 		

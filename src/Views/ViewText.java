@@ -1,8 +1,8 @@
-package View;
+package Views;
 
 import Model.Board;
 
-public class ViewText extends View {
+public class ViewText extends ViewBase {
 	
 	public ViewText(){
 		

@@ -1,8 +1,8 @@
-package View;
+package Views;
 
 import Model.Board;
 
-public class ViewGUI extends View {
+public class ViewGUI extends ViewBase {
 	
 	public ViewGUI(){
 		
