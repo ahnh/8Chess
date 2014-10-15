@@ -8,7 +8,7 @@ import Model.Variant;
 
 public class Classic extends Variant {
 	public Classic(List<Board> boards) {
-		super();
+		super( 2 );
 	}
 
 	public int checkMove(Board board, Point start, Point end, int currentTeam){

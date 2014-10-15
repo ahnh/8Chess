@@ -26,7 +26,7 @@ public class Game {
 			break;
 		}
 		
-		currentTeam = 1;
+		currentTeam = 1; // Players start at 1 - X
 	}
 	
 	public int move(Point start, Point end){
@@ -49,6 +49,14 @@ public class Game {
 
 	public void setCurrentTeam(int currentTeam) {
 		this.currentTeam = currentTeam;
+	}
+	
+	public void nextTurn(){
+		this.currentTeam++;
+		
+		if ( this.currentTeam > this.activeVariant.getTeamCount() ){
+			currentTeam = 1;
+		}
 	}
 
 }

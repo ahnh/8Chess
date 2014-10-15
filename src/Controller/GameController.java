@@ -143,7 +143,7 @@ public class GameController {
 			}
 			else {
 				
-				//game.nextTurn();
+				game.nextTurn();
 			}
 		}
 		
