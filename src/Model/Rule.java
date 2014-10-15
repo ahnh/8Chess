@@ -10,5 +10,4 @@ public abstract class Rule {
 	
 	public Rule(){ }
 	public abstract int checkMove(Board board, Stack<Move> moves);
-	public abstract int checkState(Board board);
 }

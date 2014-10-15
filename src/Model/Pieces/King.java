@@ -3,6 +3,7 @@ package Model.Pieces;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import Model.Move;
 import Model.Piece;
 
 public class King extends Piece{
@@ -12,12 +13,15 @@ public class King extends Piece{
 	}
 
 	@Override
-	public boolean checkDestination(Point pos, Point curPos) {
-		if (!preCheckDestination(pos, curPos))
+	public boolean checkDestination(Move move) {
+		if (!preCheckDestination(move))
 			return false;
 		
+		Point start = move.getStart();
+		Point end = move.getEnd();
+		
 		// check 1 move around
-		if (Math.abs(curPos.x-pos.x) < 2 && Math.abs(curPos.y-pos.y) < 2 )
+		if (Math.abs(start.x-end.x) < 2 && Math.abs(start.y-end.y) < 2 )
 			return true;
 		return false;
 		

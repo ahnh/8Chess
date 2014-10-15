@@ -3,6 +3,7 @@ package Model.Pieces;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import Model.Move;
 import Model.Piece;
 
 public class Pawn extends Piece {
@@ -12,8 +13,8 @@ public class Pawn extends Piece {
 	}
 
 	@Override
-	public boolean checkDestination(Point pos, Point curPos) {
-		if (!preCheckDestination(pos, curPos))
+	public boolean checkDestination(Move move) {
+		if (!preCheckDestination(move))
 			return false;
 		// team 0 = white
 		// team 1 = black
@@ -21,11 +22,14 @@ public class Pawn extends Piece {
 		if (team % 2 == 0)
 			direction = 1;
 		
-		if (curPos.distance(pos) > 2)
+		Point start = move.getStart();
+		Point end = move.getEnd();
+		
+		if (start.distance(end) > 2)
 			return false;
-		if (curPos.x == pos.x && curPos.y == pos.y+direction)
+		if (start.x == end.x && start.y == end.y+direction)
 			return true;
-		if (curPos.x != pos.x && curPos.y == pos.y+direction && Math.abs(pos.x-curPos.x) == 1)
+		if (start.x != end.x && start.y == end.y+direction && Math.abs(end.x-start.x) == 1)
 			return true;
 		
 		return false;

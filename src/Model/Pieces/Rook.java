@@ -3,6 +3,7 @@ package Model.Pieces;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import Model.Move;
 import Model.Piece;
 
 public class Rook extends Piece{
@@ -12,19 +13,22 @@ public class Rook extends Piece{
 	}
 
 	@Override
-	public boolean checkDestination(Point pos, Point curPos) {
-		if (!preCheckDestination(pos, curPos))
+	public boolean checkDestination(Move move) {
+		if (!preCheckDestination(move))
 			return false;
 		
-		if (curPos.distance(pos) > 7)
+		Point start = move.getStart();
+		Point end = move.getEnd();
+		
+		if (start.distance(end) > 7)
 			return false;
 		
 		// check horizontal move
-		if (curPos.x == pos.x && Math.abs(pos.y-curPos.y) < 8)
+		if (start.x == end.x && Math.abs(end.y-start.y) < 8)
 			return true;
 		
 		// check vertical move
-		if (curPos.y == pos.y && Math.abs(pos.x-curPos.x) < 8)
+		if (start.y == end.y && Math.abs(end.x-start.x) < 8)
 			return true;
 		
 		return false;

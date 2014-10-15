@@ -18,10 +18,4 @@ public class Castling extends Rule {
 		return Rule.VALID_MOVE;
 	}
 
-	@Override
-	public int checkState(Board board) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

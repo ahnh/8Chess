@@ -20,11 +20,11 @@ public abstract class Piece {
 		
 		this.name = pName;
 	}
-	public abstract boolean checkDestination(Point pos, Point curPos);
+	public abstract boolean checkDestination(Move move);
 	
-	public boolean preCheckDestination(Point pos, Point curPos)
+	public boolean preCheckDestination(Move move)
 	{
-		if (pos.equals(curPos))
+		if (move.getStart().equals(move.getEnd()))
 			return false;
 		return true;
 	}

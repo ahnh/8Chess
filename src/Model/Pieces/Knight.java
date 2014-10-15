@@ -3,6 +3,7 @@ package Model.Pieces;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import Model.Move;
 import Model.Piece;
 
 public class Knight extends Piece{
@@ -13,11 +14,14 @@ public class Knight extends Piece{
 	}
 
 	@Override
-	public boolean checkDestination(Point pos, Point curPos) {
-		if (!preCheckDestination(pos, curPos))
+	public boolean checkDestination(Move move) {
+		if (!preCheckDestination(move))
 			return false;
 		
-		if (curPos.distance(pos) == 5.0f)
+		Point start = move.getStart();
+		Point end = move.getEnd();
+		
+		if (start.distance(end) == 5.0f)
 			return true;
 		
 		return false;

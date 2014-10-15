@@ -24,6 +24,11 @@ public class Board {
 		width = w;
 	}
 
+	public boolean checkMove(Move move, int currentTeam) {
+		// Check that the piece can make the move
+		return move.getPiece().checkDestination(move);
+	}
+	
 	public void placePiece(Piece piece, Point pos) {
 		board[pos.x][pos.y].setPiece(piece);
 	}

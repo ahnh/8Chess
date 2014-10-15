@@ -18,10 +18,4 @@ public class Promotion extends Rule {
 		return 0;
 	}
 
-	@Override
-	public int checkState(Board board) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

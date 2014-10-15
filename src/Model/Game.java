@@ -38,15 +38,16 @@ public class Game {
 	}
 	
 	public int move(Point start, Point end){
-		Board activeBoard = getActiveBoard();
+		Board board = getActiveBoard();
+		moves.push(new Move(start, end, board.getTile(start).getPiece()));
 		
-		moves.push(new Move(start, end, activeBoard.getTile(start).getPiece()));
-		int returnVal = activeVariant.checkMove(this.getActiveBoard(), moves, this.getCurrentTeam());
-		if (returnVal == 0){
-			// Valid move
-			this.getActiveBoard().move(moves.peek());
+		if (!board.checkMove(moves.peek(), this.getCurrentTeam())) {
+			return Rule.INVALID_MOVE;
 		}
-		else {
+		int returnVal = activeVariant.checkMove(board, moves, this.getCurrentTeam());
+		if (returnVal == Rule.VALID_MOVE){
+			board.move(moves.peek());
+		} else {
 			// Invalid so remove
 			moves.pop();
 		}

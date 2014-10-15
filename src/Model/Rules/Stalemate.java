@@ -17,11 +17,4 @@ public class Stalemate extends Rule {
 		// Stalemate doesn't have any effect on a move. The check is done during checkState
 		return Rule.VALID_MOVE;
 	}
-
-	@Override
-	public int checkState(Board board) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }
