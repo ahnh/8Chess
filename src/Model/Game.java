@@ -1,12 +1,14 @@
 package Model;
 
 import java.util.List;
+import java.util.Stack;
 import java.awt.Point;
 
 import Model.Variants.*;
 
 public class Game {
 	private List<Board> boards;
+	private Stack<Move> moves;
 	private Variant activeVariant;
 	private int currentTeam;
 	
@@ -30,13 +32,17 @@ public class Game {
 		}
 		
 		currentTeam = 1; // Players start at 1 - X
+		moves = new Stack();
 	}
 	
 	public int move(Point start, Point end){
-		int returnVal = activeVariant.checkMove(this.getActiveBoard(), start, end, this.getCurrentTeam());
+		Board activeBoard = getActiveBoard();
+		
+		moves.add(new Move(start, end, activeBoard.getTile(start).getPiece()));
+		int returnVal = activeVariant.checkMove(this.getActiveBoard(), moves, this.getCurrentTeam());
 		if (returnVal == 0){
 			// Valid move
-			this.getActiveBoard().move(start, end);
+			this.getActiveBoard().move(moves.peek());
 		}
 		return returnVal;
 	}
@@ -46,6 +52,7 @@ public class Game {
 		// With 2 players per board, the active board will always be currentTeam/2  		
 		return this.boards.get(Math.floorDiv(this.currentTeam, 2));
 	}
+	
 	public int getCurrentTeam() {
 		return currentTeam;
 	}
