@@ -4,6 +4,10 @@ public class Tile {
 	private Piece piece;
 	private boolean exist;
 	
+	public Tile () {
+		exist = true;
+	}
+	
 	public Tile(Piece piece) {
 		this.piece = piece;
 		this.exist = true;
