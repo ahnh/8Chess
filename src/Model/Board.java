@@ -46,6 +46,25 @@ public class Board {
 		return width;
 	}
 	
+	public boolean compare( Board othBoard ){
+		
+		if ( othBoard.getHeight() == height && othBoard.getWidth() == width ){
+			
+			for(int i = 0; i < height; i++){
+				for(int j = 0; j < width; j++){
+					
+					if ( board[j][i].getPiece().getDisplayChar() != othBoard.getTile(new Point(j,i)).getPiece().getDisplayChar() ){
+						return false;
+					}
+				}
+			}
+			
+			return true;
+		}
+			
+		return false;
+	}
+	
 	public void move(Move move) {
 		Tile origin = board[move.getStart().x][move.getStart().y];
 		Tile destination = board[move.getEnd().x][move.getEnd().y];
