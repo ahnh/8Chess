@@ -9,6 +9,9 @@ import Model.Rule;
 
 public class Stalemate extends Rule {
 
+	public Stalemate() {
+		super();
+	}
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {
 		// Stalemate doesn't have any effect on a move. The check is done during checkState

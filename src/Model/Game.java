@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 import java.awt.Point;
@@ -13,6 +14,7 @@ public class Game {
 	private int currentTeam;
 	
 	public Game(int variantSelection) {
+		boards = new ArrayList();
 		switch(variantSelection){
 		case 0:
 			activeVariant = new BugHouse(boards);

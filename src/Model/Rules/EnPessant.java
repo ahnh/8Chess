@@ -9,7 +9,10 @@ import Model.Board;
 import Model.Rule;
 
 public class EnPessant extends Rule {
-
+	public EnPessant(){
+		super();
+	}
+	
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {
 		Move currentMove = moves.peek();

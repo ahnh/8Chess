@@ -9,6 +9,9 @@ import Model.Rule;
 
 public class Promotion extends Rule {
 
+	public Promotion() {
+		super();
+	}
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {
 		// TODO Auto-generated method stub

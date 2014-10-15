@@ -8,11 +8,14 @@ import Model.Move;
 import Model.Rule;
 
 public class Castling extends Rule {
-
+	public Castling() {
+		super();
+	}
+	
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {
 		// TODO Auto-generated method stub
-		return 0;
+		return Rule.VALID_MOVE;
 	}
 
 	@Override
