@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.StringTokenizer;
 
 import Model.Game;
+import Model.Rule;
 import Views.*;
 
 public class GameController {
@@ -129,15 +130,15 @@ public class GameController {
 				
 				moveValid = game.move( movePoint[0], movePoint[1] ); // Double check what return values
 				
-				if ( moveValid == 0 ){
+				if ( moveValid == Rule.INVALID_MOVE ){
 					
 					view.displayMessage( "Invalid move, try again." );
 				}
 			
-			} while ( moveValid == 0 );
+			} while ( moveValid == Rule.INVALID_MOVE );
 			
 			// Win condition triggered
-			if ( moveValid == 2 ){
+			if ( moveValid == Rule.GAME_OVER ){
 				
 				gameInProgress = false;
 			}
