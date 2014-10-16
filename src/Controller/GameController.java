@@ -58,17 +58,19 @@ public class GameController {
 		
 		valid = false;
 		
+		// Switch the view mode selected at this point.
 		// Determine game variant before starting
-		System.out.println( "Enter the chess variant to play:" );
-		System.out.println( "1. Classic." );
-		System.out.println( "2. Bughouse." );
-		System.out.println( "3. Cheshire Cat." );
-		System.out.println( "4. Suicide." );
-		System.out.println( "5. Jedi Knight." );
+		view.displayMessage( "Enter the chess variant to play:\n" +
+				"1. Classic.\n" +
+				"2. Bughouse.\n" +
+				"3. Cheshire Cat.\n" +
+				"4. Suicide.\n" +
+				"5. Jedi Knight.\n"
+				);
 		
 		do {
 			
-			input = Player.getTextInput();
+			input = player.getInput();
 			
 			if ( input.compareTo( "1" ) == 0 ){
 				
