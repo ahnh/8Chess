@@ -149,7 +149,7 @@ public class GameController {
 				
 			
 			} while ( moveValid == Rule.INVALID_MOVE || moveValid == Rule.INVALID_MOVE_CHECK);
-			
+			 
 			// Check if valid move needs other options
 			if ( moveValid >= Rule.NEEDS_INPUT ){
 				

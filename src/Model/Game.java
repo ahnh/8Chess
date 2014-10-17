@@ -71,7 +71,7 @@ public class Game {
             if ( returnVal >= Rule.NEEDS_INPUT ){
             	
             	ruleOptions = Variant.getRuleOptions();
-            }
+            } 
     
 		} else {
 			// Invalid so remove

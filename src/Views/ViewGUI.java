@@ -15,6 +15,7 @@ public class ViewGUI extends ViewBase {
 	// Main window items
 	
 	
+	
 	// Option window items
 	private JLabel question;
 	private ButtonGroup optionGroup;
