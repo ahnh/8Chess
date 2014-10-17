@@ -6,6 +6,7 @@ import java.util.Stack;
 
 import Model.Board;
 import Model.Move;
+import Model.Rule;
 import Model.Variant;
 import Model.Pieces.*;
 import Model.Rules.*;
@@ -23,7 +24,24 @@ public class Classic extends Variant {
         rules.add(new CollisionMove());
 		rules.add(new Castling());
 		rules.add(new Pawn_Move());
+		rules.add(new EnPessant());
 	}
+	
+	public int checkMove(Board board, Stack<Move> moves, int currentTeam) {
+		int returnVal = Rule.VALID_MOVE;
+		for (int i = 0; i < rules.size(); i++) {
+			returnVal = rules.get(i).checkMove(board, moves);
+			if (returnVal != Rule.VALID_MOVE) {
+				break;
+			}
+		}
+		if (returnVal == Rule.VALID_MOVE && EnPessant.moveIsEnPessantAttempt(board, moves)) {
+			// En Pessant. Remove the piece that has been captured.
+			board.capturePiece(moves.get(moves.size()-2).getEnd(), null);
+		}
+		return returnVal;
+	}
+	
 	private void initBoard(Board board) {
 		// Team 1
 		int team = 1;

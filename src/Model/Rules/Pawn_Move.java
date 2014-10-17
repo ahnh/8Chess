@@ -19,7 +19,9 @@ public class Pawn_Move extends Rule {
 		if (board.getTile(currentMove.getEnd()).getPiece() == null){
 			// Not a capture. Disallow diagonal moves
 			if (currentMove.getStart().x != currentMove.getEnd().x && currentMove.getStart().y != currentMove.getEnd().y)
-				return Rule.INVALID_MOVE;
+				// Unless it is an attempt at En Pessant
+				if (!EnPessant.moveIsEnPessantAttempt(board, moves))
+					return Rule.INVALID_MOVE;
 		} else {
 			// Capture. Disallow  Vertical moves
 			if (currentMove.getDistanceX() == 0)

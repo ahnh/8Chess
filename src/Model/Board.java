@@ -71,15 +71,19 @@ public class Board {
 	
 	public void move(Move move) {
 		Tile origin = board[move.getStart().x][move.getStart().y];
-		Tile destination = board[move.getEnd().x][move.getEnd().y];
 		Piece toMove = origin.getPiece();
 		origin.setPiece(null);
 		
-		// TODO: Add Capture logic here
-		destination.setPiece(toMove);
+		capturePiece(move.getEnd(), toMove);
 		
 		// Perform any piece-level operations after the move.
 		toMove.afterMove();
+	}
+	
+	public void capturePiece(Point position, Piece capturer) {
+		Piece captured = board[position.x][position.y].getPiece();
+		// TODO: Store captured piece in dead array
+		board[position.x][position.y].setPiece(capturer);
 	}
 	/*
 	public void setup() {
