@@ -60,13 +60,15 @@ public class GameController {
 		
 		// Switch the view mode selected at this point.
 		// Determine game variant before starting
-		view.displayMessage( "Enter the chess variant to play:\n" +
-				"1. Classic.\n" +
-				"2. Bughouse.\n" +
-				"3. Cheshire Cat.\n" +
-				"4. Suicide.\n" +
-				"5. Jedi Knight.\n" +
-                                "6. TestCheck. \n"
+		view.displayOptions( "Enter the chess variant to play:",
+				new String[] {
+				  "1. Classic.",
+				  "2. Bughouse.",
+				  "3. Cheshire Cat.",
+				  "4. Suicide.",
+				  "5. Jedi Knight.",
+                  "6. TestCheck."
+				}
 				);
 		
 		do {

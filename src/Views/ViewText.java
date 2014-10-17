@@ -36,6 +36,16 @@ public class ViewText extends ViewBase {
 		}
 	}
 	
+	public void displayOptions( String msg, String[] options ){
+		
+		System.out.println( msg );
+		
+		for (int i = 0; i < options.length; i++ ){
+			
+			System.out.println( options[i] );
+		}
+	}
+	
 	public void displayGameOver( int winner, Board board ){
 		
 		System.out.println( "Congratulations player " + winner + ", you win!" );
