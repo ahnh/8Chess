@@ -20,6 +20,7 @@ public class ViewText extends ViewBase {
 		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String header = "  ";
 		for (int j = 0; j < board.getWidth(); j++){
+                        header += " ";
 			header += alphabet.charAt(j);
 		}
 		System.out.println(header);
@@ -28,7 +29,7 @@ public class ViewText extends ViewBase {
 			// Print Row
 			System.out.print(i+1 + " ");
 			for (int j = 0; j < board.getWidth(); j++){
-				
+				System.out.print(" ");
 				System.out.print( board.getTile( new Point(j,i) ) );
 			}
 			System.out.println();
