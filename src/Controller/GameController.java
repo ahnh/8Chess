@@ -65,7 +65,8 @@ public class GameController {
 				"2. Bughouse.\n" +
 				"3. Cheshire Cat.\n" +
 				"4. Suicide.\n" +
-				"5. Jedi Knight.\n"
+				"5. Jedi Knight.\n" +
+				"6. Test Check. \n"
 				);
 		
 		do {
@@ -97,6 +98,14 @@ public class GameController {
 				game = new Game( 3 );
 				valid = true;
 			}
+
+			//Test Check
+			else if ( input.compareTo( "6" ) == 0 ){
+				
+				game = new Game( 5 );
+				valid = true;
+			}
+
 			
 		} while ( !valid );
 		
