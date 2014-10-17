@@ -66,7 +66,7 @@ public class GameController {
 				"3. Cheshire Cat.\n" +
 				"4. Suicide.\n" +
 				"5. Jedi Knight.\n" +
-				"6. Test Check. \n"
+                                "6. TestCheck. \n"
 				);
 		
 		do {
@@ -98,15 +98,13 @@ public class GameController {
 				game = new Game( 3 );
 				valid = true;
 			}
-
-			//Test Check
 			else if ( input.compareTo( "6" ) == 0 ){
 				
 				game = new Game( 5 );
 				valid = true;
-			}
-
-			
+			}			
+                        
+                        
 		} while ( !valid );
 		
 		gameloop();
@@ -145,8 +143,12 @@ public class GameController {
 					
 					view.displayMessage( "Invalid move, try again." );
 				}
+
+                                
+                                
+                                
 			
-			} while ( moveValid == Rule.INVALID_MOVE );
+			} while ( moveValid == Rule.INVALID_MOVE || moveValid == Rule.INVALID_MOVE_CHECK);
 			
 			// Win condition triggered
 			if ( moveValid == Rule.GAME_OVER ){

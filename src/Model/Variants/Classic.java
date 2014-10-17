@@ -20,6 +20,7 @@ public class Classic extends Variant {
 		boards.add(board);
 		
 		// Add Rules
+                rules.add(new CollisionMove());
 		rules.add(new Castling());
 	}
 	private void initBoard(Board board) {

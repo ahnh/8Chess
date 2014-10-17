@@ -31,6 +31,10 @@ public class Game {
 		case 4:
 			activeVariant = new Suicide(boards);
 			break;
+                    
+  		case 5:
+			activeVariant = new TestCheck(boards);
+			break;                  
 		}
 		
 		currentTeam = 1; // Players start at 1 - X

@@ -27,6 +27,11 @@ public class EnPessant extends Rule {
 		// Check if pawn is directly beside (horizontally) our pawn
 		// Check if move is being made diagonally behind the other pawn
 			// ALLOW EN Pessant... also remove the other pawn.
+                
+                //Grab a List of all pieces on the Board
+                
+                
+                
 		return Rule.VALID_MOVE;
 		
 	}
