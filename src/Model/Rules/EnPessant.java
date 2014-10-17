@@ -10,7 +10,7 @@ import Model.Rule;
 
 public class EnPessant extends Rule {
 	public EnPessant(){
-		super();
+		super("En Pessant not valid");
 	}
 	
 	@Override

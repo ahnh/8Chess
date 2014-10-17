@@ -141,13 +141,9 @@ public class GameController {
 				
 				if ( moveValid == Rule.INVALID_MOVE ){
 					
-					view.displayMessage( "Invalid move, try again." );
+					view.displayMessage( "Invalid move: " + game.getError() );
 				}
-
-                                
-                                
-                                
-			
+				
 			} while ( moveValid == Rule.INVALID_MOVE || moveValid == Rule.INVALID_MOVE_CHECK);
 			
 			// Win condition triggered
@@ -178,9 +174,12 @@ public class GameController {
 				
 				String token = tokens.nextToken();
 				
-				// -1 to convert to array coordinates
-				move[i].x = alphaToIndex( token.charAt(0) ) - 1;
-				move[i].y = Integer.parseInt( token.charAt(1) + "" ) - 1;
+				if ( token.length() > 1 ){
+					
+					// -1 to convert to array coordinates
+					move[i].x = alphaToIndex( token.charAt(0) ) - 1;
+					move[i].y = Integer.parseInt( token.charAt(1) + "" ) - 1;
+				}
 			}
 		}
 		
