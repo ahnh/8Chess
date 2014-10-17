@@ -19,12 +19,13 @@ public class TestCheck extends Variant {
 		// Add Rules
                 rules.add(new CollisionMove());
 		//rules.add(new Castling());
+                rules.add(new CheckMate());
                 rules.add(new Check());
-                
+
                 
 	}
 	private void initBoard(Board board) {
-            TestCheck2(board);
+            TestCheck3(board);
 
                     
 		
@@ -68,5 +69,21 @@ public class TestCheck extends Variant {
                 board.getTile(new Point(3,3)).setPiece(new Knight(team));
         }       
         
-        
+         //Testing Checkmate claus
+        void TestCheck3(Board board)
+        {
+		// Team 1
+		int team = 1;
+		board.getTile(new Point(4,5)).setPiece(new King(team));
+
+
+                
+		// Team 2
+		team = 2;
+		board.getTile(new Point(6,4)).setPiece(new Rook(team));   
+		board.getTile(new Point(2,6)).setPiece(new Rook(team)); 
+		board.getTile(new Point(5,0)).setPiece(new Rook(team));  
+ 		board.getTile(new Point(3,0)).setPiece(new Rook(team));                 
+	//	board.getTile(new Point(5,4)).setPiece(new Rook(team));      
+        }            
 }
