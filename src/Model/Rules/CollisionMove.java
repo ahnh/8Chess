@@ -60,7 +60,18 @@ public class CollisionMove extends Rule {
         
         //Check if our moving piece is a knight
         if(movingPiece.getName()=="Knight")
-            return Rule.VALID_MOVE;     
+        {
+            if( movingPiece.checkDestination(currentMove))
+            {
+                
+                if(board.getTile(currentMove.getEnd()).getPiece()==null)
+                return Rule.VALID_MOVE;
+                
+                else if(board.getTile(currentMove.getEnd()).getPiece().getTeam()!= currentTeam)
+                return Rule.VALID_MOVE;
+            }
+             return Rule.INVALID_MOVE;  
+        }  
         
         else
         {
@@ -72,11 +83,11 @@ public class CollisionMove extends Rule {
             //Left -> right
             //Top Left -> Bottom Right
             
-            int startX = Math.min(currentMove.getStart().x, currentMove.getEnd().x);
-            int endX =Math.max(currentMove.getStart().x, currentMove.getEnd().x);
+            int startX = currentMove.getStart().x;//Math.min(currentMove.getStart().x, currentMove.getEnd().x);
+            int endX =   currentMove.getEnd().x;//Math.max(currentMove.getStart().x, currentMove.getEnd().x);
             
-            int startY = Math.min(currentMove.getStart().y, currentMove.getEnd().y);
-            int endY  = Math.max(currentMove.getStart().y, currentMove.getEnd().y);
+            int startY =currentMove.getStart().y;// Math.min(currentMove.getStart().y, currentMove.getEnd().y);
+            int endY  = currentMove.getEnd().y;//Math.max(currentMove.getStart().y, currentMove.getEnd().y);
             
             
             System.out.println(" MinX ="+startX+"\n MaxX ="+endX);
@@ -111,12 +122,13 @@ public class CollisionMove extends Rule {
         //Constant= horizontal point
         boolean CheckVertical(List<Move> pieces, int start, int end, int constant, Move currentMove)
         {
-            //Check if a Piece exists between start and end
+            //Checking Downward Direction + 
+            if(start<end)
+            {
+            //Check if a Piece exists between start and end    
             for(int i=start; i<=end; i++)
                 {
-
                     System.out.println("Checking Point:"+constant+","+i);
-                   
                     for(int p=0;p<pieces.size();p++)
                     {
                       //Piece exists at this location
@@ -137,10 +149,42 @@ public class CollisionMove extends Rule {
                     }
                 }
             return true;
+            }
+            else               
+            {
+            //Check if a Piece exists between start and end    
+            for(int i=start; i>=end; i--)
+                {
+                    System.out.println("Checking Point:"+constant+","+i);
+                    for(int p=0;p<pieces.size();p++)
+                    {
+                      //Piece exists at this location
+                     if(pieces.get(p).getStart().x==constant && pieces.get(p).getStart().y==i)
+                     {
+                     //This is the end of our Movement
+                        if(i==  currentMove.getEnd().y)
+                        //The piece blocking is non-friendly
+                            if(pieces.get(p).getPiece().getTeam()!= currentMove.getPiece().getTeam())
+                                return true;
+                        
+                        
+                     
+                     return false;
+                     }
+                     
+                     
+                    }
+                }
+            return true;
+            }
+            
+            
         }
         
         boolean CheckHorizontal(List<Move> pieces, int start, int end, int constant, Move currentMove)
         {
+            if(start<end)
+            {
             //Check if a Piece exists between start and end
             for(int i=start; i<=end; i++)
                 {
@@ -167,6 +211,37 @@ public class CollisionMove extends Rule {
                     }
                 }
             return true;
+            }
+            else
+            {
+            //Check if a Piece exists between start and end
+            for(int i=start; i>=end; i--)
+                {
+
+                    System.out.println("Checking Point:"+i+","+constant);
+                   
+                    for(int p=0;p<pieces.size();p++)
+                    {
+                      //Piece exists at this location
+                     if(pieces.get(p).getStart().x==i && pieces.get(p).getStart().y==constant)
+                     {
+                     //This is the end of our Movement
+                        if(i==  currentMove.getEnd().x)
+                        //The piece blocking is non-friendly
+                            if(pieces.get(p).getPiece().getTeam()!= currentMove.getPiece().getTeam())
+                                return true;
+                        
+                        
+                     
+                     return false;
+                     }
+                     
+                     
+                    }
+                }
+            return true;
+            }            
+            
         }
         
         boolean CheckDiagonal(List<Move> pieces, Point start, Point end, Move currentMove)

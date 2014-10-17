@@ -18,8 +18,8 @@ public class TestCheck extends Variant {
 		boards.add(board);
 		// Add Rules
                 rules.add(new CollisionMove());
-		rules.add(new Castling());
-               // rules.add(new Check());
+		//rules.add(new Castling());
+                rules.add(new Check());
                 
                 
 	}
@@ -63,7 +63,9 @@ public class TestCheck extends Variant {
                 
 		// Team 2
 		team = 2;
-		board.getTile(new Point(5,4)).setPiece(new Rook(team));     
+		board.getTile(new Point(5,4)).setPiece(new Rook(team));   
+ 		board.getTile(new Point(5,5)).setPiece(new Queen(team));   
+                board.getTile(new Point(3,3)).setPiece(new Knight(team));
         }       
         
         

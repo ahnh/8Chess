@@ -36,31 +36,11 @@ public class Check extends Rule {
                 
                 
                 //List of Pieces
-                List<Move> enemyList = new ArrayList<Move>(); 
+                //List<Move> enemyList = new ArrayList<Move>(); 
 
                 
                 
-                //Grab a List of All enemy pieces
-                for(int y=0;y<maxHeight;y++)
-                    for(int x=0;x<maxWidth;x++)
-                    {
-                        Tile tile=null;// = board.getTile(point);
-                        comparePiece=null;
 
-                        Point point = new Point(x,y);
-
-                        //Assign tile and Check for Null
-                        if( (tile=board.getTile(point))!=null)
-                            //Assign Piece and Check for Null
-                            if( (comparePiece= tile.getPiece())!=null)   
-                                //Check if pieces belong on same team
-                                if(comparePiece.getTeam()!=movingPiece.getTeam())
-                                {
-                                //Grab a List of all enemy pieces and set Destination to the moving Piece's destination    
-                                Move m = new Move(point,currentMove.getEnd(),comparePiece);
-                                enemyList.add(m);
-                                }                            
-                    }
                 
                 
 
@@ -68,8 +48,7 @@ public class Check extends Rule {
                 // Grab King within Move Class (Easier to grab startlocation, and piece)
                 Move playerKing = FindKing(board,currentTeam);
                 
-                
-                
+                               
                 //If player doesn't have a king, then no need to verify check
                 if(playerKing==null)
                     return Rule.VALID_MOVE;
@@ -78,41 +57,103 @@ public class Check extends Rule {
                
 
                 
+
+                Rule CollisionMove= new CollisionMove();
+                List<Move> enemyList;
                 
-                
-                
-                
-                //If King is Being Moved
-                //Check if the King's Destination can be reached by any piece
-                if( movingPiece== playerKing.getPiece())
-                    while(enemyList.size()>0)
-                    {
-                        //Check if piece can move to the destination
-                        Move move0 = enemyList.get(0);
-                        Piece piece0 = enemyList.get(0).getPiece();
-                        if(piece0.checkDestination(move0)) //If this is a Valid Move, then we are in check
-                            return Rule.INVALID_MOVE_CHECK;
-                        else
-                            enemyList.remove(0);
-                    }
-               
-                                
-               
-                //If King is NOT being moved, check to see if the King is in check
-                boolean isCheck=false;
-                for(int x=0;x<enemyList.size();x++)
-                {
-                      
+    
+
+                    //Make a copy of the piece at the Destination
+
+                    //Copy Needed Contents
+                    Piece orig_destination = board.getTile(currentMove.getEnd()).getPiece();
+
+
+                    //Overwrite the piece at destination
+                    board.getTile(currentMove.getEnd()).setPiece(movingPiece);
+                    board.getTile(currentMove.getStart()).setPiece(null);
+
+                    //See if this invalidates Check
+
+
+
+                    //Verify if any piece can move to kings location
+                    playerKing = FindKing(board,currentTeam);
                     
+                    //Check if any piece can reach playerking
+
+                    //Create Enemy List from board of all enemy pieces with their destination set on the king
+                    enemyList=CreateEnemyList(board,currentTeam,playerKing.getStart());
+
+                    boolean isCheck=false;
+                    for(int x=0;x<enemyList.size() && isCheck==false; x++)
+                    {
+                        Move move0 = enemyList.get(x);
+                        Stack moveStack = new Stack();
+                        moveStack.add(move0);   
+
+                        if(((CollisionMove.checkMove(board,  moveStack))==Rule.VALID_MOVE) && enemyList.get(x).getPiece().checkDestination(move0))
+                        {
+
+                            System.out.println("HES CHECKING YOU "+enemyList.get(x).getPiece().getName());
+                            
+                            isCheck=true;
+                        }
+
+
+                    }
                 
                 
                 
-                }
                 
                 
-		return Rule.VALID_MOVE;
+                
+                
+                
+                    //Undo Changes
+                    board.getTile(currentMove.getStart()).setPiece(movingPiece);                
+                    board.getTile(currentMove.getEnd()).setPiece(orig_destination);   
+
+                    if(isCheck)
+                    return Rule.INVALID_MOVE;
+                    else
+                    return Rule.VALID_MOVE;
+                
+                
+                
+                
+		
 		
 	}
+        //Create list containing all pieces not in team with their moves set to destination 
+        private List<Move> CreateEnemyList(Board board, int team, Point destination)
+        {
+            //Grab a List of All enemy pieces
+            Piece comparePiece=null;
+            List<Move> enemyList = new ArrayList<Move>();
+            for(int y=0;y<board.getHeight();y++)
+                for(int x=0;x<board.getWidth();x++)
+                {
+                    Tile tile=null;// = board.getTile(point);
+                    comparePiece=null;
+
+                    Point point = new Point(x,y);
+
+                    //Assign tile and Check for Null
+                    if( (tile=board.getTile(point))!=null)
+                        //Assign Piece and Check for Null
+                        if( (comparePiece= tile.getPiece())!=null)   
+                            //Check if pieces belong on same team
+                            if(comparePiece.getTeam()!=team)
+                            {
+                            //Grab a List of all enemy pieces and set Destination to the moving Piece's destination    
+                            Move m = new Move(point,destination,comparePiece);
+                            enemyList.add(m);
+                            }                            
+                }    
+            return enemyList;
+        }
+        
         
         private Move FindKing(Board board, int team)
         {
