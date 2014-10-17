@@ -34,8 +34,8 @@ public class Pawn extends Piece {
 		if (move.getDistanceY() == 2 && hasMoved)
 			return false;
 		
-		// Pawn can't move 2 spaces horizontally
-		if (move.getDistanceX() > 1)
+		// Pawn can't move horizontally
+		if (move.getDistanceY() == 0)
 			return false;
 		
 		// Pawn can't move backwards
