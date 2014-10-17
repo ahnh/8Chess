@@ -125,7 +125,7 @@ public class GameController {
                 {
 			
 			view.displayMessage( "Enter your move, player " + game.getCurrentTeam() + "." );
-                        
+            
 			// Wait for valid move
 			do {
 				view.display( game.getActiveBoard() );
@@ -144,20 +144,24 @@ public class GameController {
 				
 				if ( moveValid == Rule.INVALID_MOVE ){
 					
-					view.displayMessage( "Invalid move, try again." );
+					view.displayMessage( "Invalid move: " + game.getError() + "." );
 				}
-
-                                
-                                
-                                
+				
 			
 			} while ( moveValid == Rule.INVALID_MOVE || moveValid == Rule.INVALID_MOVE_CHECK);
 			
+			// Check if valid move needs other options
+			if ( moveValid >= Rule.NEEDS_INPUT ){
+				
+				String[][] opts = game.getRuleOptions();
+				view.displayOptions(opts[0][0], opts[1]);
+			}
+			
 			// Win condition triggered
 			if ( moveValid == Rule.GAME_OVER || 
-                             moveValid == Rule.CHECKMATE_TEAM1 ||
-                             moveValid == Rule.CHECKMATE_TEAM2 ||
-                             moveValid == Rule.CHECKMATE_TEAM12 )
+                 moveValid == Rule.CHECKMATE_TEAM1 ||
+                 moveValid == Rule.CHECKMATE_TEAM2 ||
+                 moveValid == Rule.CHECKMATE_TEAM12 )
                         {
 				gameInProgress = false;
 			}
@@ -168,7 +172,7 @@ public class GameController {
                         
 		}
 		
-		view.displayGameOver( game.getCurrentTeam(), game.getActiveBoard() ); // How do I know who won the game?
+		view.displayGameOver( game.getCurrentTeam(), game.getActiveBoard() );
 	}
 	
 	public static Point[] convertMoveFormat( String moveStr ){

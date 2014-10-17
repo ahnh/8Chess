@@ -12,6 +12,8 @@ public class Game {
 	private Stack<Move> moves;
 	private Variant activeVariant;
 	private int currentTeam;
+	private String errorMsg;
+	private String[][] ruleOptions;
 	
 	public Game(int variantSelection) {
 		boards = new ArrayList();
@@ -38,12 +40,14 @@ public class Game {
 		}
 		
 		currentTeam = 1; // Players start at 1 - X
-		moves = new Stack();
+		moves = new Stack<Move>();
+		errorMsg = "";
 	}
 	
 	public int move(Point start, Point end){
 		Board board = getActiveBoard();
 		Piece piece = board.getTile(start).getPiece();
+		int returnVal = -1;
 		
 		if (piece == null || piece.getTeam() != getCurrentTeam())
 			return Rule.INVALID_MOVE;
@@ -52,23 +56,28 @@ public class Game {
 		
 		// Check if the piece can make the move
 		if (!board.checkMove(moves.peek(), this.getCurrentTeam()))
+			errorMsg = activeVariant.getError();
 			return Rule.INVALID_MOVE;
 		
 		// Check that the move doesn't violate any rules or end the game
-		int returnVal = activeVariant.checkMove(board, moves, this.getCurrentTeam());
+		returnVal = activeVariant.checkMove(board, moves, this.getCurrentTeam());
+		
 		if (returnVal == Rule.VALID_MOVE){
                         
 			board.move(moves.peek());
-                        
-                        returnVal = activeVariant.checkState(board, moves);
+            
+            returnVal = activeVariant.checkState(board, moves);
+            
+            if ( returnVal >= Rule.NEEDS_INPUT ){
+            	
+            	ruleOptions = Variant.getRuleOptions();
+            }
     
 		} else {
 			// Invalid so remove
 			moves.pop();
 		}
-                
-
-                
+        
 		return returnVal;
 	}
 	
@@ -76,6 +85,16 @@ public class Game {
 		// The active board is determined by the active team. 
 		// With 2 players per board, the active board will always be currentTeam/2  		
 		return this.boards.get( (int)Math.floor((this.currentTeam - 1) / 2));
+	}
+	
+	public String getError(){
+		
+		return errorMsg;
+	}
+	
+	public String[][] getRuleOptions(){
+		
+		return ruleOptions;
 	}
 	
 	public int getCurrentTeam() {
