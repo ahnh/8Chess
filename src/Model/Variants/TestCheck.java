@@ -12,17 +12,19 @@ import Model.Rules.*;
 
 public class TestCheck extends Variant {
 	public TestCheck(List<Board> boards) {
+            
 		super( 2 );	
 		Board board = new Board();	
 		initBoard(board);
 		boards.add(board);
-		// Add Rules
-                rules.add(new CollisionMove());
-		//rules.add(new Castling());
-                rules.add(new CheckMate());
-                rules.add(new Check());
-
                 
+		// Add Rules
+                move_Rules.add(new CollisionMove());
+		//rules.add(new Castling());
+
+                move_Rules.add(new Check());
+
+                state_Rules.add(new CheckMate());                
 	}
 	private void initBoard(Board board) {
             TestCheck3(board);
@@ -81,7 +83,7 @@ public class TestCheck extends Variant {
 		// Team 2
 		team = 2;
 		board.getTile(new Point(6,4)).setPiece(new Rook(team));   
-		board.getTile(new Point(2,6)).setPiece(new Rook(team)); 
+		board.getTile(new Point(2,7)).setPiece(new Rook(team)); 
 		board.getTile(new Point(5,0)).setPiece(new Rook(team));  
  		board.getTile(new Point(3,0)).setPiece(new Rook(team));                 
 	//	board.getTile(new Point(5,4)).setPiece(new Rook(team));      

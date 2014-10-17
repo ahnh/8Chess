@@ -7,33 +7,42 @@ import java.util.Stack;
 
 public abstract class Variant {
 	private int teams;
-	protected List<Rule> rules;
-	private String lastErrorMessage;
-	
+	protected List<Rule> move_Rules;
+	protected List<Rule> state_Rules;
 	public Variant( int numPlayers) {
-		rules = new ArrayList<Rule>();
+		move_Rules = new ArrayList();
+		state_Rules = new ArrayList();
+                
 		teams = numPlayers;
-		lastErrorMessage = "";
 	}
 
 	public int checkMove(Board board, Stack<Move> moves, int currentTeam) {
 		int returnVal = Rule.VALID_MOVE;
-		
-		for (int i = 0; i < rules.size(); i++) {
-			returnVal = rules.get(i).checkMove(board, moves);
+		for (int i = 0; i < move_Rules.size(); i++) {
+			returnVal = move_Rules.get(i).checkMove(board, moves);
 			if (returnVal != Rule.VALID_MOVE) {
-				lastErrorMessage = rules.get(i).getError();
 				break;
 			}
 		}
 		return returnVal;
 	}
-	
+        
+	public int checkState(Board board, Stack<Move> moves) 
+        {
+		int returnVal = Rule.VALID_MOVE;
+		for (int i = 0; i < state_Rules.size(); i++) 
+                {
+			returnVal = state_Rules.get(i).checkMove(board, moves);
+			if (returnVal != Rule.VALID_MOVE) 
+                        {
+				break;
+			}
+		}
+		return returnVal;
+	}
+        
 	public int getTeamCount(){
 		
 		return teams;
-	}
-	public String getError(){
-		return lastErrorMessage;
 	}
 }

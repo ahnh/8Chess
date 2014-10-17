@@ -8,7 +8,7 @@ import Model.Rule;
 
 public class Pawn_Move extends Rule {
 	public Pawn_Move() {
-		super("Not sure pawn move");
+		super();
 	}
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {

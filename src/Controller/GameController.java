@@ -119,10 +119,11 @@ public class GameController {
 		
 		view.displayMessage( "Game started. Use \"exit\" to quit at any time.");
 		
-		while ( gameInProgress ){
+		while ( gameInProgress )
+                {
 			
 			view.displayMessage( "Enter your move, player " + game.getCurrentTeam() + "." );
-			
+                        
 			// Wait for valid move
 			do {
 				view.display( game.getActiveBoard() );
@@ -141,20 +142,28 @@ public class GameController {
 				
 				if ( moveValid == Rule.INVALID_MOVE ){
 					
-					view.displayMessage( "Invalid move: " + game.getError() );
+					view.displayMessage( "Invalid move, try again." );
 				}
-				
+
+                                
+                                
+                                
+			
 			} while ( moveValid == Rule.INVALID_MOVE || moveValid == Rule.INVALID_MOVE_CHECK);
 			
 			// Win condition triggered
-			if ( moveValid == Rule.GAME_OVER ){
-				
+			if ( moveValid == Rule.GAME_OVER || 
+                             moveValid == Rule.CHECKMATE_TEAM1 ||
+                             moveValid == Rule.CHECKMATE_TEAM2 ||
+                             moveValid == Rule.CHECKMATE_TEAM12 )
+                        {
 				gameInProgress = false;
 			}
 			else {
 				
 				game.nextTurn();
 			}
+                        
 		}
 		
 		view.displayGameOver( game.getCurrentTeam(), game.getActiveBoard() ); // How do I know who won the game?
@@ -174,12 +183,9 @@ public class GameController {
 				
 				String token = tokens.nextToken();
 				
-				if ( token.length() > 1 ){
-					
-					// -1 to convert to array coordinates
-					move[i].x = alphaToIndex( token.charAt(0) ) - 1;
-					move[i].y = Integer.parseInt( token.charAt(1) + "" ) - 1;
-				}
+				// -1 to convert to array coordinates
+				move[i].x = alphaToIndex( token.charAt(0) ) - 1;
+				move[i].y = Integer.parseInt( token.charAt(1) + "" ) - 1;
 			}
 		}
 		

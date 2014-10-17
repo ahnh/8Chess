@@ -10,7 +10,7 @@ import Model.Rule;
 public class Promotion extends Rule {
 
 	public Promotion() {
-		super("Promotion eligable");
+		super();
 	}
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {

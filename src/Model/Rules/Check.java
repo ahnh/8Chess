@@ -12,9 +12,53 @@ import java.util.List;
 
 public class Check extends Rule {
 	public Check(){
-		super("Check condition active");
+		super();
 	}
 	
+        //Invalidates moves based on if the player is in check
+        
+        public boolean isKingInCheck(Board board, int currentTeam)
+        {
+                    List<Move> enemyList;
+                    Rule CollisionMove= new CollisionMove();
+                    
+                    // Grab King within Move Class (Easier to grab startlocation, and piece)
+                    Move playerKing = FindKing(board,currentTeam);   
+                
+                    if(playerKing!=null)
+                    {
+                    //Verify if any piece can move to kings location
+                    playerKing = FindKing(board,currentTeam);
+                    
+                    //Check if any piece can reach playerking
+
+                    //Create Enemy List from board of all enemy pieces with their destination set on the king
+                    enemyList=CreateEnemyList(board,currentTeam,playerKing.getStart());
+
+                    boolean isCheck=false;
+                    
+                    for(int x=0;x<enemyList.size() && isCheck==false; x++)
+                    {
+                        Move move0 = enemyList.get(x);                      
+                        Stack moveStack = new Stack();
+                        moveStack.add(move0);   
+
+                        if(((CollisionMove.checkMove(board,  moveStack))==Rule.VALID_MOVE) && enemyList.get(x).getPiece().checkDestination(move0))
+                        {
+
+                           // System.out.println("HES CHECKING YOU "+enemyList.get(x).getPiece().getName());
+                            isCheck=true;
+                        }
+
+
+                    }
+                    return isCheck;
+                    }
+                    else 
+                        return false; //No king, can't be in check
+                    
+        }
+        
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {
             
@@ -35,13 +79,8 @@ public class Check extends Rule {
 
                 
                 
-                //List of Pieces
-                //List<Move> enemyList = new ArrayList<Move>(); 
+ 
 
-                
-                
-
-                
                 
 
                 
@@ -95,7 +134,7 @@ public class Check extends Rule {
                         if(((CollisionMove.checkMove(board,  moveStack))==Rule.VALID_MOVE) && enemyList.get(x).getPiece().checkDestination(move0))
                         {
 
-                            System.out.println("HES CHECKING YOU "+enemyList.get(x).getPiece().getName());
+                           // System.out.println("HES CHECKING YOU "+enemyList.get(x).getPiece().getName());
                             
                             isCheck=true;
                         }
@@ -104,12 +143,7 @@ public class Check extends Rule {
                     }
                 
                 
-                
-                
-                
-                
-                
-                
+
                     //Undo Changes
                     board.getTile(currentMove.getStart()).setPiece(movingPiece);                
                     board.getTile(currentMove.getEnd()).setPiece(orig_destination);   

@@ -9,7 +9,7 @@ import Model.Rule;
 
 public class Castling extends Rule {
 	public Castling() {
-		super("Castleing attempted");
+		super();
 	}
 	
 	@Override

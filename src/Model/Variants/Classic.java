@@ -21,16 +21,16 @@ public class Classic extends Variant {
 		boards.add(board);
 		
 		// Add Rules
-        rules.add(new CollisionMove());
-		rules.add(new Castling());
-		rules.add(new Pawn_Move());
-		rules.add(new EnPessant());
+                move_Rules.add(new CollisionMove());
+		move_Rules.add(new Castling());
+		move_Rules.add(new Pawn_Move());
+		move_Rules.add(new EnPessant());
 	}
 	
 	public int checkMove(Board board, Stack<Move> moves, int currentTeam) {
 		int returnVal = Rule.VALID_MOVE;
-		for (int i = 0; i < rules.size(); i++) {
-			returnVal = rules.get(i).checkMove(board, moves);
+		for (int i = 0; i < move_Rules.size(); i++) {
+			returnVal = move_Rules.get(i).checkMove(board, moves);
 			if (returnVal != Rule.VALID_MOVE) {
 				break;
 			}

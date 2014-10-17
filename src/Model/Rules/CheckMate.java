@@ -21,42 +21,78 @@ public class CheckMate extends Rule {
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {
             
-                //Grab CurrentMove
-		Move currentMove = moves.peek();
-                //Find the Piece being Moved
-		Piece movingPiece = board.getTile(currentMove.getStart()).getPiece();               
-                //Find out Current Piece's team
-                int currentTeam = movingPiece.getTeam();
+        boolean isT1_checkmate = IsCheckMate(board, 1);
+        boolean isT2_checkmate = IsCheckMate(board, 2);       
+         
+        
+        
+        if( isT1_checkmate && isT2_checkmate)
+            return Rule.CHECKMATE_TEAM12;
+        else if(isT1_checkmate)
+        {
+            System.out.println("TEAM1 CHECKMATE!!!!!!!!!!!!!!");
+            return Rule.CHECKMATE_TEAM1;
+        }
+        
+        else if (isT2_checkmate){
+            
+            return Rule.CHECKMATE_TEAM2;
+        }
+        else{
+            
+            return Rule.VALID_MOVE;
+        }
 
+        }
+            
+            
+            
+        //Two Team Assumption
+        // 0 = No1 in checkmate
+        // 1 = T1 in checkmate
+        boolean IsCheckMate(Board board, int currentTeam) 
+                {     
+
+
+
+                //Find if a King is in Check
                 
-                boolean isCheck = false;
-
 
 
                 //Grab a List of all Pieces on this Team
                 // with all valid move's they can make
                 List<Move> team_ValidMovePool = CreateValidMoveList(board,currentTeam);
                 
-                System.out.println("Available moves by this Team:"+ team_ValidMovePool.size());
-                
-                //Cycle through list, if a move exists that does not leave the king in check
-                // Then this rule passes Valid
+
+
+                System.out.println("[noCheck] Available moves by Team["+currentTeam+"]:"+ team_ValidMovePool.size());
                 
                 Check check = new Check();
-                for(int x=0;x<team_ValidMovePool.size();x++)
+                boolean isCheck = check.isKingInCheck(board, currentTeam);
+                
+                System.out.println("KING CHECK = "+isCheck);
+                //Cycle through list, if a move exists that does not leave the king in check
+                // Then this rule passes Valid
+
+                if(isCheck)
                 {
-                //Create the Stack to Check on Check Rule
-                    Stack moveStack = new Stack();
-                    moveStack.add(team_ValidMovePool.get(x));             
-                if( check.checkMove(board, moveStack)==Rule.VALID_MOVE)
-                    return Rule.VALID_MOVE;
-                
-                
+                    for(int x=0;x<team_ValidMovePool.size();x++)
+                    {
+                    //Create the Stack to Check on Check Rule
+                        Stack moveStack = new Stack();
+                        moveStack.add(team_ValidMovePool.get(x));
+
+                        if( check.checkMove(board, moveStack)==Rule.VALID_MOVE)
+                            return false; //A Move Exists to exit check
+
+
+                    }
+
+                    //If no valid move exists, and the king is in check, then this person is in checkmate
+                    return true; //Checkmate    
                 }
-                
-       
-                return Rule.GAME_OVER;    
-                
+                else
+                    return false;//Not in check so you can't be in checkmate
                 
 	}
         

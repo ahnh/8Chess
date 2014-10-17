@@ -13,7 +13,6 @@ public class Suicide extends Variant {
 		super( 2 );
 	}
 
-	public int checkMove(Board board, Stack<Move> moves, int currentTeam){
-		return 0;
-	}
+
+        
 }

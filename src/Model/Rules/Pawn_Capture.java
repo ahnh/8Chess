@@ -8,7 +8,7 @@ import Model.Rule;
 
 public class Pawn_Capture extends Rule {
 	public Pawn_Capture() {
-		super("Pawn isnt capturing");
+		super();
 	}
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {

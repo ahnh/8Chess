@@ -15,7 +15,7 @@ import java.util.List;
 
 public class CollisionMove extends Rule {
 	public CollisionMove(){
-		super("Piece collides with another while moving");
+		super();
 	}
 	
 	@Override
@@ -75,7 +75,7 @@ public class CollisionMove extends Rule {
         
         else
         {
-            System.out.println("Testing Collision");
+         //   System.out.println("Testing Collision");
             
 
             
@@ -90,10 +90,10 @@ public class CollisionMove extends Rule {
             int endY  = currentMove.getEnd().y;//Math.max(currentMove.getStart().y, currentMove.getEnd().y);
             
             
-            System.out.println(" MinX ="+startX+"\n MaxX ="+endX);
-            System.out.println(" MinX ="+startY+"\n MaxX ="+endY);
-            System.out.println(" Piece List = "+ pieceList.size());
-        // We need to Check if any piece lies between our Start-Destination not including the destination itself
+         //   System.out.println(" MinX ="+startX+"\n MaxX ="+endX);
+         //   System.out.println(" MinX ="+startY+"\n MaxX ="+endY);
+         //   System.out.println(" Piece List = "+ pieceList.size());
+        //// We need to Check if any piece lies between our Start-Destination not including the destination itself
             
             Point p1 = new Point(startX,endX);
             Point p2 = new Point(startY,endY);
@@ -128,7 +128,7 @@ public class CollisionMove extends Rule {
             //Check if a Piece exists between start and end    
             for(int i=start; i<=end; i++)
                 {
-                    System.out.println("Checking Point:"+constant+","+i);
+                 //   System.out.println("Checking Point:"+constant+","+i);
                     for(int p=0;p<pieces.size();p++)
                     {
                       //Piece exists at this location
@@ -155,7 +155,7 @@ public class CollisionMove extends Rule {
             //Check if a Piece exists between start and end    
             for(int i=start; i>=end; i--)
                 {
-                    System.out.println("Checking Point:"+constant+","+i);
+                 //   System.out.println("Checking Point:"+constant+","+i);
                     for(int p=0;p<pieces.size();p++)
                     {
                       //Piece exists at this location
@@ -189,7 +189,7 @@ public class CollisionMove extends Rule {
             for(int i=start; i<=end; i++)
                 {
 
-                    System.out.println("Checking Point:"+i+","+constant);
+                 //   System.out.println("Checking Point:"+i+","+constant);
                    
                     for(int p=0;p<pieces.size();p++)
                     {
@@ -218,7 +218,7 @@ public class CollisionMove extends Rule {
             for(int i=start; i>=end; i--)
                 {
 
-                    System.out.println("Checking Point:"+i+","+constant);
+                  //  System.out.println("Checking Point:"+i+","+constant);
                    
                     for(int p=0;p<pieces.size();p++)
                     {
@@ -257,7 +257,7 @@ public class CollisionMove extends Rule {
             for(int i=0; i<=difference; i++)
                 {
 
-                    System.out.println("Checking Point:"+i+","+i);
+                 //   System.out.println("Checking Point:"+i+","+i);
                    
                     for(int p=0;p<pieces.size();p++)
                     {

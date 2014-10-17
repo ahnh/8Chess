@@ -34,7 +34,7 @@ public class Board {
 	}
 	
 	public Tile getTile(Point pos) {
-		if (pos.x >= 0 && pos.x < board.length && pos.y >= 0 && pos.y < board[0].length ){
+		if (board[pos.x][pos.y] != null){
 			return board[pos.x][pos.y];
 		} else {
 			System.err.println("Attempted to access a position that doesn't exist on the board: " + pos.x + ", " + pos.y);

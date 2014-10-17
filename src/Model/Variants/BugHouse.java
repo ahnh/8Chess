@@ -13,8 +13,6 @@ public class BugHouse extends Variant {
 		super(4);
 	}
 	
-	public int checkMove(Board board, Stack<Move> moves, int currentTeam){
-		return 0;
-	}
+
 
 }
