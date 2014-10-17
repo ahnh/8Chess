@@ -22,7 +22,7 @@ public class Classic extends Variant {
 		// Add Rules
         rules.add(new CollisionMove());
 		rules.add(new Castling());
-		rules.add(new Pawn_DiagonalMove());
+		rules.add(new Pawn_Move());
 	}
 	private void initBoard(Board board) {
 		// Team 1
