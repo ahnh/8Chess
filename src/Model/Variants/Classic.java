@@ -20,8 +20,9 @@ public class Classic extends Variant {
 		boards.add(board);
 		
 		// Add Rules
-                rules.add(new CollisionMove());
+        rules.add(new CollisionMove());
 		rules.add(new Castling());
+		rules.add(new Pawn_DiagonalMove());
 	}
 	private void initBoard(Board board) {
 		// Team 1

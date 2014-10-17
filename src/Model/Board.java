@@ -77,6 +77,9 @@ public class Board {
 		
 		// TODO: Add Capture logic here
 		destination.setPiece(toMove);
+		
+		// Perform any piece-level operations after the move.
+		toMove.afterMove();
 	}
 	/*
 	public void setup() {

@@ -7,9 +7,11 @@ import Model.Move;
 import Model.Piece;
 
 public class Pawn extends Piece {
-
+	private boolean hasMoved;
+	
 	public Pawn(int team) {
 		super(team,'P',"Pawn");
+		hasMoved = false;
 	}
 
 	@Override
@@ -27,12 +29,24 @@ public class Pawn extends Piece {
 		
 		if (start.distance(end) > 2)
 			return false;
-		if (start.x == end.x && start.y == end.y+direction)
-			return true;
-		if (start.x != end.x && start.y == end.y+direction && Math.abs(end.x-start.x) == 1)
-			return true;
 		
-		return false;
+		// Pawn can only move 2 spaces on it's first turn
+		if (move.getDistanceY() == 2 && hasMoved)
+			return false;
+		
+		// Pawn can't move 2 spaces horizontally
+		if (move.getDistanceX() > 1)
+			return false;
+		
+		// Pawn can't move backwards
+		if (start.y != end.y+(direction * move.getDistanceY()))
+			return false;
+		
+		return true;
+	}
+	@Override
+	public void afterMove() {
+		hasMoved = true;
 	}
 
 	@Override

@@ -28,6 +28,12 @@ public abstract class Piece {
 			return false;
 		return true;
 	}
+
+	public void afterMove(){
+		// Stub method that can be overridden if a piece needs to perform an action
+		// after they move. (Ex. The pawn must know when it has been moved already
+		// to determine if it can move 2 spaces)
+	}
 	
 	public abstract ArrayList<Point> getAvailDestination();
 	
