@@ -15,7 +15,7 @@ import java.util.List;
 
 public class CollisionMove extends Rule {
 	public CollisionMove(){
-		super();
+		super("Piece collides with another while moving");
 	}
 	
 	@Override

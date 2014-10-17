@@ -11,6 +11,7 @@ public class Game {
 	private List<Board> boards;
 	private Stack<Move> moves;
 	private Variant activeVariant;
+	private String errorMessage;
 	private int currentTeam;
 	
 	public Game(int variantSelection) {
@@ -39,6 +40,7 @@ public class Game {
 		
 		currentTeam = 1; // Players start at 1 - X
 		moves = new Stack();
+		errorMessage = "";
 	}
 	
 	public int move(Point start, Point end){
@@ -58,9 +60,13 @@ public class Game {
 		int returnVal = activeVariant.checkMove(board, moves, this.getCurrentTeam());
 		if (returnVal == Rule.VALID_MOVE){
 			board.move(moves.peek());
+		} else if (returnVal == Rule.GAME_OVER){
+			board.move(moves.peek());
+			// Anything else we need to do?
 		} else {
 			// Invalid so remove
 			moves.pop();
+			errorMessage = activeVariant.getError();
 		}
 		return returnVal;
 	}
@@ -75,6 +81,10 @@ public class Game {
 		return currentTeam;
 	}
 
+	public String getError(){
+		return errorMessage;
+	}
+	
 	public void setCurrentTeam(int currentTeam) {
 		this.currentTeam = currentTeam;
 	}

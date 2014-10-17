@@ -10,7 +10,7 @@ import Model.Rule;
 public class Stalemate extends Rule {
 
 	public Stalemate() {
-		super();
+		super("Stalemate condition active");
 	}
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {

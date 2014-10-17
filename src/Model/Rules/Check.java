@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Check extends Rule {
 	public Check(){
-		super();
+		super("Check condition active");
 	}
 	
 	@Override
