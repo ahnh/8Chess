@@ -19,7 +19,7 @@ public abstract class Piece {
 		}
 		
 		this.name = pName;
-		hasMoved = false;
+		this.hasMoved = false;
 	}
 	public abstract boolean checkDestination(Move move);
 	
