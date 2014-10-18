@@ -10,7 +10,6 @@ public class Rook extends Piece {
 
 	public Rook(int team) {
 		super(team, 'R', "Rook");
-		hasMoved = false;
 	}
 
 	@Override
