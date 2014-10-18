@@ -64,12 +64,12 @@ public class CheckMate extends Rule {
                 
 
 
-                System.out.println("[noCheck] Available moves by Team["+currentTeam+"]:"+ team_ValidMovePool.size());
+                //System.out.println("[noCheck] Available moves by Team["+currentTeam+"]:"+ team_ValidMovePool.size());
                 
                 Check check = new Check();
                 boolean isCheck = check.isKingInCheck(board, currentTeam);
                 
-                System.out.println("KING CHECK = "+isCheck);
+                //System.out.println("KING CHECK = "+isCheck);
                 //Cycle through list, if a move exists that does not leave the king in check
                 // Then this rule passes Valid
 
