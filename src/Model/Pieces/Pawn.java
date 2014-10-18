@@ -15,8 +15,6 @@ public class Pawn extends Piece {
 	public boolean checkDestination(Move move) {
 		if (!preCheckDestination(move))
 			return false;
-		// team 0 = white
-		// team 1 = black
 		int direction = 1;
 		if (team % 2 == 0)
 			direction = -1;

@@ -59,4 +59,8 @@ public abstract class Piece {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public boolean hasMoved(){
+		return hasMoved;
+	}
 }
