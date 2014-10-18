@@ -18,28 +18,30 @@ public class Game {
 	public Game(int variantSelection) {
 		boards = new ArrayList();
 		switch(variantSelection){
-		case 0:
-			activeVariant = new Absorption(boards);
-			break;
 		case 1:
-			activeVariant = new CheshireCat(boards);
-			break;
-		case 2:
 			activeVariant = new Classic(boards);
 			break;
+		case 2:
+			activeVariant = new Absorption(boards);
+			break;
 		case 3:
-			activeVariant = new JediKnightChess(boards);
+			activeVariant = new CheshireCat(boards);
 			break;
 		case 4:
 			activeVariant = new Suicide(boards);
 			break;
-                    
-  		case 5:
+		case 5:
+			activeVariant = new JediKnightChess(boards);
+			break;
+		case 6:
+			activeVariant = new Atomic(boards);
+			break;
+		case 7:
+			activeVariant = new Hobbit(boards);
+			break;
+  		case 8:
 			activeVariant = new TestCheck(boards);
-			break;                  
-  		case 7:
-			activeVariant = new TestCastling(boards);
-			break;       
+			break;                     
 		}
 		
 		currentTeam = 1; // Players start at 1 - X

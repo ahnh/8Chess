@@ -67,10 +67,9 @@ public class GameController {
 				  "3. Cheshire Cat.",
 				  "4. Suicide.",
 				  "5. Jedi Knight.",
-                  "6. TestCheck.",
-                  "6. TestCheck.",
-                  "7. Atomic.",
-                  "8. TestCastling."
+                  "6. Atomic.",
+                  "7. Hobbit.",
+                  "8. TestCheck."
 				}
 				);
 		
@@ -80,17 +79,17 @@ public class GameController {
 			
 			if ( input.compareTo( "1" ) == 0 ){
 				
-				game = new Game( 2 );
+				game = new Game( 1 );
 				valid = true;
 			}
 			else if ( input.compareTo( "2" ) == 0 ){
 				
-				game = new Game( 0 );
+				game = new Game( 2 );
 				valid = true;
 			}
 			else if ( input.compareTo( "3" ) == 0 ){
 				
-				game = new Game( 1 );
+				game = new Game( 3 );
 				valid = true;
 			}
 			else if ( input.compareTo( "4" ) == 0 ){
@@ -100,20 +99,20 @@ public class GameController {
 			}
 			else if ( input.compareTo( "5" ) == 0 ){
 				
-				game = new Game( 3 );
+				game = new Game( 5 );
 				valid = true;
 			}
 			else if ( input.compareTo( "6" ) == 0 ){
 				
-				game = new Game( 5 );
+				game = new Game( 6 );
 				valid = true;
 			}			
 			else if ( input.compareTo( "7" ) == 0 ){
-				game = new Game( 6 );
+				game = new Game( 7 );
 				valid = true;
 			}
 			else if ( input.compareTo( "8" ) == 0 ){
-				game = new Game( 7 );
+				game = new Game( 8 );
 				valid = true;
 			}
                         
