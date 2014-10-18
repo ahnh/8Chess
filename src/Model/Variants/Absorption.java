@@ -29,11 +29,14 @@ public class Absorption extends Variant {
 		move_Rules.add(new Pawn_Move());
 		move_Rules.add(new Pawn_Capture());
 		move_Rules.add(new EnPessant());
-
-		
-		state_Rules.add(new AtomicWin());
+		move_Rules.add(new Absorb());
+		move_Rules.add(new Check());
+                
+		state_Rules.add(new CheckMate());
+		state_Rules.add(new Stalemate());                
 		state_Rules.add(new Promotion());
 		state_Rules.add(new Castling());
+                
 	}
 	
 	public int checkMove(Board board, Stack<Move> moves, int currentTeam) {
@@ -49,114 +52,15 @@ public class Absorption extends Variant {
 			}
 		}
                 
-                
-                
 		if (returnVal == Rule.VALID_MOVE && EnPessant.moveIsEnPessantAttempt(board, moves)) {
 			// En Pessant. Remove the piece that has been captured.
 			board.capturePiece(moves.get(moves.size()-2).getEnd(), null);
 		}
                 
-                //If Move is valid
-                if(returnVal==Rule.VALID_MOVE)
-                {
-                    //Grab Move
-                    Move move = moves.peek();
-
-                    //Check if a Capture is occuring
-                    Piece p1 = board.getTile(move.getStart()).getPiece();
-                    Piece p2 = board.getTile(move.getEnd()).getPiece();
-
-                        if(p2!=null)
-                        {
-                            if(p1.getTeam()!=p2.getTeam())
-                            {
-                            // Check Surrounding Piece
-                            //KillPiece(board, move); 
-                            KillEverything(board,move.getEnd());
-                            }
-                        }
-                }
-                
 		return returnVal;
 	}
-        private void KillEverything(Board board, Point p)
-        {
-        for(int y=p.y-1; y<=p.y+1;y++)
-        for(int x=p.x-1; x<=p.x+1;x++)
-        {
-            Point point =new Point(x,y);
-            if ((x>=0 && x< board.getWidth())&&
-               (y>=0 && y< board.getHeight()))
-                if((board.getTile(point).getPiece()!=null) && (board.getTile(point).getPiece().getName()!="Pawn"))
-                {
-                    System.out.println("Killing: "+point);
-                       board.getTile(point).setPiece(null);
-                }
-                       
-        }   
+
         
-        
-        
-        }
-        
-        private void KillPiece(Board board, Move move)
-        {
-            
-            Point temp;
-
-            //Left
-            temp =new Point(move.getStart().x-1,move.getStart().y);
-            if ((move.getStart().x-1>0) && (board.getTile(temp).getPiece()==null || (board.getTile(temp).getPiece().getName()!="Pawn" ))    )       
-                board.capturePiece(temp, null);       
-
-            //Up
-            temp =new Point(move.getStart().x,move.getStart().y+1);
-            if ((move.getStart().y+1<board.getHeight()) && (board.getTile(temp).getPiece()==null || (board.getTile(temp).getPiece().getName()!="Pawn" ))    )     
-           //     board.capturePiece(temp, null);   
-
-            //Down
-            temp =new Point(move.getStart().x,move.getStart().y-1);
-            if ((move.getStart().y-1>0) && (board.getTile(temp).getPiece()==null || (board.getTile(temp).getPiece().getName()!="Pawn" ))    )    
-                board.capturePiece(temp, null);   
-
-            //Right
-            temp =new Point(move.getStart().x+1,move.getStart().y);
-            if ((move.getStart().x+1<board.getHeight()) && (board.getTile(temp).getPiece()==null || (board.getTile(temp).getPiece().getName()!="Pawn" ))    )   
-                board.capturePiece(temp, null);             
-
-            //Top Right
-            temp =new Point(move.getStart().x+1,move.getStart().y+1);
-            if ((move.getStart().x+1<board.getWidth()) && 
-                (move.getStart().y+1<board.getHeight()) &&               
-                (board.getTile(temp).getPiece()==null || (board.getTile(temp).getPiece().getName()!="Pawn" ))    )   
-                board.capturePiece(temp, null); 
-
-             //Top Left
-            temp =new Point(move.getStart().x-1,move.getStart().y+1);
-            if ((move.getStart().x-1>0) && 
-                (move.getStart().y+1<board.getHeight()) &&               
-                (board.getTile(temp).getPiece()==null || (board.getTile(temp).getPiece().getName()!="Pawn" ))    )    
-                board.capturePiece(temp, null); 
-
-
-             //Bottom Right
-            temp =new Point(move.getStart().x+1,move.getStart().y-1);
-            if ((move.getStart().x+1<board.getWidth()) && 
-                (move.getStart().y-1>0 ) &&               
-                (board.getTile(temp).getPiece()==null || (board.getTile(temp).getPiece().getName()!="Pawn" ))    )      
-                board.capturePiece(temp, null); 
-
-             //Bottom Left
-            temp =new Point(move.getStart().x-1,move.getStart().y-1);
-            if ((move.getStart().x-1>0) && 
-                (move.getStart().y-1>0) &&               
-                (board.getTile(temp).getPiece()==null || (board.getTile(temp).getPiece().getName()!="Pawn" ))    )       
-                board.capturePiece(temp, null);        
-        
-            
-        }
-        
-	
 	private void initBoard(Board board) {
 		// Team 1
 		int team = 2;
@@ -186,5 +90,7 @@ public class Absorption extends Variant {
 		for (int i = 0; i < board.getWidth(); i++) {
 			board.getTile(new Point(i,6)).setPiece(new Pawn(team));
 		}
+                
+
 	}
 }
