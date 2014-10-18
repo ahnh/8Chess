@@ -9,7 +9,8 @@ import Model.Rule;
 
 public class Castling extends Rule {
 	public Castling() {
-		super();
+		
+		super( "Castling is not allowed", new String[][] { {"Do you want to castle?"}, { "Yes", "No" } } );
 	}
 	
 	@Override

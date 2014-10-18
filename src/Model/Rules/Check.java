@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Check extends Rule {
 	public Check(){
-		super();
+		super("Move places you in check", null);
 	}
 	
         //Invalidates moves based on if the player is in check

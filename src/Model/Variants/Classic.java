@@ -32,6 +32,7 @@ public class Classic extends Variant {
 		for (int i = 0; i < move_Rules.size(); i++) {
 			returnVal = move_Rules.get(i).checkMove(board, moves);
 			if (returnVal != Rule.VALID_MOVE) {
+				lastError = move_Rules.get(i).getError();
 				break;
 			}
 		}

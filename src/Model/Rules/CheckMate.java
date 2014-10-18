@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CheckMate extends Rule {
 	public CheckMate(){
-		super();
+		super("Checkmate status would be activated", null);
 	}
 	
         

@@ -55,9 +55,10 @@ public class Game {
 		moves.push(new Move(start, end, piece));
 		
 		// Check if the piece can make the move
-		if (!board.checkMove(moves.peek(), this.getCurrentTeam()))
+		if (!board.checkMove(moves.peek(), this.getCurrentTeam())){
 			errorMsg = activeVariant.getError();
 			return Rule.INVALID_MOVE;
+		}
 		
 		// Check that the move doesn't violate any rules or end the game
 		returnVal = activeVariant.checkMove(board, moves, this.getCurrentTeam());
@@ -70,8 +71,8 @@ public class Game {
             
             if ( returnVal >= Rule.NEEDS_INPUT ){
             	
-            	ruleOptions = Variant.getRuleOptions();
-            } 
+            	ruleOptions = activeVariant.getRuleOptions();
+            }
     
 		} else {
 			// Invalid so remove

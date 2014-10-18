@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Stalemate extends Rule {
 	public Stalemate(){
-		super();
+		super("Stalemate state would be activated", null);
 	}
 	
         
