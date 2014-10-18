@@ -49,8 +49,8 @@ public class GameController {
 			}
 			else if ( input.compareTo( "2" ) == 0 ){
 				
-				view = new ViewGUI();
 				player = new Player( 1 );
+				view = new ViewGUI( player );
 				valid = true;
 			}
 			

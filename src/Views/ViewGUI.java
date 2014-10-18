@@ -7,23 +7,27 @@ import javax.swing.*;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.*;
 
 public class ViewGUI extends ViewBase {
 	
 	JFrame gw, optw;
+	ActionListener playerIn;
 	
 	// Main window items
 	
 	
 	
 	// Option window items
-	private JLabel question;
 	private ButtonGroup optionGroup;
 	private JRadioButton[] option;
+	private JButton accept;
 	
-	public ViewGUI(){
+	public ViewGUI( ActionListener myListen ){
 		
 		super();
+		
+		playerIn = myListen;
 		
 		gw = new JFrame();
 		gw.setName( "Chess" );
@@ -58,7 +62,9 @@ public class ViewGUI extends ViewBase {
 		// gw.setDefaultCloseOperation( JFrame. ); // Unneeded possibly
 		gw.setLayout( new FlowLayout() );
 		
-		question = new JLabel( msg );
+		JLabel question = new JLabel( msg );
+		
+		accept = new JButton( "Choose" );
 		
 		optionGroup = new ButtonGroup();
 		option = new JRadioButton[opts.length];
@@ -68,6 +74,11 @@ public class ViewGUI extends ViewBase {
 			option[i] = new JRadioButton( opts[i] );
 			optionGroup.add( option[i] );
 		}
+		
+		accept.addActionListener( playerIn );
+		accept.setActionCommand( optionGroup.getSelection().toString() );
+		accept.setSize( new Dimension( 30, 20 ) );
+		accept.setText( "Accept" );
 		
 		Box horiz = Box.createVerticalBox();
 		
@@ -81,13 +92,13 @@ public class ViewGUI extends ViewBase {
 			horiz.add( option[i] );
 		}
 		
+		horiz.add( Box.createVerticalStrut( 10 ) );
+		horiz.add( accept );
 		horiz.add( Box.createVerticalGlue() );
 		
 		optw.add( Box.createHorizontalGlue() );
 		optw.add( horiz );
 		optw.add( Box.createHorizontalGlue() );
-		
-		// Add a button
 		
 		optw.setVisible( true );
 	}
