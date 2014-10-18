@@ -55,7 +55,6 @@ public class Player implements ActionListener {
 		return input.trim();
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		buffer = e.getActionCommand();
