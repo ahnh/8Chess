@@ -23,8 +23,17 @@ public class Promotion extends Rule {
 	}
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		for ( int i = 0; i < board.getWidth(); i++ ){
+			
+			if ( board.getTile(new Point(i, 0)).getPiece().getName().compareTo("Pawn") == 0 ||
+				 board.getTile(new Point(i, board.getHeight()-1)).getPiece().getName().compareTo("Pawn") == 0 ){
+				
+				return Rule.PROMOTION;
+			}
+		}
+		
+		return Rule.VALID_MOVE;
 	}
 
 }

@@ -20,9 +20,9 @@ public class Pawn extends Piece {
 			return false;
 		// team 0 = white
 		// team 1 = black
-		int direction = -1;
+		int direction = 1;
 		if (team % 2 == 0)
-			direction = 1;
+			direction = -1;
 		
 		Point start = move.getStart();
 		Point end = move.getEnd();

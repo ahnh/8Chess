@@ -155,6 +155,8 @@ public class GameController {
 				
 				String[][] opts = game.getRuleOptions();
 				view.displayOptions(opts[0][0], opts[1]);
+				player.getInput();
+				// Will finish in a minute
 			}
 			
 			// Win condition triggered

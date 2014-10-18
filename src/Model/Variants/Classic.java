@@ -45,7 +45,7 @@ public class Classic extends Variant {
 	
 	private void initBoard(Board board) {
 		// Team 1
-		int team = 1;
+		int team = 2;
 		board.getTile(new Point(0,0)).setPiece(new Rook(team));
 		board.getTile(new Point(1,0)).setPiece(new Knight(team));
 		board.getTile(new Point(2,0)).setPiece(new Bishop(team));
@@ -59,7 +59,7 @@ public class Classic extends Variant {
 		}
 		
 		// Team 2
-		team = 2;
+		team = 1;
 		board.getTile(new Point(0,7)).setPiece(new Rook(team));
 		board.getTile(new Point(1,7)).setPiece(new Knight(team));
 		board.getTile(new Point(2,7)).setPiece(new Bishop(team));
