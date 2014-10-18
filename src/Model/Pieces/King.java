@@ -21,11 +21,12 @@ public class King extends Piece {
 		Point end = move.getEnd();
 
 		// Castling checking
-		if (!hasMoved && Math.abs(start.x - end.x) == 2)
+		if (!hasMoved &&   (Math.abs(start.x - end.x) == 2 && Math.abs(start.y - end.y) == 0))
 			return true;
 		// check 1 move around
-		if (Math.abs(start.x - end.x) < 2 && Math.abs(start.y - end.y) < 2)
+                else if (Math.abs(start.x - end.x) < 2 && Math.abs(start.y - end.y) < 2)
 			return true;
+                
 		return false;
 
 	}
