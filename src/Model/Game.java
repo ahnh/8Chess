@@ -28,7 +28,7 @@ public class Game {
 			activeVariant = new Classic(boards);
 			break;
 		case 3:
-			activeVariant = new JediKnight(boards);
+			activeVariant = new JediKnightChess(boards);
 			break;
 		case 4:
 			activeVariant = new Suicide(boards);
