@@ -69,7 +69,7 @@ public class Suicide extends Variant {
 		int team = 2;
 		
 		board.getTile(new Point(0,0)).setPiece(new Rook(team));
-		/*board.getTile(new Point(1,0)).setPiece(new Knight(team));
+		board.getTile(new Point(1,0)).setPiece(new Knight(team));
 		board.getTile(new Point(2,0)).setPiece(new Bishop(team));
 		board.getTile(new Point(3,0)).setPiece(new Queen(team));
 		board.getTile(new Point(4,0)).setPiece(new King(team));
@@ -91,12 +91,12 @@ public class Suicide extends Variant {
 		board.getTile(new Point(3,7)).setPiece(new Queen(team));
 		board.getTile(new Point(4,7)).setPiece(new King(team));
 		board.getTile(new Point(5,7)).setPiece(new Bishop(team));
-		board.getTile(new Point(6,7)).setPiece(new Knight(team));*/
-		board.getTile(new Point(7,7)).setPiece(new Rook(1));
-		/*
+		board.getTile(new Point(6,7)).setPiece(new Knight(team));
+		board.getTile(new Point(7,7)).setPiece(new Rook(team));
+		
 		for (int i = 0; i < board.getWidth(); i++) {
 			
 			board.getTile(new Point(i,6)).setPiece(new Pawn(team));
-		}*/
+		}
 	}
 }
