@@ -24,7 +24,7 @@ public class King extends Piece {
 		if (!hasMoved && Math.abs(start.x - end.x) == 2)
 			return true;
 		// check 1 move around
-		if (hasMoved && Math.abs(start.x - end.x) < 2 && Math.abs(start.y - end.y) < 2)
+		if (Math.abs(start.x - end.x) < 2 && Math.abs(start.y - end.y) < 2)
 			return true;
 		return false;
 
