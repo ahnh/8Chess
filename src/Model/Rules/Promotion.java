@@ -5,6 +5,8 @@ import java.util.Stack;
 
 import Model.Board;
 import Model.Move;
+import Model.Piece;
+import Model.Pieces.*;
 import Model.Rule;
 
 public class Promotion extends Rule {
@@ -13,10 +15,10 @@ public class Promotion extends Rule {
 		super( "Castling is not allowed",
 				new String[][] { 
 				{"What piece do you want to promote to?"}, 
-				{   "Queen",
-					"Rook",
-					"Knight",
-					"Bishop"
+				{   "1. Queen",
+					"2. Rook",
+					"3. Knight",
+					"4. Bishop"
 				}
 				}
 		);
@@ -24,16 +26,32 @@ public class Promotion extends Rule {
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {
 		
+		Move move = moves.peek();
+		
 		for ( int i = 0; i < board.getWidth(); i++ ){
 			
+			// Top of board
 			if ( board.getTile(new Point(i, 0)).getPiece() != null ){
 				if ( board.getTile(new Point(i, 0)).getPiece().getName().compareTo("Pawn") == 0 ){
 					
-					return Rule.PROMOTION;
+					// If move has data about user response, implement it
+					if ( move.action == Rule.PROMOTION && move.optionSelected ){
+						
+						board.getTile(new Point(i, 0)).setPiece( getSelectedPiece( move ) ); // See getSelectedPiece below
+					}
+					
+					return Rule.PROMOTION; // Return this value regardless if piece has been replaced or not
 				}
 			}
+			
+			// Bottom of board
 			if ( board.getTile(new Point(i, board.getHeight()-1)).getPiece() != null ){
 				if (board.getTile(new Point(i, board.getHeight()-1)).getPiece().getName().compareTo("Pawn") == 0){
+					
+					if ( move.action == Rule.PROMOTION && move.optionSelected ){
+						
+						board.getTile(new Point(i, board.getHeight()-1)).setPiece( getSelectedPiece( move ) );
+					}
 					
 					return Rule.PROMOTION;
 				}
@@ -42,5 +60,28 @@ public class Promotion extends Rule {
 		
 		return Rule.VALID_MOVE;
 	}
-
+	
+	public Piece getSelectedPiece( Move move ){
+		
+		Piece piece = null;
+		
+		if ( move.option == 1 ){
+			
+			piece = new Queen( move.getPiece().getTeam() );
+		}
+		else if ( move.option == 2 ){
+			
+			piece = new Rook( move.getPiece().getTeam() );
+		}
+		else if ( move.option == 3 ){
+			
+			piece = new Knight( move.getPiece().getTeam() );
+		}
+		else if ( move.option == 4 ){
+			
+			piece = new Bishop( move.getPiece().getTeam() );
+		}
+		
+		return piece;
+	}
 }

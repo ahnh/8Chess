@@ -115,6 +115,7 @@ public class GameController {
 	public void gameloop(){
 		
 		String move = null;
+		String action = null;
 		Point[] movePoint = null;
 		int moveValid = 0;
 		boolean gameInProgress = true;
@@ -154,9 +155,19 @@ public class GameController {
 			if ( moveValid >= Rule.NEEDS_INPUT ){
 				
 				String[][] opts = game.getRuleOptions();
+				boolean goodInput = false;
+				
 				view.displayOptions(opts[0][0], opts[1]);
-				player.getInput();
-				// Will finish in a minute
+				
+				do {
+					action = player.getInput();
+					if ( Integer.parseInt(action) > 0 && Integer.parseInt(action) <= opts[1].length ){
+						
+						goodInput = true;
+					}
+				} while( goodInput == false );
+				
+				game.completeAction( Integer.parseInt( action ), moveValid );
 			}
 			
 			// Win condition triggered

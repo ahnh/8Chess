@@ -61,7 +61,7 @@ public class CollisionMove extends Rule {
         //Check if our moving piece is a knight
         if(movingPiece.getName()=="Knight")
         {
-            if( movingPiece.checkDestination(currentMove))
+            if(movingPiece.checkDestination(currentMove) && board.getTile(currentMove.getEnd()).getExists())
             {
                 
                 if(board.getTile(currentMove.getEnd()).getPiece()==null)
@@ -108,7 +108,7 @@ public class CollisionMove extends Rule {
                 isValid=CheckDiagonal(pieceList,p1,p2,currentMove);
             
             
-            if(isValid)
+            if(isValid && board.getTile(p2).getExists())
                 return Rule.VALID_MOVE;
             else
                 return Rule.INVALID_MOVE;
