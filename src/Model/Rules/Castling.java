@@ -17,7 +17,7 @@ public class Castling extends Rule {
 	@Override
 	public int checkMove(Board board, Stack<Move> moves) {
 		Move currentMove = moves.peek();
-		currentMove.getPiece();
+		Piece currentPiece = currentMove.getPiece();
 		Piece movingPiece = board.getTile(currentMove.getEnd()).getPiece();
 		/*if (!(movingPiece.getName().compareTo("King") == 0))
 			return Rule.VALID_MOVE;
@@ -32,7 +32,7 @@ public class Castling extends Rule {
 		// is there another piece in between?
 
 		
-		System.out.println("hello world" + movingPiece);
+		//System.out.println("hello world" + movingPiece);
 		return Rule.VALID_MOVE;
 	}
 
