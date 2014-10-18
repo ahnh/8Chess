@@ -136,16 +136,23 @@ public class GameController {
 			// Wait for valid move
 			do {
 				view.display( game.getActiveBoard() );
-				
-				move = player.getInput();
-				
-				// Game exit condition to get out of a game in progress
-				if ( move.toLowerCase().compareTo("exit") == 0 ){
+				// Loop for valid input
+				boolean inputValid = false;
+				do {
+					move = player.getInput();
 					
-					System.exit(0);
-				}
-				
-				movePoint = convertMoveFormat( move );
+					// Game exit condition to get out of a game in progress
+					if ( move.toLowerCase().compareTo("exit") == 0 ){
+						
+						System.exit(0);
+					}
+					
+					movePoint = convertMoveFormat( move );
+					if (movePoint != null)
+						inputValid = true;
+					else
+						view.displayMessage( "You have entered invalid input, please enter your move in the form 'A2-A3'.");
+				} while (!inputValid);
 				
 				moveValid = game.move( movePoint[0], movePoint[1] ); // Double check what return values
 				
@@ -219,9 +226,13 @@ public class GameController {
 				
 				String token = tokens.nextToken();
 				
-				// -1 to convert to array coordinates
-				move[i].x = alphaToIndex( token.charAt(0) ) - 1;
-				move[i].y = Integer.parseInt( token.charAt(1) + "" ) - 1;
+				try {
+					// -1 to convert to array coordinates
+					move[i].x = alphaToIndex( token.charAt(0) ) - 1;
+					move[i].y = Integer.parseInt( token.charAt(1) + "" ) - 1;
+				} catch (Exception e) {
+					return null;
+				}
 			}
 		}
 		
