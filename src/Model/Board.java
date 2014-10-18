@@ -77,7 +77,8 @@ public class Board {
 		capturePiece(move.getEnd(), toMove);
 		
 		// Perform any piece-level operations after the move.
-		toMove.afterMove();
+		if (toMove != null)
+			toMove.afterMove();
 	}
 	
 	public void capturePiece(Point position, Piece capturer) {

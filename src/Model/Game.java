@@ -37,6 +37,9 @@ public class Game {
   		case 5:
 			activeVariant = new TestCheck(boards);
 			break;                  
+  		case 6:
+			activeVariant = new TestCastling(boards);
+			break;       
 		}
 		
 		currentTeam = 1; // Players start at 1 - X
