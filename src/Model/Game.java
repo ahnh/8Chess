@@ -37,7 +37,7 @@ public class Game {
   		case 5:
 			activeVariant = new TestCheck(boards);
 			break;                  
-  		case 6:
+  		case 7:
 			activeVariant = new TestCastling(boards);
 			break;       
 		}

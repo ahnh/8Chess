@@ -67,13 +67,10 @@ public class GameController {
 				  "3. Cheshire Cat.",
 				  "4. Suicide.",
 				  "5. Jedi Knight.",
-<<<<<<< HEAD
                   "6. TestCheck.",
-                  "7. TestCastling."
-=======
-                                  "6. TestCheck.",
-                                  "7. Atomic."    
->>>>>>> e0db43beb19508b0eb4d133f9a4bddf3afecb0b8
+                  "6. TestCheck.",
+                  "7. Atomic.",
+                  "8. TestCastling."
 				}
 				);
 		
@@ -110,21 +107,15 @@ public class GameController {
 				
 				game = new Game( 5 );
 				valid = true;
-<<<<<<< HEAD
-			}
-=======
 			}			
->>>>>>> e0db43beb19508b0eb4d133f9a4bddf3afecb0b8
 			else if ( input.compareTo( "7" ) == 0 ){
-				
 				game = new Game( 6 );
 				valid = true;
-<<<<<<< HEAD
 			}
-                        
-=======
-			}                        
->>>>>>> e0db43beb19508b0eb4d133f9a4bddf3afecb0b8
+			else if ( input.compareTo( "8" ) == 0 ){
+				game = new Game( 7 );
+				valid = true;
+			}
                         
 		} while ( !valid );
 		
