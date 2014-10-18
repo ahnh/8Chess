@@ -95,8 +95,8 @@ public class CollisionMove extends Rule {
          //   System.out.println(" Piece List = "+ pieceList.size());
         //// We need to Check if any piece lies between our Start-Destination not including the destination itself
             
-            Point p1 = new Point(startX,endX);
-            Point p2 = new Point(startY,endY);
+            Point p1 = new Point(startX,startY);
+            Point p2 = new Point(endX,endY);
             
             boolean isValid=false;
             //If it's vertical
@@ -250,15 +250,15 @@ public class CollisionMove extends Rule {
             //Diagonal moves
             //Check if a Piece exists between start and end
             
-            
+            //++
+            if ((start.x<end.x) && (start.y<end.y))
+            {
             int difference = end.x-start.x;
             
             
             for(int i=0; i<=difference; i++)
                 {
-
                  //   System.out.println("Checking Point:"+i+","+i);
-                   
                     for(int p=0;p<pieces.size();p++)
                     {
                       //Piece exists at this location
@@ -270,10 +270,6 @@ public class CollisionMove extends Rule {
                             if(pieces.get(p).getPiece().getTeam()!= currentMove.getPiece().getTeam())
                                 return true;
 
-                           
-                        
-                        
-                     
                         return false;
                       }
                      
@@ -281,9 +277,96 @@ public class CollisionMove extends Rule {
                     }
                 }
             return true;                
-        }
-        
+            }
+           //+-
+            else if ((start.x<end.x) && (start.y>end.y))
+            {
+            int difference = end.x-start.x;
+            
+            
+            for(int i=0; i<=difference; i++)
+                {
+                 //   System.out.println("Checking Point:"+i+","+i);
+                    for(int p=0;p<pieces.size();p++)
+                    {
+                      //Piece exists at this location
+                     if(pieces.get(p).getStart().x==start.x+i && pieces.get(p).getStart().y==start.y-i)
+                     {
+                     //This is the end of our Movement
+                        if(start.x+i ==currentMove.getEnd().x && start.y-i ==currentMove.getEnd().y)
+                        //The piece blocking is non-friendly
+                            if(pieces.get(p).getPiece().getTeam()!= currentMove.getPiece().getTeam())
+                                return true;
 
+                        return false;
+                      }
+                     
+                     
+                    }
+                }
+            return true;                
+            }
+           //-+
+            else if ((start.x>end.x) && (start.y<end.y))
+            {
+            int difference = start.x-end.x;
+            
+            
+            for(int i=0; i<=difference; i++)
+                {
+                 //   System.out.println("Checking Point:"+i+","+i);
+                    for(int p=0;p<pieces.size();p++)
+                    {
+                      //Piece exists at this location
+                     if(pieces.get(p).getStart().x==start.x-i && pieces.get(p).getStart().y==start.y+i)
+                     {
+                     //This is the end of our Movement
+                        if(start.x-i ==currentMove.getEnd().x && start.y+i ==currentMove.getEnd().y)
+                        //The piece blocking is non-friendly
+                            if(pieces.get(p).getPiece().getTeam()!= currentMove.getPiece().getTeam())
+                                return true;
+
+                        return false;
+                      }
+                     
+                     
+                    }
+                }
+            return true;                
+            }
+            
+            //--
+            else if ((start.x>end.x) && (start.y>end.y))
+            {
+            int difference = start.x-end.x;
+            
+            
+            for(int i=0; i<=difference; i++)
+                {
+                 //   System.out.println("Checking Point:"+i+","+i);
+                    for(int p=0;p<pieces.size();p++)
+                    {
+                      //Piece exists at this location
+                     if(pieces.get(p).getStart().x==start.x-i && pieces.get(p).getStart().y==start.y-i)
+                     {
+                     //This is the end of our Movement
+                        if(start.x-i ==currentMove.getEnd().x && start.y-i ==currentMove.getEnd().y)
+                        //The piece blocking is non-friendly
+                            if(pieces.get(p).getPiece().getTeam()!= currentMove.getPiece().getTeam())
+                                return true;
+
+                        return false;
+                      }
+                     
+                     
+                    }
+                }
+            return true;                
+            }
+            
+            
+        return true; 
+        }
 	
         
 
