@@ -19,7 +19,7 @@ public class Game {
 		boards = new ArrayList();
 		switch(variantSelection){
 		case 0:
-			activeVariant = new BugHouse(boards);
+			activeVariant = new Absorption(boards);
 			break;
 		case 1:
 			activeVariant = new CheshireCat(boards);
