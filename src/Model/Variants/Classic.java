@@ -21,10 +21,16 @@ public class Classic extends Variant {
 		boards.add(board);
 		
 		// Add Rules
-                move_Rules.add(new CollisionMove());
+        move_Rules.add(new CollisionMove());
 		move_Rules.add(new Castling());
 		move_Rules.add(new Pawn_Move());
+		move_Rules.add(new Pawn_Capture());
 		move_Rules.add(new EnPessant());
+		move_Rules.add(new Check());
+		
+		state_Rules.add(new Stalemate());
+		state_Rules.add(new Promotion());
+		state_Rules.add(new Castling());
 	}
 	
 	public int checkMove(Board board, Stack<Move> moves, int currentTeam) {
