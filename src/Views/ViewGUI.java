@@ -1,5 +1,6 @@
 package Views;
 
+import Controller.Player;
 import Model.Board;
 
 import javax.swing.*;
@@ -9,7 +10,9 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.*;
 
-public class ViewGUI extends ViewBase {
+public class ViewGUI extends ViewBase implements ActionListener {
+	
+	Player input;
 	
 	JFrame gw, optw;
 	ActionListener playerIn;
@@ -23,18 +26,20 @@ public class ViewGUI extends ViewBase {
 	private JRadioButton[] option;
 	private JButton accept;
 	
-	public ViewGUI( ActionListener myListen ){
+	public ViewGUI( Player player ){
 		
 		super();
 		
-		playerIn = myListen;
+		input = player;
 		
+		// Set up main game window
 		gw = new JFrame();
-		gw.setName( "Chess" );
+		gw.setTitle( "Chess" );
 		gw.setSize( new Dimension(500, 500) );
 		gw.setFocusable( true );
 		gw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		gw.setLayout( new FlowLayout() );
+		gw.setAutoRequestFocus( true );
 		
 		
 		
@@ -55,13 +60,17 @@ public class ViewGUI extends ViewBase {
 		
 		optw = new JFrame();
 		
-		gw = new JFrame();
-		gw.setName( "Chess" );
-		gw.setSize( new Dimension( 500, 100 + (5 * opts.length) ) );
-		gw.setFocusable( true );
-		// gw.setDefaultCloseOperation( JFrame. ); // Unneeded possibly
-		gw.setLayout( new FlowLayout() );
+		// Set up option window
+		optw.setAutoRequestFocus( true );
+		optw.setTitle( "Choose an Option" );
+		optw.setSize( new Dimension( 300, 140 + (25 * opts.length) ) );
+		optw.setPreferredSize( new Dimension( 300, 140 + (25 * opts.length) ) );
+		optw.setFocusable( true );
+		optw.setResizable( false );
+		optw.setDefaultCloseOperation( JFrame.DO_NOTHING_ON_CLOSE );
+		optw.setLayout( new FlowLayout() );
 		
+		// Create component for the option window
 		JLabel question = new JLabel( msg );
 		
 		accept = new JButton( "Choose" );
@@ -72,14 +81,17 @@ public class ViewGUI extends ViewBase {
 		for ( int i = 0; i < opts.length; i++ ){
 			
 			option[i] = new JRadioButton( opts[i] );
+			option[i].getModel().setActionCommand( "" + (i+1) );
 			optionGroup.add( option[i] );
 		}
+		optionGroup.setSelected( option[0].getModel(), true);
 		
 		accept.addActionListener( playerIn );
-		accept.setActionCommand( optionGroup.getSelection().toString() );
+		accept.setActionCommand( "Check option selected" );
 		accept.setSize( new Dimension( 30, 20 ) );
 		accept.setText( "Accept" );
 		
+		// Create box organization for parts
 		Box horiz = Box.createVerticalBox();
 		
 		horiz.add( Box.createVerticalGlue() );
@@ -100,6 +112,7 @@ public class ViewGUI extends ViewBase {
 		optw.add( horiz );
 		optw.add( Box.createHorizontalGlue() );
 		
+		optw.pack();
 		optw.setVisible( true );
 	}
 	
@@ -107,5 +120,16 @@ public class ViewGUI extends ViewBase {
 		
 		this.displayMessage( "Congratulations player " + winner + ", you win!" );
 		this.display( board );
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if ( e.getActionCommand().compareTo( "Check option selected" ) == 0 ){
+			
+			input.writeToBuffer( optionGroup.getSelection().getActionCommand() );
+			optw.dispose();
+			optw = null;
+		}
 	}
 }
