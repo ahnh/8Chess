@@ -38,4 +38,11 @@ public class Rook extends Piece {
 	public ArrayList<Point> getAvailDestination() {
 		return null;
 	}
+
+	@Override
+	public void afterMove() {
+		hasMoved = true;
+	}
+	
+	
 }

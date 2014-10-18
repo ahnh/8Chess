@@ -189,7 +189,7 @@ public class Check extends Rule {
         }
         
         
-        private Move FindKing(Board board, int team)
+        protected Move FindKing(Board board, int team)
         {
             
  

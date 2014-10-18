@@ -103,14 +103,14 @@ public class Game {
 		return currentTeam;
 	}
 	
-	public void completeAction( int response, int action ){
+	public int completeAction( int response, int action ){
 		
 		Move move = moves.peek();
 		move.action = action;
 		move.option = response;
 		move.optionSelected = true;
 		
-		activeVariant.checkState(getActiveBoard(), moves);
+		return activeVariant.checkState(getActiveBoard(), moves);
 	}
 	
 	public void setCurrentTeam(int currentTeam) {

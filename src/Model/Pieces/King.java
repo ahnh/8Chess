@@ -20,6 +20,9 @@ public class King extends Piece {
 		Point start = move.getStart();
 		Point end = move.getEnd();
 
+		// Castling checking
+		if (!hasMoved && Math.abs(start.x - end.x) == 2)
+			return true;
 		// check 1 move around
 		if (Math.abs(start.x - end.x) < 2 && Math.abs(start.y - end.y) < 2)
 			return true;
@@ -32,4 +35,10 @@ public class King extends Piece {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void afterMove() {
+		hasMoved = true;
+	}
+	
 }

@@ -123,8 +123,7 @@ public class GameController {
 		
 		view.displayMessage( "Game started. Use \"exit\" to quit at any time.");
 		
-		while ( gameInProgress )
-                {
+		while ( gameInProgress ) {
 			
 			view.displayMessage( "Enter your move, player " + game.getCurrentTeam() + "." );
             
@@ -168,7 +167,7 @@ public class GameController {
 					}
 				} while( goodInput == false );
 				
-				game.completeAction( Integer.parseInt( action ), moveValid );
+				moveValid = game.completeAction( Integer.parseInt( action ), moveValid );
 			}
 			
 			// Win condition triggered
