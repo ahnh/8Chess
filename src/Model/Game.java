@@ -56,7 +56,7 @@ public class Game {
 		
 		// Check if the piece can make the move
 		if (!board.checkMove(moves.peek(), this.getCurrentTeam())){
-			errorMsg = activeVariant.getError();
+			errorMsg = "Piece can not move that way";
 			return Rule.INVALID_MOVE;
 		}
 		
@@ -77,6 +77,7 @@ public class Game {
 		} else {
 			// Invalid so remove
 			moves.pop();
+			errorMsg = activeVariant.getError();
 		}
         
 		return returnVal;
