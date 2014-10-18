@@ -21,9 +21,18 @@ public class Tile {
 		piece = newPiece;
 	}
 	
+	public boolean getExists() {
+		return exist;
+	}
+	
+	public void setExists(boolean val) {
+		exist =val;
+	}        
+        
+        
 	@Override
 	public String toString() {
-		if (piece == null)
+		if (piece == null && exist)
 		{
 			return "_";
 		}
