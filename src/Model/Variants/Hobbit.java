@@ -28,6 +28,7 @@ public class Hobbit extends Variant {
 		boards.add(board);
 		
 		// Add Rules
+		/* There is no promotion in hobbit chess */
         move_Rules.add(new CollisionMove());
 		move_Rules.add(new Castling());
 		move_Rules.add(new Hobbit_Move());
