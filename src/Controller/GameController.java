@@ -67,7 +67,8 @@ public class GameController {
 				  "3. Cheshire Cat.",
 				  "4. Suicide.",
 				  "5. Jedi Knight.",
-                  "6. TestCheck."
+                                  "6. TestCheck.",
+                                  "7. Atomic."    
 				}
 				);
 		
@@ -105,7 +106,11 @@ public class GameController {
 				game = new Game( 5 );
 				valid = true;
 			}			
-                        
+			else if ( input.compareTo( "7" ) == 0 ){
+				
+				game = new Game( 6 );
+				valid = true;
+			}                        
                         
 		} while ( !valid );
 		
@@ -123,7 +128,8 @@ public class GameController {
 		
 		view.displayMessage( "Game started. Use \"exit\" to quit at any time.");
 		
-		while ( gameInProgress ) {
+		while ( gameInProgress )
+                {
 			
 			view.displayMessage( "Enter your move, player " + game.getCurrentTeam() + "." );
             
@@ -167,7 +173,7 @@ public class GameController {
 					}
 				} while( goodInput == false );
 				
-				moveValid = game.completeAction( Integer.parseInt( action ), moveValid );
+				game.completeAction( Integer.parseInt( action ), moveValid );
 			}
 			
 			// Win condition triggered
