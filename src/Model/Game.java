@@ -102,7 +102,17 @@ public class Game {
 	public int getCurrentTeam() {
 		return currentTeam;
 	}
-
+	
+	public void completeAction( int response, int action ){
+		
+		Move move = moves.peek();
+		move.action = action;
+		move.option = response;
+		move.optionSelected = true;
+		
+		activeVariant.checkState(getActiveBoard(), moves);
+	}
+	
 	public void setCurrentTeam(int currentTeam) {
 		this.currentTeam = currentTeam;
 	}
