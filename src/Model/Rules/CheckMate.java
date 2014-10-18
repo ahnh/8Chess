@@ -27,16 +27,15 @@ public class CheckMate extends Rule {
         
         
         if( isT1_checkmate && isT2_checkmate)
-            return Rule.CHECKMATE_TEAM12;
+            return Rule.GAME_OVER_TIE;
         else if(isT1_checkmate)
         {
-            System.out.println("TEAM1 CHECKMATE!!!!!!!!!!!!!!");
-            return Rule.CHECKMATE_TEAM1;
+            return Rule.GAME_OVER_T1;
         }
         
         else if (isT2_checkmate){
             
-            return Rule.CHECKMATE_TEAM2;
+            return Rule.GAME_OVER_T2;
         }
         else{
             

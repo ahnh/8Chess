@@ -171,11 +171,10 @@ public class GameController {
 			}
 			
 			// Win condition triggered
-			if ( moveValid == Rule.GAME_OVER || 
-                 moveValid == Rule.CHECKMATE_TEAM1 ||
-                 moveValid == Rule.CHECKMATE_TEAM2 ||
-                 moveValid == Rule.CHECKMATE_TEAM12 )
-                        {
+			if ( moveValid == Rule.GAME_OVER_TIE || 
+                 moveValid == Rule.GAME_OVER_T1 ||
+                 moveValid == Rule.GAME_OVER_T2
+                 ) {
 				gameInProgress = false;
 			}
 			else {

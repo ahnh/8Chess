@@ -8,13 +8,11 @@ public abstract class Rule {
 	public static final int VALID_MOVE = 0;
 	
 	
-	public static final int GAME_OVER = 1;
-	public static final int TIE = 1;        
+	public static final int GAME_OVER_TIE = 1;
         
     ///////////////////// Might not be Used, placed here just incase
-        public static final int CHECKMATE_TEAM1 = 2;
-        public static final int CHECKMATE_TEAM2 = 3;
-        public static final int CHECKMATE_TEAM12 = 4;       
+        public static final int GAME_OVER_T1 = 2;
+        public static final int GAME_OVER_T2 = 3;     
         
         public static final int INVALID_MOVE_CHECK =-2;  
 	/////////////////////

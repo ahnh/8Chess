@@ -28,8 +28,7 @@ public class Stalemate extends Rule {
 
         if( isT1_stalemate || isT2_stalemate)
         {
-            System.out.println("ITS A TIE");
-            return Rule.TIE; 
+            return Rule.GAME_OVER_TIE;
         }
         else{
             return Rule.VALID_MOVE;
