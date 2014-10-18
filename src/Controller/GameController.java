@@ -63,7 +63,7 @@ public class GameController {
 		view.displayOptions( "Enter the chess variant to play:",
 				new String[] {
 				  "1. Classic.",
-				  "2. Bughouse.",
+				  "2. Absorption.",
 				  "3. Cheshire Cat.",
 				  "4. Suicide.",
 				  "5. Jedi Knight.",
