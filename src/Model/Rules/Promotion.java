@@ -26,10 +26,17 @@ public class Promotion extends Rule {
 		
 		for ( int i = 0; i < board.getWidth(); i++ ){
 			
-			if ( board.getTile(new Point(i, 0)).getPiece().getName().compareTo("Pawn") == 0 ||
-				 board.getTile(new Point(i, board.getHeight()-1)).getPiece().getName().compareTo("Pawn") == 0 ){
-				
-				return Rule.PROMOTION;
+			if ( board.getTile(new Point(i, 0)).getPiece() != null ){
+				if ( board.getTile(new Point(i, 0)).getPiece().getName().compareTo("Pawn") == 0 ){
+					
+					return Rule.PROMOTION;
+				}
+			}
+			if ( board.getTile(new Point(i, board.getHeight()-1)).getPiece() != null ){
+				if (board.getTile(new Point(i, board.getHeight()-1)).getPiece().getName().compareTo("Pawn") == 0){
+					
+					return Rule.PROMOTION;
+				}
 			}
 		}
 		
