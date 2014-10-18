@@ -1,11 +1,13 @@
 package Controller;
 
 import java.util.Scanner;
+import java.awt.event.*;
 
-public class Player {
+public class Player implements ActionListener {
 	
-	Scanner scan;
-	int inType;
+	private Scanner scan;
+	private String buffer;
+	private int inType;
 	
 	public static final int TEXT_INPUT = 0;
 	public static final int GUI_INPUT = 1;
@@ -13,7 +15,7 @@ public class Player {
 	public Player( int inputType ){
 		
 		scan = new Scanner(System.in);
-		
+		buffer = null;
 		inType = 0;
 		
 		if ( !( inputType > 1 || inputType < 0 ) ){
@@ -33,7 +35,10 @@ public class Player {
 		}
 		else if ( inType == GUI_INPUT ){
 			
-			// Extract gui input here
+			while ( buffer == null ){}
+			
+			input = buffer;
+			buffer = null;
 		}
 		
 		return input.trim();
@@ -48,5 +53,11 @@ public class Player {
 		input = sc.nextLine();
 		
 		return input.trim();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		buffer = e.getActionCommand();
 	}
 }

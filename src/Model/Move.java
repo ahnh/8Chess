@@ -6,7 +6,6 @@ public class Move {
 	private Point start, end;
 	private Piece piece;
 	private int distanceX, distanceY;
-	private int pureDistanceX, pureDistanceY;
 	public int action;
 	public boolean optionSelected;
 	public int option;
@@ -18,9 +17,6 @@ public class Move {
 
 		distanceX = Math.abs( startPoint.x - endPoint.x );
 		distanceY = Math.abs( startPoint.y - endPoint.y );
-		
-		pureDistanceX = startPoint.x - endPoint.x;
-		pureDistanceY = startPoint.y - endPoint.y;
 		
 		action = Rule.VALID_MOVE;
 		optionSelected = false;
@@ -45,12 +41,5 @@ public class Move {
 	
 	public int getDistanceX() {
 		return distanceX;
-	}
-	public int getPureDistanceY() {
-		return pureDistanceY;
-	}
-	
-	public int getPureDistanceX() {
-		return pureDistanceX;
 	}
 }

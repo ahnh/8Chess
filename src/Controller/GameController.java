@@ -49,8 +49,8 @@ public class GameController {
 			}
 			else if ( input.compareTo( "2" ) == 0 ){
 				
-				view = new ViewGUI();
 				player = new Player( 1 );
+				view = new ViewGUI( player );
 				valid = true;
 			}
 			
@@ -63,12 +63,17 @@ public class GameController {
 		view.displayOptions( "Enter the chess variant to play:",
 				new String[] {
 				  "1. Classic.",
-				  "2. Bughouse.",
+				  "2. Absorption.",
 				  "3. Cheshire Cat.",
 				  "4. Suicide.",
 				  "5. Jedi Knight.",
+<<<<<<< HEAD
                   "6. TestCheck.",
                   "7. TestCastling."
+=======
+                                  "6. TestCheck.",
+                                  "7. Atomic."    
+>>>>>>> e0db43beb19508b0eb4d133f9a4bddf3afecb0b8
 				}
 				);
 		
@@ -105,13 +110,21 @@ public class GameController {
 				
 				game = new Game( 5 );
 				valid = true;
+<<<<<<< HEAD
 			}
+=======
+			}			
+>>>>>>> e0db43beb19508b0eb4d133f9a4bddf3afecb0b8
 			else if ( input.compareTo( "7" ) == 0 ){
 				
 				game = new Game( 6 );
 				valid = true;
+<<<<<<< HEAD
 			}
                         
+=======
+			}                        
+>>>>>>> e0db43beb19508b0eb4d133f9a4bddf3afecb0b8
                         
 		} while ( !valid );
 		
@@ -129,23 +142,31 @@ public class GameController {
 		
 		view.displayMessage( "Game started. Use \"exit\" to quit at any time.");
 		
-		while ( gameInProgress ) {
+		while ( gameInProgress )
+                {
 			
 			view.displayMessage( "Enter your move, player " + game.getCurrentTeam() + "." );
             
 			// Wait for valid move
 			do {
 				view.display( game.getActiveBoard() );
-				
-				move = player.getInput();
-				
-				// Game exit condition to get out of a game in progress
-				if ( move.toLowerCase().compareTo("exit") == 0 ){
+				// Loop for valid input
+				boolean inputValid = false;
+				do {
+					move = player.getInput();
 					
-					System.exit(0);
-				}
-				
-				movePoint = convertMoveFormat( move );
+					// Game exit condition to get out of a game in progress
+					if ( move.toLowerCase().compareTo("exit") == 0 ){
+						
+						System.exit(0);
+					}
+					
+					movePoint = convertMoveFormat( move );
+					if (movePoint != null)
+						inputValid = true;
+					else
+						view.displayMessage( "You have entered invalid input, please enter your move in the form 'A2-A3'.");
+				} while (!inputValid);
 				
 				moveValid = game.move( movePoint[0], movePoint[1] ); // Double check what return values
 				
@@ -173,7 +194,7 @@ public class GameController {
 					}
 				} while( goodInput == false );
 				
-				moveValid = game.completeAction( Integer.parseInt( action ), moveValid );
+				game.completeAction( Integer.parseInt( action ), moveValid );
 			}
 			
 			// Win condition triggered
@@ -219,9 +240,13 @@ public class GameController {
 				
 				String token = tokens.nextToken();
 				
-				// -1 to convert to array coordinates
-				move[i].x = alphaToIndex( token.charAt(0) ) - 1;
-				move[i].y = Integer.parseInt( token.charAt(1) + "" ) - 1;
+				try {
+					// -1 to convert to array coordinates
+					move[i].x = alphaToIndex( token.charAt(0) ) - 1;
+					move[i].y = Integer.parseInt( token.charAt(1) + "" ) - 1;
+				} catch (Exception e) {
+					return null;
+				}
 			}
 		}
 		
