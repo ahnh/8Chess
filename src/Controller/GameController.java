@@ -118,6 +118,7 @@ public class GameController {
 		String action = null;
 		Point[] movePoint = null;
 		int moveValid = 0;
+		int winner = 0;
 		boolean gameInProgress = true;
 		
 		view.displayMessage( "Game started. Use \"exit\" to quit at any time.");
@@ -183,8 +184,20 @@ public class GameController {
 			}
                         
 		}
+		if ( moveValid == Rule.GAME_OVER_TIE ){
+			
+			winner = 0;
+		}
+		if ( moveValid == Rule.GAME_OVER_T2 ){
+			
+			winner = 1;
+		}
+		if ( moveValid == Rule.GAME_OVER_T1 ){
+			
+			winner = 2;
+		}
 		
-		view.displayGameOver( game.getCurrentTeam(), game.getActiveBoard() );
+		view.displayGameOver( winner, game.getActiveBoard() );
 	}
 	
 	public static Point[] convertMoveFormat( String moveStr ){

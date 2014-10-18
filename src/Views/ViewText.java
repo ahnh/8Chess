@@ -48,7 +48,16 @@ public class ViewText extends ViewBase {
 	
 	public void displayGameOver( int winner, Board board ){
 		
-		System.out.println( "Congratulations player " + winner + ", you win!" );
+		if ( winner != 0 ){
+			
+			System.out.println( "Congratulations player " + winner + ", you win!" );
+		}
+		else {
+			
+			System.out.println( "It's a draw!" );
+		}
 		this.display ( board );
+		
+		System.out.println( "GAME OVER" );
 	}
 }

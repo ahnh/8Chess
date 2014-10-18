@@ -33,7 +33,6 @@ public class Suicide extends Variant {
 		move_Rules.add(new Pawn_Capture());
 		move_Rules.add(new EnPessant());
 		
-		state_Rules.add(new Stalemate());
 		state_Rules.add(new Promotion());
 		state_Rules.add(new Castling());
 		state_Rules.add(new SuicideVictory());
