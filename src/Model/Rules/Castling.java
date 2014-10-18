@@ -41,7 +41,6 @@ public class Castling extends Rule {
 		
 		// don't like this section but works for now. checking the move toward it's destination
 		// if there is piece, the move shouldn't be made.
-		int a = currentMove.getPureDistanceX();
 		if (currentMove.getPureDistanceX() > 0)
 		{
 			for (int i = 1; i < 4; i++)
@@ -72,8 +71,8 @@ public class Castling extends Rule {
 			return Rule.VALID_MOVE;
 		
         // move rook
-		//board.getTile(newRookLocation).setPiece(Rook);
-        //board.getTile(oldRookLocation).setPiece(null);
+		board.getTile(newRookLocation).setPiece(Rook);
+        board.getTile(oldRookLocation).setPiece(null);
         //moves.push(new Move(oldRookLocation, newRookLocation, Rook));
 
 		
