@@ -28,6 +28,7 @@ public class Classic extends Variant {
 		move_Rules.add(new EnPessant());
 		move_Rules.add(new Check());
 		
+		state_Rules.add(new CheckMate());
 		state_Rules.add(new Stalemate());
 		state_Rules.add(new Promotion());
 		state_Rules.add(new Castling());
