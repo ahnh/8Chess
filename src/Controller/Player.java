@@ -1,9 +1,8 @@
 package Controller;
 
 import java.util.Scanner;
-import java.awt.event.*;
 
-public class Player implements ActionListener {
+public class Player {
 	
 	private Scanner scan;
 	private String buffer;
@@ -55,8 +54,8 @@ public class Player implements ActionListener {
 		return input.trim();
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void writeToBuffer( String msg ){
 		
-		buffer = e.getActionCommand();
+		buffer = msg;
 	}
 }
