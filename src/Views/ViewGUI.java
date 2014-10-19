@@ -281,14 +281,21 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		ImageIcon newImg;
 		
 		if ( team == 1 ){
-			
-			newImg = new ImageIcon( getClass().getResource("/white/" + name + ".png") );
-			
+			try {
+				newImg = new ImageIcon( getClass().getResource("/white/" + name + ".png") );
+			} catch ( Exception e ){
+				
+				return null;
+			}
 			return new ImageIcon( newImg.getImage().getScaledInstance( (int)(butSize * 0.75), (int)(butSize* 0.75),  Image.SCALE_SMOOTH ) );
 		}
 		
-		newImg = new ImageIcon( getClass().getResource("/black/" + name + ".png") );
-		
+		try {
+			newImg = new ImageIcon( getClass().getResource("/black/" + name + ".png") );
+		} catch ( Exception e ){
+			
+			return null;
+		}
 		return new ImageIcon( newImg.getImage().getScaledInstance( (int)(butSize* 0.75), (int)(butSize * 0.75),  Image.SCALE_SMOOTH ) );
 	}
 
