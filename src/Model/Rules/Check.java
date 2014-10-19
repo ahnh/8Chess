@@ -27,32 +27,38 @@ public class Check extends Rule {
                 
                     if(playerKing!=null)
                     {
-                    //Verify if any piece can move to kings location
-                    playerKing = FindKing(board,currentTeam);
-                    
-                    //Check if any piece can reach playerking
+                        //Verify if any piece can move to kings location
+                        playerKing = FindKing(board,currentTeam);
 
-                    //Create Enemy List from board of all enemy pieces with their destination set on the king
-                    enemyList=CreateEnemyList(board,currentTeam,playerKing.getStart());
+                        //Check if any piece can reach playerking
 
-                    boolean isCheck=false;
-                    
-                    for(int x=0;x<enemyList.size() && isCheck==false; x++)
-                    {
-                        Move move0 = enemyList.get(x);                      
-                        Stack moveStack = new Stack();
-                        moveStack.add(move0);   
+                        //Create Enemy List from board of all enemy pieces with their destination set on the king
+                        enemyList=CreateEnemyList(board,currentTeam,playerKing.getStart());
 
-                        if(((CollisionMove.checkMove(board,  moveStack))==Rule.VALID_MOVE) && enemyList.get(x).getPiece().checkDestination(move0))
+                        boolean isCheck=false;
+
+                        for(int x=0;x<enemyList.size() && isCheck==false; x++)
                         {
+                            Move move0 = enemyList.get(x);                      
+                            Stack moveStack = new Stack();
+                            moveStack.add(move0);   
 
-                           // System.out.println("HES CHECKING YOU "+enemyList.get(x).getPiece().getName());
-                            isCheck=true;
+                            if(move0.getPiece().getName()=="Pawn")
+                            {
+                            if(move0.getPiece().checkDestination(move0) && ((move0.getStart().x != move0.getEnd().x)&&(move0.getStart().y != move0.getEnd().y)) )                          
+                                isCheck=true;
+                            }
+                            else
+                            {
+                                if(((CollisionMove.checkMove(board,  moveStack))==Rule.VALID_MOVE) && enemyList.get(x).getPiece().checkDestination(move0))
+                                {
+                                    isCheck=true;
+                                }
+                            }
+
+
                         }
-
-
-                    }
-                    return isCheck;
+                        return isCheck;
                     }
                     else 
                         return false; //No king, can't be in check
@@ -131,12 +137,23 @@ public class Check extends Rule {
                         Stack moveStack = new Stack();
                         moveStack.add(move0);   
 
-                        if(((CollisionMove.checkMove(board,  moveStack))==Rule.VALID_MOVE) && enemyList.get(x).getPiece().checkDestination(move0))
+                        if(move0.getPiece().getName()=="Pawn")
                         {
-
-                           // System.out.println("HES CHECKING YOU "+enemyList.get(x).getPiece().getName());
                             
-                            isCheck=true;
+                            if(move0.getPiece().checkDestination(move0) && ((move0.getStart().x != move0.getEnd().x)&&(move0.getStart().y != move0.getEnd().y)) )
+                            {
+                                isCheck=true;
+                            }
+                            
+                        }
+                        else
+                        {
+                            if(((CollisionMove.checkMove(board,  moveStack))==Rule.VALID_MOVE) && enemyList.get(x).getPiece().checkDestination(move0))
+                            {
+
+                               // System.out.println("HES CHECKING YOU "+enemyList.get(x).getPiece().getName());
+                                isCheck=true;
+                            }
                         }
 
 
