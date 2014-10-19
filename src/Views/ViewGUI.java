@@ -5,7 +5,6 @@ import Model.Board;
 import Model.Piece;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import java.awt.Color;
@@ -256,7 +255,7 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		if ( e.getActionCommand().compareTo( "Check option selected" ) == 0 ){
 			
 			input.writeToBuffer( optionGroup.getSelection().getActionCommand() );
-			optw.dispose();
+			optw.setVisible( false );
 			optw = null;
 		}
 		
