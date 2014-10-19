@@ -8,18 +8,8 @@ import Model.Board;
 import Model.Move;
 import Model.Rule;
 import Model.Variant;
-import Model.Pieces.Bishop;
-import Model.Pieces.King;
-import Model.Pieces.Knight;
-import Model.Pieces.Pawn;
-import Model.Pieces.Queen;
-import Model.Pieces.Rook;
-import Model.Rules.Castling;
-import Model.Rules.CollisionMove;
-import Model.Rules.EnPessant;
-import Model.Rules.Pawn_Move;
-import Model.Rules.Promotion;
-import Model.Rules.SuicideVictory;
+import Model.Pieces.*;
+import Model.Rules.*;
 
 public class Suicide extends Variant {
 
@@ -36,7 +26,8 @@ public class Suicide extends Variant {
 		move_Rules.add(new Castling());
 		move_Rules.add(new Pawn_Move());
 		move_Rules.add(new EnPessant());
-
+		move_Rules.add(new MustMakeCapture());
+		
 		state_Rules.add(new Promotion());
 		state_Rules.add(new Castling());
 		state_Rules.add(new SuicideVictory());

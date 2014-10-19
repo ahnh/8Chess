@@ -24,6 +24,7 @@ import javax.swing.border.LineBorder;
 import Controller.Player;
 import Model.Board;
 import Model.Piece;
+import Model.Tile;
 
 public class ViewGUI extends ViewBase implements ActionListener {
 
@@ -105,7 +106,8 @@ public class ViewGUI extends ViewBase implements ActionListener {
 	public boolean display(Board board) {
 
 		Piece piece = null;
-
+		Tile tile = null;
+		
 		if (gridSetup == false) {
 
 			String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -165,13 +167,20 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		for (int i = 0; i < board.getHeight(); i++) {
 
 			for (int j = 0; j < board.getWidth(); j++) {
-
-				piece = board.getTile(new Point(j, i)).getPiece();
+				
+				tile = board.getTile(new Point(j, i));
+				piece = tile.getPiece();
 
 				if (piece == null) {
 
 					tiles[j][i].setText("");
 					tiles[j][i].setIcon( null );
+					
+					if ( tile.getExists() == false ){
+						
+						tiles[j][i].setBackground( Color.BLACK );
+					}
+					
 				} else {
 
 					tiles[j][i].setText(piece.getName());
