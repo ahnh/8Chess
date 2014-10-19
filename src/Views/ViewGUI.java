@@ -185,8 +185,10 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		
 		for ( int i = 0; i < opts.length; i++ ){
 			
+			String temp = "" + (i + 1);
+			
 			option[i] = new JRadioButton( opts[i] );
-			option[i].getModel().setActionCommand( "" + (i+1) );
+			option[i].getModel().setActionCommand( temp );
 			optionGroup.add( option[i] );
 		}
 		optionGroup.setSelected( option[0].getModel(), true);
@@ -255,7 +257,7 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		if ( e.getActionCommand().compareTo( "Check option selected" ) == 0 ){
 			
 			input.writeToBuffer( optionGroup.getSelection().getActionCommand() );
-			optw.setVisible( false );
+			optw.dispose();
 			optw = null;
 		}
 		
