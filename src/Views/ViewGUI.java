@@ -31,7 +31,9 @@ public class ViewGUI extends ViewBase implements ActionListener {
 	Player input;
 	boolean gridSetup;
 	String movePt1, movePt2;
-
+	int[] movePt1but;
+	Color boardColor = Color.getHSBColor(23, 21, 36); // default easy on eyes hue 23, 21, 36
+	
 	private final int butSize = 75; // Size of button width/height, scales everything to match
 	
 	JFrame gw, optw;
@@ -54,7 +56,8 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		gridSetup = false;
 		movePt1 = null;
 		movePt2 = null;
-
+		movePt1but = new int[2];
+		
 		// Set up main game window
 		gw = new JFrame();
 		gw.setTitle("Chess");
@@ -65,7 +68,10 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		gw.setLayout(new FlowLayout());
 
 		gameMessage = new JLabel("Game is ready to go.");
-
+		
+		gameMessage.setFont( new Font( "Ariel", Font.BOLD, 16 ) );
+		gameMessage.setAlignmentX( JLabel.CENTER_ALIGNMENT );
+		
 		boardArea = new Panel();
 
 		Box horMsg = Box.createHorizontalBox();
@@ -77,6 +83,7 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		Box vertMain = Box.createVerticalBox();
 
 		vertMain.add(Box.createVerticalGlue());
+		vertMain.add(Box.createVerticalStrut(5));
 		vertMain.add(horMsg);
 		vertMain.add(Box.createVerticalGlue());
 		vertMain.add(boardArea);
@@ -86,6 +93,7 @@ public class ViewGUI extends ViewBase implements ActionListener {
 
 		masterBox.add(Box.createHorizontalGlue());
 		masterBox.add(vertMain);
+		masterBox.add(Box.createHorizontalStrut(15));
 		masterBox.add(Box.createHorizontalGlue());
 
 		gw.add(masterBox);
@@ -143,11 +151,18 @@ public class ViewGUI extends ViewBase implements ActionListener {
 
 						tiles[j][i] = new JButton(piece.getName());
 						tiles[j][i].setIcon( getIcon( piece.getName(), piece.getTeam() ) );
+						
+						if ( piece.getTeam() == 2 ){
+							tiles[j][i].setForeground( Color.magenta );
+						}
+						else {
+							tiles[j][i].setForeground( Color.blue );
+						}
 					}
 					
 					tiles[j][i].setPreferredSize( new Dimension( butSize, butSize) );
 					tiles[j][i].setBorder( new LineBorder(Color.BLACK) );
-					tiles[j][i].setForeground( Color.lightGray );
+					tiles[j][i].setBackground( boardColor );
 					tiles[j][i].setHorizontalTextPosition(JButton.CENTER);
 					tiles[j][i].setVerticalTextPosition(JButton.CENTER);
 					tiles[j][i].setActionCommand( "" + j + "" + i );
@@ -185,6 +200,13 @@ public class ViewGUI extends ViewBase implements ActionListener {
 
 					tiles[j][i].setText(piece.getName());
 					tiles[j][i].setIcon( getIcon( piece.getName(), piece.getTeam() ) );
+					
+					if ( piece.getTeam() == 2 ){
+						tiles[j][i].setForeground( Color.magenta );
+					}
+					else {
+						tiles[j][i].setForeground( Color.blue );
+					}
 				}
 			}
 		}
@@ -313,7 +335,7 @@ public class ViewGUI extends ViewBase implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		
 		// Addition input retrieval
 		if (e.getActionCommand().compareTo("Check option selected") == 0) {
 
@@ -326,10 +348,16 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		else {
 
 			if (movePt1 == null) {
-
+				
+				movePt1but[0] = Integer.parseInt( e.getActionCommand().charAt(0) + "" );
+				movePt1but[1] = Integer.parseInt( e.getActionCommand().charAt(1) + "" );
+				
 				movePt1 = convertToMove(e.getActionCommand());
+				
+				tiles[movePt1but[0]][movePt1but[1]].setBackground( Color.RED );
+				
 			} else if (movePt2 == null) {
-
+				
 				movePt2 = convertToMove(e.getActionCommand());
 			}
 		}
@@ -337,10 +365,15 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		if (movePt1 != null && movePt2 != null) {
 
 			String fullMove = movePt1 + "-" + movePt2;
-
+			
+			tiles[movePt1but[0]][movePt1but[1]].setBackground( boardColor );
+			
+			movePt1but[0] = -1;
+			movePt1but[1] = -1;
+			
 			movePt1 = null;
 			movePt2 = null;
-
+			
 			input.writeToBuffer(fullMove);
 		}
 	}
