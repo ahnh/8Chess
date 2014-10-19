@@ -50,6 +50,10 @@ public class EnPessant extends Rule {
 		
 		if (!movingPiece.getName().equalsIgnoreCase("pawn") )
 			return false;
+		
+		if (moves.size() < 2)
+			return false;
+		
 		// Check if pawn made a diagonal move
 		if (!(currentMove.getDistanceX() == 1 && currentMove.getDistanceY() == 1))
 			return false;
