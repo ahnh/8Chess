@@ -142,11 +142,14 @@ public class GameController {
 					}
 
 					movePoint = convertMoveFormat(move);
+					
 					if (movePoint != null)
 						inputValid = true;
-					else
-						ready = view
-								.displayMessage("You have entered invalid input, please enter your move in the form 'A2-A3'.");
+					
+					else {
+						ready = view.displayMessage("Please enter your move in the form 'A2-A3'.");
+						ready = view.display(game.getActiveBoard());
+					}
 				} while (!inputValid);
 
 				// Double check what return values

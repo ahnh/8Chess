@@ -40,7 +40,7 @@ public class Game {
 			activeVariant = new Hobbit(boards);
 			break;
 		case 8:
-			activeVariant = new StationaryKingChess(boards);
+			//activeVariant = new StationaryKingChess(boards);
 			break;
 		case 9:
 			activeVariant = new TestCheck(boards);
@@ -54,11 +54,30 @@ public class Game {
 
 	public int move(Point start, Point end) {
 		Board board = getActiveBoard();
-		Piece piece = board.getTile(start).getPiece();
+		Tile tile = null;
+		Piece piece = null;; 
 		int returnVal = -1;
-
-		if (piece == null || piece.getTeam() != getCurrentTeam())
+		
+		tile = board.getTile(start);
+		
+		if ( tile == null ){
+			
+			errorMsg = "Invalid coordinates entered";
 			return Rule.INVALID_MOVE;
+		}
+		
+		piece = tile.getPiece();
+		
+		if (piece == null ){
+			
+			errorMsg = "No piece in the starting position";
+			return Rule.INVALID_MOVE;
+		}
+		else if ( piece.getTeam() != getCurrentTeam() ){
+			
+			errorMsg = "Piece is not on your team";
+			return Rule.INVALID_MOVE;
+		}
 
 		moves.push(new Move(start, end, piece));
 

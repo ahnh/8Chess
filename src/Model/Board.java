@@ -34,6 +34,11 @@ public class Board {
 	}
 
 	public Tile getTile(Point pos) {
+		
+		if ( pos.x == -1 || pos.y == -1 ){
+			
+			return null;
+		}
 		if (board[pos.x][pos.y] != null) {
 			return board[pos.x][pos.y];
 		} else {
