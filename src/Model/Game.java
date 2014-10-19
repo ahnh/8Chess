@@ -40,7 +40,7 @@ public class Game {
 			activeVariant = new Hobbit(boards);
 			break;
 		case 8:
-			//activeVariant = new StationaryKingChess(boards);
+			activeVariant = new StationaryKingChess(boards);
 			break;
 		case 9:
 			activeVariant = new TestCheck(boards);
