@@ -1,6 +1,8 @@
 package Controller;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Player {
 	
@@ -34,7 +36,13 @@ public class Player {
 		}
 		else if ( inType == GUI_INPUT ){
 			
-			while ( buffer == null ){}
+			while ( buffer == null ){ 
+                            try {
+                                Thread.sleep(1);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
 			
 			input = buffer;
 			buffer = null;
