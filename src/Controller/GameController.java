@@ -31,6 +31,7 @@ public class GameController {
 		
 		String input = null;
 		boolean valid = false;
+		boolean ready = false;
 		
 		// Determine view mode before starting
 		System.out.println( "Enter the view mode you wish to use by the number:" );
@@ -60,7 +61,7 @@ public class GameController {
 		
 		// Switch the view mode selected at this point.
 		// Determine game variant before starting
-		view.displayOptions( "Enter the chess variant to play:",
+		ready = view.displayOptions( "Enter the chess variant to play:",
 				new String[] {
 				  "1. Classic.",
 				  "2. Absorption.",
@@ -124,17 +125,18 @@ public class GameController {
 		int moveValid = 0;
 		int winner = 0;
 		boolean gameInProgress = true;
+		boolean ready = false;
 		
-		view.displayMessage( "Game started. Use \"exit\" to quit at any time.");
+		ready = view.displayMessage( "Game started. Use \"exit\" to quit at any time.");
 		
 		while ( gameInProgress )
                 {
 			
-			view.displayMessage( "Enter your move, player " + game.getCurrentTeam() + "." );
+			ready = view.displayMessage( "Enter your move, player " + game.getCurrentTeam() + "." );
             
 			// Wait for valid move
 			do {
-				view.display( game.getActiveBoard() );
+				ready = view.display( game.getActiveBoard() );
 				// Loop for valid input
 				boolean inputValid = false;
 				do {
@@ -150,14 +152,14 @@ public class GameController {
 					if (movePoint != null)
 						inputValid = true;
 					else
-						view.displayMessage( "You have entered invalid input, please enter your move in the form 'A2-A3'.");
+						ready = view.displayMessage( "You have entered invalid input, please enter your move in the form 'A2-A3'.");
 				} while (!inputValid);
 				
 				moveValid = game.move( movePoint[0], movePoint[1] ); // Double check what return values
 				
 				if ( moveValid == Rule.INVALID_MOVE ){
 					
-					view.displayMessage( "Invalid move: " + game.getError() + "." );
+					ready = view.displayMessage( "Invalid move: " + game.getError() + "." );
 				}
 				
 			
@@ -169,7 +171,7 @@ public class GameController {
 				String[][] opts = game.getRuleOptions();
 				boolean goodInput = false;
 				
-				view.displayOptions(opts[0][0], opts[1]);
+				ready = view.displayOptions(opts[0][0], opts[1]);
 				
 				do {
 					action = player.getInput();
@@ -208,7 +210,7 @@ public class GameController {
 			winner = 2;
 		}
 		
-		view.displayGameOver( winner, game.getActiveBoard() );
+		ready = view.displayGameOver( winner, game.getActiveBoard() );
 	}
 	
 	public static Point[] convertMoveFormat( String moveStr ){

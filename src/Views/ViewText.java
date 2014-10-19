@@ -11,12 +11,14 @@ public class ViewText extends ViewBase {
 		super();
 	}
 	
-	public void displayMessage( String msg ){
+	public boolean displayMessage( String msg ){
 		
 		System.out.println( msg );
+		
+		return true;
 	}
 	
-	public void display( Board board ){
+	public boolean display( Board board ){
 		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String header = "  ";
 		for (int j = 0; j < board.getWidth(); j++){
@@ -34,9 +36,11 @@ public class ViewText extends ViewBase {
 			}
 			System.out.println();
 		}
+		
+		return true;
 	}
 	
-	public void displayOptions( String msg, String[] options ){
+	public boolean displayOptions( String msg, String[] options ){
 		
 		System.out.println( msg );
 		
@@ -44,9 +48,11 @@ public class ViewText extends ViewBase {
 			
 			System.out.println( options[i] );
 		}
+		
+		return true;
 	}
 	
-	public void displayGameOver( int winner, Board board ){
+	public boolean displayGameOver( int winner, Board board ){
 		
 		if ( winner != 0 ){
 			
@@ -59,5 +65,7 @@ public class ViewText extends ViewBase {
 		this.display ( board );
 		
 		System.out.println( "GAME OVER" );
+		
+		return true;
 	}
 }

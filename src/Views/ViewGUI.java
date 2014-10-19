@@ -82,13 +82,15 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		gw.toFront();
 	}
 	
-	public void displayMessage( String msg ){
+	public boolean displayMessage( String msg ){
 		
 		gameMessage.setText( msg );
 		gw.revalidate();
+		
+		return true;
 	}
 	
-	public void display( Board board ){
+	public boolean display( Board board ){
 		
 		Piece piece = null;
 		
@@ -139,6 +141,8 @@ public class ViewGUI extends ViewBase implements ActionListener {
 			
 			gridSetup = true;
 			gw.setVisible( true );
+			
+			return true;
 		}
 
 		// Update buttons to reflect the board
@@ -160,9 +164,11 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		}
 		
 		gw.revalidate();
+		
+		return true;
 	}
 	
-	public void displayOptions( String msg, String[] opts ){
+	public boolean displayOptions( String msg, String[] opts ){
 		
 		optw = new JFrame();
 		
@@ -223,9 +229,11 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		optw.setVisible( true );
 		optw.setLocationRelativeTo( null );
 		optw.toFront();
+		
+		return true;
 	}
 	
-	public void displayGameOver( int winner, Board board ){
+	public boolean displayGameOver( int winner, Board board ){
 		
 		if ( winner != 0 ){
 			
@@ -236,6 +244,8 @@ public class ViewGUI extends ViewBase implements ActionListener {
 			this.displayMessage( "It's a draw!" );
 		}
 		this.display( board );
+		
+		return true;
 	}
 	
 	// Convert array index format into move input format for game controller
