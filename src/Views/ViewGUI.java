@@ -252,7 +252,6 @@ public class ViewGUI extends ViewBase implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		System.out.println(e.getActionCommand());
 		// Addition input retrieval
 		if ( e.getActionCommand().compareTo( "Check option selected" ) == 0 ){
 			
@@ -277,9 +276,10 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		if ( movePt1 != null && movePt2 != null ){
 			
 			String fullMove = movePt1 + "-" + movePt2;
+			
 			movePt1 = null;
 			movePt2 = null;
-			System.out.println(fullMove);
+			
 			input.writeToBuffer( fullMove );
 		}
 	}
