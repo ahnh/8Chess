@@ -1,7 +1,6 @@
 package Model.Pieces;
 
 import java.awt.Point;
-import java.util.ArrayList;
 
 import Model.Move;
 import Model.Piece;
@@ -35,14 +34,8 @@ public class Rook extends Piece {
 	}
 
 	@Override
-	public ArrayList<Point> getAvailDestination() {
-		return null;
-	}
-
-	@Override
 	public void afterMove() {
 		hasMoved = true;
 	}
-	
-	
+
 }

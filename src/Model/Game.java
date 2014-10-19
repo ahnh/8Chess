@@ -1,11 +1,18 @@
 package Model;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import java.awt.Point;
 
-import Model.Variants.*;
+import Model.Variants.Absorption;
+import Model.Variants.Atomic;
+import Model.Variants.CheshireCat;
+import Model.Variants.Classic;
+import Model.Variants.Hobbit;
+import Model.Variants.JediKnightChess;
+import Model.Variants.Suicide;
+import Model.Variants.TestCheck;
 
 public class Game {
 	private List<Board> boards;
@@ -14,10 +21,10 @@ public class Game {
 	private int currentTeam;
 	private String errorMsg;
 	private String[][] ruleOptions;
-	
+
 	public Game(int variantSelection) {
 		boards = new ArrayList();
-		switch(variantSelection){
+		switch (variantSelection) {
 		case 1:
 			activeVariant = new Classic(boards);
 			break;
@@ -39,93 +46,95 @@ public class Game {
 		case 7:
 			activeVariant = new Hobbit(boards);
 			break;
-  		case 8:
+		case 8:
 			activeVariant = new TestCheck(boards);
-			break;                     
+			break;
 		}
-		
+
 		currentTeam = 1; // Players start at 1 - X
 		moves = new Stack<Move>();
 		errorMsg = "";
 	}
-	
-	public int move(Point start, Point end){
+
+	public int move(Point start, Point end) {
 		Board board = getActiveBoard();
 		Piece piece = board.getTile(start).getPiece();
 		int returnVal = -1;
-		
+
 		if (piece == null || piece.getTeam() != getCurrentTeam())
 			return Rule.INVALID_MOVE;
-		
+
 		moves.push(new Move(start, end, piece));
-		
+
 		// Check if the piece can make the move
-		if (!board.checkMove(moves.peek(), this.getCurrentTeam())){
+		if (!board.checkMove(moves.peek(), this.getCurrentTeam())) {
 			errorMsg = "Piece can not move that way";
 			return Rule.INVALID_MOVE;
 		}
-		
+
 		// Check that the move doesn't violate any rules or end the game
-		returnVal = activeVariant.checkMove(board, moves, this.getCurrentTeam());
-		
-		if (returnVal == Rule.VALID_MOVE){
-                        
+		returnVal = activeVariant
+				.checkMove(board, moves, this.getCurrentTeam());
+
+		if (returnVal == Rule.VALID_MOVE) {
+
 			board.move(moves.peek());
-            
-            returnVal = activeVariant.checkState(board, moves);
-            
-            if ( returnVal >= Rule.NEEDS_INPUT ){
-            	
-            	ruleOptions = activeVariant.getRuleOptions();
-            }
-    
+
+			returnVal = activeVariant.checkState(board, moves);
+
+			if (returnVal >= Rule.NEEDS_INPUT) {
+
+				ruleOptions = activeVariant.getRuleOptions();
+			}
+
 		} else {
 			// Invalid so remove
 			moves.pop();
 			errorMsg = activeVariant.getError();
 		}
-        
+
 		return returnVal;
 	}
-	
+
 	public Board getActiveBoard() {
-		// The active board is determined by the active team. 
-		// With 2 players per board, the active board will always be currentTeam/2  		
-		return this.boards.get( (int)Math.floor((this.currentTeam - 1) / 2));
+		// The active board is determined by the active team.
+		// With 2 players per board, the active board will always be
+		// currentTeam/2
+		return this.boards.get((int) Math.floor((this.currentTeam - 1) / 2));
 	}
-	
-	public String getError(){
-		
+
+	public String getError() {
+
 		return errorMsg;
 	}
-	
-	public String[][] getRuleOptions(){
-		
+
+	public String[][] getRuleOptions() {
+
 		return ruleOptions;
 	}
-	
+
 	public int getCurrentTeam() {
 		return currentTeam;
 	}
-	
-	public int completeAction( int response, int action ){
-		
+
+	public int completeAction(int response, int action) {
+
 		Move move = moves.peek();
 		move.action = action;
 		move.option = response;
 		move.optionSelected = true;
-		
+
 		return activeVariant.checkState(getActiveBoard(), moves);
 	}
-	
+
 	public void setCurrentTeam(int currentTeam) {
 		this.currentTeam = currentTeam;
 	}
-	
-	public void nextTurn(){
+
+	public void nextTurn() {
 		this.currentTeam++;
-		
-		if ( this.currentTeam > this.activeVariant.getTeamCount() ){
+
+		if (this.currentTeam > this.activeVariant.getTeamCount()) {
 			currentTeam = 1;
 		}
 	}

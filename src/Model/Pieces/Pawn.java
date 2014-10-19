@@ -1,7 +1,6 @@
 package Model.Pieces;
 
 import java.awt.Point;
-import java.util.ArrayList;
 
 import Model.Move;
 import Model.Piece;
@@ -43,11 +42,6 @@ public class Pawn extends Piece {
 	@Override
 	public void afterMove() {
 		hasMoved = true;
-	}
-
-	@Override
-	public ArrayList<Point> getAvailDestination() {
-		return null;
 	}
 
 }

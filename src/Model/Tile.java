@@ -3,11 +3,11 @@ package Model;
 public class Tile {
 	private Piece piece;
 	private boolean exist;
-	
-	public Tile () {
+
+	public Tile() {
 		exist = true;
 	}
-	
+
 	public Tile(Piece piece) {
 		this.piece = piece;
 		this.exist = true;
@@ -16,32 +16,26 @@ public class Tile {
 	public Piece getPiece() {
 		return piece;
 	}
-	
+
 	public void setPiece(Piece newPiece) {
 		piece = newPiece;
 	}
-	
+
 	public boolean getExists() {
 		return exist;
 	}
-	
+
 	public void setExists(boolean val) {
-		exist =val;
-	}        
-        
-        
+		exist = val;
+	}
+
 	@Override
 	public String toString() {
-		if (piece == null && exist)
-		{
+		if (piece == null && exist) {
 			return "_";
-		}
-		else if (piece != null && exist)
-		{
+		} else if (piece != null && exist) {
 			return piece.getDisplayStr();
-		}
-		else
-		{
+		} else {
 			return " ";
 		}
 	}

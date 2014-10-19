@@ -1,18 +1,17 @@
 package Model.Pieces;
 
 import java.awt.Point;
-import java.util.ArrayList;
 
 import Model.Move;
 import Model.Piece;
 
-public class JediKnight extends Piece{
+public class JediKnight extends Piece {
 	// Jedi Knight is allowed to move 3 steps horizontally or vertically
 	// as well as it's ordinary 'L' shaped moves
 	public JediKnight(int team) {
 		super(team, 'J', "Knight");
 	}
-	
+
 	@Override
 	public boolean checkDestination(Move move) {
 		if (!preCheckDestination(move))
@@ -29,17 +28,11 @@ public class JediKnight extends Piece{
 			// Regular Knight Movement
 			return true;
 		else if ((vDifference == 0 && hDifference <= 3)
-				|| (hDifference == 0 && vDifference <=3))
+				|| (hDifference == 0 && vDifference <= 3))
 			// Jedi Knight Addon
 			return true;
 		else
 			return false;
-	}
-
-	@Override
-	public ArrayList<Point> getAvailDestination() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
