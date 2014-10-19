@@ -28,7 +28,7 @@ public class Absorb extends Rule {
 					if (board.getTile(currentMove.getEnd()).getPiece()
 							.getName() == "Knight"
 							|| board.getTile(currentMove.getEnd()).getPiece()
-									.getName() == "RookKnight") {
+									.getName() == "Rook-Knight") {
 						board.getTile(currentMove.getStart())
 								.setPiece(
 										new RookKnight(currentMove.getPiece()
@@ -44,9 +44,9 @@ public class Absorb extends Rule {
 					}
 
 					if (board.getTile(currentMove.getEnd()).getPiece()
-							.getName() == "BishopKnight"
+							.getName() == "Bishop-Knight"
 							|| board.getTile(currentMove.getEnd()).getPiece()
-									.getName() == "QueenKnight") {
+									.getName() == "Queen-Knight") {
 						board.getTile(currentMove.getStart()).setPiece(
 								new QueenKnight(currentMove.getPiece()
 										.getTeam()));
@@ -59,7 +59,7 @@ public class Absorb extends Rule {
 					if (board.getTile(currentMove.getEnd()).getPiece()
 							.getName() == "Knight"
 							|| board.getTile(currentMove.getEnd()).getPiece()
-									.getName() == "BishopKnight") {
+									.getName() == "Bishop-Knight") {
 						board.getTile(currentMove.getStart()).setPiece(
 								new BishopKnight(currentMove.getPiece()
 										.getTeam()));
@@ -74,9 +74,9 @@ public class Absorb extends Rule {
 					}
 
 					if (board.getTile(currentMove.getEnd()).getPiece()
-							.getName() == "RookKnight"
+							.getName() == "Rook-Knight"
 							|| board.getTile(currentMove.getEnd()).getPiece()
-									.getName() == "QueenKnight") {
+									.getName() == "Queen-Knight") {
 						board.getTile(currentMove.getStart()).setPiece(
 								new QueenKnight(currentMove.getPiece()
 										.getTeam()));
@@ -87,11 +87,11 @@ public class Absorb extends Rule {
 						.getName() == "Queen") {
 					// Queen gain knight powers
 					if (board.getTile(currentMove.getEnd()).getPiece()
-							.getName() == "RookKnight"
+							.getName() == "Rook-Knight"
 							|| board.getTile(currentMove.getEnd()).getPiece()
-									.getName() == "QueenKnight"
+									.getName() == "Queen-Knight"
 							|| board.getTile(currentMove.getEnd()).getPiece()
-									.getName() == "BishopKnight"
+									.getName() == "Bishop-Knight"
 							|| board.getTile(currentMove.getEnd()).getPiece()
 									.getName() == "Knight") {
 						board.getTile(currentMove.getStart()).setPiece(
@@ -101,7 +101,7 @@ public class Absorb extends Rule {
 				}
 
 				else if (board.getTile(currentMove.getStart()).getPiece()
-						.getName() == "RookKnight") {
+						.getName() == "Rook-Knight") {
 					// Queen gain knight powers
 					if (board.getTile(currentMove.getEnd()).getPiece()
 							.getName() == "Queen"
@@ -114,7 +114,7 @@ public class Absorb extends Rule {
 				}
 
 				else if (board.getTile(currentMove.getStart()).getPiece()
-						.getName() == "BishopKnight") {
+						.getName() == "Bishop-Knight") {
 					// Queen gain knight powers
 					if (board.getTile(currentMove.getEnd()).getPiece()
 							.getName() == "Queen"

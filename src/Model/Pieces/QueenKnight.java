@@ -8,7 +8,7 @@ import Model.Piece;
 public class QueenKnight extends Piece {
 
 	public QueenKnight(int team) {
-		super(team, 'W', "QueenKnight");
+		super(team, 'Q', "Queen-Knight");
 	}
 
 	@Override
