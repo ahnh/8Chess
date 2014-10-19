@@ -141,7 +141,7 @@ public class ViewGUI extends ViewBase implements ActionListener {
 			
 			gridSetup = true;
 		}
-		
+
 		// Update buttons to reflect the board
 		for (int i = 0; i < board.getHeight(); i++){
 			
