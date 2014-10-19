@@ -80,14 +80,13 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		
 		gw.pack();
 		gw.setLocationRelativeTo( null );
-		gw.setVisible(true);
 		gw.toFront();
 	}
 	
 	public void displayMessage( String msg ){
 		
 		gameMessage.setText( msg );
-		gw.setVisible( true );
+		gw.revalidate();
 	}
 	
 	public void display( Board board ){
@@ -140,6 +139,7 @@ public class ViewGUI extends ViewBase implements ActionListener {
 			}
 			
 			gridSetup = true;
+			gw.setVisible( true );
 		}
 
 		// Update buttons to reflect the board
@@ -160,7 +160,7 @@ public class ViewGUI extends ViewBase implements ActionListener {
 			}
 		}
 		
-		gw.setVisible( true );
+		gw.revalidate();
 	}
 	
 	public void displayOptions( String msg, String[] opts ){
