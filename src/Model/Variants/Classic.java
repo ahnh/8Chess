@@ -24,7 +24,7 @@ public class Classic extends Variant {
         move_Rules.add(new CollisionMove());
 		move_Rules.add(new Castling());
 		move_Rules.add(new Pawn_Move());
-		move_Rules.add(new Pawn_Capture());
+//		move_Rules.add(new Pawn_Capture());
 		move_Rules.add(new EnPessant());
 		move_Rules.add(new Check());
 		
