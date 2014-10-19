@@ -10,6 +10,7 @@ import java.awt.Panel;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.StringTokenizer;
 
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
@@ -276,9 +277,11 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		return move;
 	}
 	
-	private ImageIcon getIcon( String name, int team ){
+	private ImageIcon getIcon( String fullname, int team ){
 		
 		ImageIcon newImg;
+		StringTokenizer tok = new StringTokenizer( fullname, "-");
+		String name = tok.nextToken();
 		
 		if ( team == 1 ){
 			try {
