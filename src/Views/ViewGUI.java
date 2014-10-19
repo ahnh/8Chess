@@ -3,7 +3,9 @@ package Views;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Panel;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -11,6 +13,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,6 +30,8 @@ public class ViewGUI extends ViewBase implements ActionListener {
 	boolean gridSetup;
 	String movePt1, movePt2;
 
+	private final int butSize = 75; // Size of button width/height, scales everything to match
+	
 	JFrame gw, optw;
 
 	// Main window items
@@ -103,7 +108,10 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		if (gridSetup == false) {
 
 			String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
+			
+			gw.setSize(new Dimension( butSize + (board.getWidth()+1)*butSize, 80 + (board.getHeight()+1)*butSize ) );
+			gw.setPreferredSize(new Dimension( butSize + (board.getWidth()+1)*butSize, 80 + (board.getHeight()+1)*butSize ) );
+			
 			boardArea.setLayout(new GridLayout(0, board.getWidth() + 1));
 			tiles = new JButton[board.getWidth()][board.getHeight()];
 
@@ -127,20 +135,22 @@ public class ViewGUI extends ViewBase implements ActionListener {
 					if (piece == null) {
 
 						tiles[j][i] = new JButton("");
-						tiles[j][i].setPreferredSize(new Dimension(50, 50));
-						tiles[j][i].setBorder(new LineBorder(Color.BLACK));
-						tiles[j][i].setActionCommand("" + j + "" + i);
-						tiles[j][i].addActionListener(this);
+						tiles[j][i].setIcon( null );
 					} else {
 
 						tiles[j][i] = new JButton(piece.getName());
-						tiles[j][i].setPreferredSize(new Dimension(50, 50));
-						tiles[j][i].setBorder(new LineBorder(Color.BLACK));
-						tiles[j][i].setActionCommand("" + j + "" + i);
-						tiles[j][i].addActionListener(this);
+						tiles[j][i].setIcon( getIcon( piece.getName(), piece.getTeam() ) );
 					}
-
-					boardArea.add(tiles[j][i]);
+					
+					tiles[j][i].setPreferredSize( new Dimension( butSize, butSize) );
+					tiles[j][i].setBorder( new LineBorder(Color.BLACK) );
+					tiles[j][i].setForeground( Color.lightGray );
+					tiles[j][i].setHorizontalTextPosition(JButton.CENTER);
+					tiles[j][i].setVerticalTextPosition(JButton.CENTER);
+					tiles[j][i].setActionCommand( "" + j + "" + i );
+					tiles[j][i].addActionListener( this );
+					
+					boardArea.add( tiles[j][i] );
 				}
 			}
 
@@ -160,9 +170,11 @@ public class ViewGUI extends ViewBase implements ActionListener {
 				if (piece == null) {
 
 					tiles[j][i].setText("");
+					tiles[j][i].setIcon( null );
 				} else {
 
 					tiles[j][i].setText(piece.getName());
+					tiles[j][i].setIcon( getIcon( piece.getName(), piece.getTeam() ) );
 				}
 			}
 		}
@@ -262,6 +274,22 @@ public class ViewGUI extends ViewBase implements ActionListener {
 		move += (Integer.parseInt(raw.charAt(1) + "") + 1) + "";
 
 		return move;
+	}
+	
+	private ImageIcon getIcon( String name, int team ){
+		
+		ImageIcon newImg;
+		
+		if ( team == 1 ){
+			
+			newImg = new ImageIcon( getClass().getResource("/white/" + name + ".png") );
+			
+			return new ImageIcon( newImg.getImage().getScaledInstance( (int)(butSize * 0.75), (int)(butSize* 0.75),  Image.SCALE_SMOOTH ) );
+		}
+		
+		newImg = new ImageIcon( getClass().getResource("/black/" + name + ".png") );
+		
+		return new ImageIcon( newImg.getImage().getScaledInstance( (int)(butSize* 0.75), (int)(butSize * 0.75),  Image.SCALE_SMOOTH ) );
 	}
 
 	@Override
