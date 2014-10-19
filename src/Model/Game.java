@@ -5,14 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import Model.Variants.Absorption;
-import Model.Variants.Atomic;
-import Model.Variants.CheshireCat;
-import Model.Variants.Classic;
-import Model.Variants.Hobbit;
-import Model.Variants.JediKnightChess;
-import Model.Variants.Suicide;
-import Model.Variants.TestCheck;
+import Model.Variants.*;
 
 public class Game {
 	private List<Board> boards;
@@ -47,6 +40,9 @@ public class Game {
 			activeVariant = new Hobbit(boards);
 			break;
 		case 8:
+			activeVariant = new StationaryKingChess(boards);
+			break;
+		case 9:
 			activeVariant = new TestCheck(boards);
 			break;
 		}

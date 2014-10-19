@@ -66,7 +66,7 @@ public class GameController {
 		ready = view.displayOptions("Enter the chess variant to play:",
 				new String[] { "1. Classic.", "2. Absorption.",
 						"3. Cheshire Cat.", "4. Suicide.", "5. Jedi Knight.",
-						"6. Atomic.", "7. Hobbit.", });
+						"6. Atomic.", "7. Hobbit.", "8. Stationary King." });
 
 		do {
 
@@ -98,6 +98,9 @@ public class GameController {
 				valid = true;
 			} else if (input.compareTo("7") == 0) {
 				game = new Game(7);
+				valid = true;
+			} else if (input.compareTo("8") == 0) {
+				game = new Game(8);
 				valid = true;
 			}
 
