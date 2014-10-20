@@ -55,7 +55,7 @@ public class CollisionMove extends Rule {
 			}
 
 		// Check if our moving piece is a knight
-		if (movingPiece.getName() == "Knight") {
+		if (movingPiece.getName().contains("Knight"))  {
 			if (movingPiece.checkDestination(currentMove)
 					&& board.getTile(currentMove.getEnd()).getExists()) {
 
