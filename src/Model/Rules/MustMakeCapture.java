@@ -57,7 +57,9 @@ public class MustMakeCapture extends Rule {
 		Stack<Move> moves = createMoveStack( board, piece, x, y );
 		Move move = null;
 		
-		move = moves.pop();
+		if (!moves.isEmpty()){
+			move = moves.pop();
+		}
 		
 		while ( move != null ){
 			
@@ -77,7 +79,12 @@ public class MustMakeCapture extends Rule {
 				}
 			}
 			
-			move = moves.pop();
+			if (!moves.isEmpty()){
+				move = moves.pop();
+			}
+			else {
+				move = null;
+			}
 		}
 		
 		return false;
