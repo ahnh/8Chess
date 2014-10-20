@@ -54,7 +54,7 @@ public class MustMakeCapture extends Rule {
 	
 	private boolean canCapture( Board board, Piece piece, int x, int y ){
 		
-		Stack<Move> moves = createMoveList( board, piece, x, y );
+		Stack<Move> moves = createMoveStack( board, piece, x, y );
 		Move move = null;
 		
 		move = moves.pop();
@@ -63,7 +63,8 @@ public class MustMakeCapture extends Rule {
 			
 			if ( piece.getName() == "Pawn" ) {
 				
-				if ( (move.getStart().x != move.getEnd().x) && (move.getStart().y != move.getEnd().y) ){
+				if ( (move.getStart().x != move.getEnd().x) && (move.getStart().y != move.getEnd().y)
+						&& board.getTile( move.getEnd() ).getPiece() != null ){
 					
 					return true;
 				}
@@ -83,7 +84,7 @@ public class MustMakeCapture extends Rule {
 	}
 	
 	// Get all potential places a piece can move
-	private Stack<Move> createMoveList( Board board, Piece piece, int x, int y ){
+	private Stack<Move> createMoveStack( Board board, Piece piece, int x, int y ){
 		
 		Stack<Move> moveList = new Stack<Move>();
 		Rule collision = new CollisionMove();
@@ -96,7 +97,7 @@ public class MustMakeCapture extends Rule {
 				moveList.push(move);
 				
 				if (!piece.checkDestination(move)
-						&& collision.checkMove(board, moveList) != Rule.VALID_MOVE ){
+						|| collision.checkMove(board, moveList) != Rule.VALID_MOVE ){
 					
 					moveList.pop();
 				}
