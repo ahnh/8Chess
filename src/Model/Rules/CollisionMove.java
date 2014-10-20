@@ -150,9 +150,10 @@ public class CollisionMove extends Rule {
 						// This is the end of our Movement
 						if (i == currentMove.getEnd().y)
 							// The piece blocking is non-friendly
-							if (pieces.get(p).getPiece().getTeam() != currentMove
-									.getPiece().getTeam())
-								return true;
+							if ((pieces.get(p).getPiece().getTeam() != currentMove
+									.getPiece().getTeam()) && currentMove.getPiece().getName()!="Pawn")
+                                                        {
+								return true;}
 
 						return false;
 					}
@@ -240,12 +241,16 @@ public class CollisionMove extends Rule {
 									.getPiece().getTeam())
 								return true;
 
+                                                if(currentMove.getPiece().getName()!="Pawn")
 						return false;
 					}
 
 				}
 			}
-			return true;
+                        if(currentMove.getPiece().getName()=="Pawn")
+                            return false;
+                        else
+                            return true;
 		}
 		// +-
 		else if ((start.x < end.x) && (start.y > end.y)) {
@@ -265,12 +270,17 @@ public class CollisionMove extends Rule {
 									.getPiece().getTeam())
 								return true;
 
+                                        
+                                                if(currentMove.getPiece().getName()!="Pawn")
 						return false;
 					}
 
 				}
 			}
-			return true;
+                        if(currentMove.getPiece().getName()=="Pawn")
+                            return false;
+                        else
+                            return true;
 		}
 		// -+
 		else if ((start.x > end.x) && (start.y < end.y)) {
@@ -281,7 +291,8 @@ public class CollisionMove extends Rule {
 				for (int p = 0; p < pieces.size(); p++) {
 					// Piece exists at this location
 					if (pieces.get(p).getStart().x == start.x - i
-							&& pieces.get(p).getStart().y == start.y + i) {
+							&& pieces.get(p).getStart().y == start.y + i) 
+                                        {
 						// This is the end of our Movement
 						if (start.x - i == currentMove.getEnd().x
 								&& start.y + i == currentMove.getEnd().y)
@@ -289,20 +300,24 @@ public class CollisionMove extends Rule {
 							if (pieces.get(p).getPiece().getTeam() != currentMove
 									.getPiece().getTeam())
 								return true;
-
+                                               // if(currentMove.getPiece().getName()!="Pawn")
 						return false;
 					}
 
 				}
 			}
-			return true;
+                        if(currentMove.getPiece().getName()=="Pawn")
+                            return false;
+                        else
+                            return true;
 		}
 
 		// --
 		else if ((start.x > end.x) && (start.y > end.y)) {
 			int difference = start.x - end.x;
 
-			for (int i = 0; i <= difference; i++) {
+			for (int i = 0; i <= difference; i++) 
+                        {
 				// System.out.println("Checking Point:"+i+","+i);
 				for (int p = 0; p < pieces.size(); p++) {
 					// Piece exists at this location
@@ -311,17 +326,25 @@ public class CollisionMove extends Rule {
 						// This is the end of our Movement
 						if (start.x - i == currentMove.getEnd().x
 								&& start.y - i == currentMove.getEnd().y)
+                                                {
 							// The piece blocking is non-friendly
 							if (pieces.get(p).getPiece().getTeam() != currentMove
 									.getPiece().getTeam())
 								return true;
+                                                     
+                                                         
+                                                }
 
+                                                
 						return false;
 					}
 
 				}
 			}
-			return true;
+                        if(currentMove.getPiece().getName()=="Pawn")
+                            return false;
+                        else
+                            return true;
 		}
 
 		return true;
