@@ -40,7 +40,7 @@ public class MustMakeCapture extends Rule {
 				if ( currentPiece != null ){
 					if (currentPiece.getTeam() == currentTeam ){
 						
-						if ( canCapture( board, j, i ) ){
+						if ( canCapture( board, currentPiece, j, i ) ){
 							
 							return Rule.INVALID_MOVE;
 						}
@@ -52,29 +52,57 @@ public class MustMakeCapture extends Rule {
 		return Rule.VALID_MOVE;
 	}
 	
-	private boolean canCapture( Board board, int x, int y ){
-		// destination set on the king
-		/*enemyList = CreateEnemyList(board, currentTeam,
-		playerKing.getStart());
-		boolean isCheck = false;
+	private boolean canCapture( Board board, Piece piece, int x, int y ){
 		
-		for (int x = 0; x < enemyList.size() && isCheck == false; x++) {
-			Move move0 = enemyList.get(x);
-			Stack moveStack = new Stack();
-			moveStack.add(move0);
-				if (move0.getPiece().getName() == "Pawn") {
-					if (move0.getPiece().checkDestination(move0)
-						&& ((move0.getStart().x != move0.getEnd().x) && (move0
-								.getStart().y != move0.getEnd().y)))
-					isCheck = true;
-				} else {
-					if (((CollisionMove.checkMove(board, moveStack)) == Rule.VALID_MOVE)
-						&& enemyList.get(x).getPiece()
-								.checkDestination(move0)) {
-						isCheck = true;
-					}
+		Stack<Move> moves = createMoveList( board, piece, x, y );
+		Move move = null;
+		
+		move = moves.pop();
+		
+		while ( move != null ){
+			
+			if ( piece.getName() == "Pawn" ) {
+				
+				if ( (move.getStart().x != move.getEnd().x) && (move.getStart().y != move.getEnd().y) ){
+					
+					return true;
 				}
-		}*/
+			}
+			else {
+				
+				if ( board.getTile( move.getEnd() ).getPiece() != null ) {
+					
+					return true;
+				}
+			}
+			
+			move = moves.pop();
+		}
+		
 		return false;
+	}
+	
+	// Get all potential places a piece can move
+	private Stack<Move> createMoveList( Board board, Piece piece, int x, int y ){
+		
+		Stack<Move> moveList = new Stack<Move>();
+		Rule collision = new CollisionMove();
+		Move move = null;
+		
+		for (int i = 0; i < board.getHeight(); i++){
+			for (int j = 0; j < board.getWidth(); j++){
+				
+				move = new Move(new Point(x, y), new Point(j,i), piece);
+				moveList.push(move);
+				
+				if (!piece.checkDestination(move)
+						&& collision.checkMove(board, moveList) != Rule.VALID_MOVE ){
+					
+					moveList.pop();
+				}
+			}
+		}
+		
+		return moveList;
 	}
 }
