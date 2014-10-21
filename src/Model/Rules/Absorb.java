@@ -53,13 +53,38 @@ public class Absorb extends Rule {
 					}
 				}
 
-				else if (board.getTile(currentMove.getStart()).getPiece()
-						.getName() == "Bishop") {
+                                else if (board.getTile(currentMove.getStart()).getPiece().getName() == "Knight") {
 					// Rook Take Knight = Rook + Knight
 					if (board.getTile(currentMove.getEnd()).getPiece()
-							.getName() == "Knight"
+							.getName() == "Rook"
+							|| board.getTile(currentMove.getEnd()).getPiece()
+									.getName() == "Rook-Knight") {
+						board.getTile(currentMove.getStart())
+								.setPiece(new RookKnight(currentMove.getPiece()
+												.getTeam()));
+					}
+					// Rook Take Knight = Rook + Knight
+					if (board.getTile(currentMove.getEnd()).getPiece()
+							.getName() == "Bishop"
 							|| board.getTile(currentMove.getEnd()).getPiece()
 									.getName() == "Bishop-Knight") {
+						board.getTile(currentMove.getStart()).setPiece(
+								new BishopKnight(currentMove.getPiece().getTeam()));
+					}
+
+					if (board.getTile(currentMove.getEnd()).getPiece().getName() == "Queen"
+							|| board.getTile(currentMove.getEnd()).getPiece()
+									.getName() == "Queen-Knight") {
+						board.getTile(currentMove.getStart()).setPiece(
+								new QueenKnight(currentMove.getPiece()
+										.getTeam()));
+					}
+				}                               
+                                
+				else if (board.getTile(currentMove.getStart()).getPiece().getName() == "Bishop") {
+					// Rook Take Knight = Rook + Knight
+					if (board.getTile(currentMove.getEnd()).getPiece().getName() == "Knight"
+					|| board.getTile(currentMove.getEnd()).getPiece().getName() == "Bishop-Knight") {
 						board.getTile(currentMove.getStart()).setPiece(
 								new BishopKnight(currentMove.getPiece()
 										.getTeam()));
