@@ -108,7 +108,7 @@ public class CollisionMove extends Rule {
                         //Pawns will set collision to false, if enpessant is true then
                         //it gets reset here
                         EnPessant ep = new EnPessant();
-                        if(ep.checkMove(board, moves) ==Rule.VALID_MOVE)
+                        if(ep.moveIsEnPessantAttempt(board,moves) )
                             isValid=true;
                         
                         }
