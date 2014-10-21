@@ -102,8 +102,16 @@ public class CollisionMove extends Rule {
 			else if (startY == endY)
 				isValid = CheckHorizontal(pieceList, startX, endX, startY,
 						currentMove);
-			else
+                        else{
 				isValid = CheckDiagonal(pieceList, p1, p2, currentMove);
+                        //Enpassant fix
+                        //Pawns will set collision to false, if enpessant is true then
+                        //it gets reset here
+                        EnPessant ep = new EnPessant();
+                        if(ep.checkMove(board, moves) ==Rule.VALID_MOVE)
+                            isValid=true;
+                        
+                        }
 
 			if (isValid && board.getTile(p2).getExists())
 				return Rule.VALID_MOVE;
@@ -341,6 +349,9 @@ public class CollisionMove extends Rule {
 
 				}
 			}
+                        //Enpassant Fix...
+                        EnPessant ep = new EnPessant();
+                        
                         if(currentMove.getPiece().getName()=="Pawn")
                             return false;
                         else
