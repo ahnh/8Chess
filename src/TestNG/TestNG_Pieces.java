@@ -20,7 +20,7 @@ import Model.Piece;
 import Model.Pieces.*;
 
 
-public class TestNG {
+public class TestNG_Pieces {
   //Test BK movement	
   @Test
   public void BishopKnightMovement()
