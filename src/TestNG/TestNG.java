@@ -17,7 +17,7 @@ import org.testng.*;
 
 import Model.Move;
 import Model.Piece;
-import Model.Pieces.Pawn;
+import Model.Pieces.*;
 
 
 public class TestNG {
@@ -28,17 +28,113 @@ public class TestNG {
 	 
   }
   
+  
+  
+  @Test
+  public void KnightMovement()
+  {
+	  //Board Size
+	  int boardSize=8;
+	  
+	  boolean expected =false; //Initialize
+	  //End Locations
+	  for(int y=0;y<boardSize;y++)
+		  for(int x=0;x<boardSize;x++)		  	
+		  {
+			int y2=boardSize/2; //Center Board is used to get all possible directions
+			int x2=boardSize/2; //Center Board is used to get all possible directions
+			Point start=new Point(x2,y2);
+			Point end=new Point(x,y);
+			// Check Horizontal
+			boolean actual = PieceMove(start,end, new Knight(1));
+						
+			int hDifference = Math.max(start.x, end.x) - Math.min(start.x, end.x);
+			int vDifference = Math.max(start.y, end.y) - Math.min(start.y, end.y);
+						
+			if ((hDifference == 2 && vDifference == 1)
+			| (hDifference == 1 && vDifference == 2))
+				expected=true;
+			else
+				expected=false;
+			  
+			Assert.assertEquals(actual,expected,"Knight Performed an Illegal Move:("+start.x+","+start.y+  "->"+end.x+","+end.y);
+		  }
+	  
+  }
+  
+  @Test
+  public void RookMovement()
+  {
+	  //Board Size
+	  int boardSize=8;
+	  
+	  boolean expected =false; //Initialize
+	  //End Locations
+	  for(int y=0;y<boardSize;y++)
+		  for(int x=0;x<boardSize;x++)		  	
+		  {
+			  int y2=boardSize/2; //Center Board is used to get all possible directions
+			  int x2=boardSize/2; //Center Board is used to get all possible directions
+			  Point start=new Point(x2,y2);
+		      Point end=new Point(x,y);
+			  boolean actual = PieceMove(start,end, new Rook(1));
+			  
+			  if( x2==x && y2==y)
+				  expected =false;
+			  else if((x2-x)==0)
+				  expected =true;
+			  else if((y2-y)==0)
+				  expected =true;
+
+			  else
+				  expected =false;
+			  
+			  Assert.assertEquals(actual,expected,"Rook Performed an Illegal Move:("+start.x+","+start.y+  "->"+end.x+","+end.y);
+		  }
+	  
+  }
+  
+  @Test
+  public void BishopMovement()
+  {
+	  //Board Size
+	  int boardSize=8;
+	  
+	 
+	  boolean expected =false; //Initialize
+	  
+	  //End Locations
+	  for(int y=0;y<boardSize;y++)
+	  for(int x=0;x<boardSize;x++)		  	
+	  {
+		  int y2=boardSize/2; //Center Board is used to get all possible directions
+		  int x2=boardSize/2; //Center Board is used to get all possible directions
+		  Point start=new Point(x2,y2);
+	      Point end=new Point(x,y);
+		  boolean actual = PieceMove(start,end, new Bishop(1)); 
+		  
+		  if(Math.abs(end.x - start.x) == Math.abs(end.y - start.y) && (start.x!=end.x && start.y!=end.y)) // Only Diagonals Allowed
+			  expected =true;
+
+		  else
+			  expected =false;
+		  
+		  Assert.assertEquals(actual,expected,"Bishop Performed an Illegal Move:("+start.x+","+start.y+  "->"+end.x+","+end.y);
+	  }
+	    
+  }
+  
   @Test
   public void PawnMovement()
   {
 	  //Board Size
 	  int boardSize=8;
 	  
-	  //Vertical Values
+
 	  
 	  boolean expected =false; //Initialize
 	  
-	  //Start
+	  //End Locations
 	  for(int y=0;y<boardSize;y++)
 	  for(int x=0;x<boardSize;x++)		  	
 	  {
