@@ -6,15 +6,27 @@
 			<class name="TestNG.TestPiecesMovements" />
 		</classes>
 	</test>
-	<test name="testNG test2">
+	<test name="TestClassicChess">
 	<groups>
 		<run>
 			<exclude name="brokenTests" />
-			<include name="variants" />
+			<include name="classic" />
 		</run>
 	</groups>
 		<classes>
-			<class name="TestNG.TestVariants" />
+			<class name="TestNG.TestClassicChess" />
+		</classes>
+	</test>
+	
+	<test name="TestStationaryChess">
+	<groups>
+		<run>
+			<exclude name="brokenTests" />
+			<include name="stationary" />
+		</run>
+	</groups>
+		<classes>
+			<class name="TestNG.TestStationaryChess" />
 		</classes>
 	</test>
 </suite>

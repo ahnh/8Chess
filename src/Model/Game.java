@@ -45,6 +45,8 @@ public class Game {
 		case 9:
 			activeVariant = new TestCheck(boards);
 			break;
+		default:
+			activeVariant = new Classic(boards);
 		}
 
 		currentTeam = 1; // Players start at 1 - X
