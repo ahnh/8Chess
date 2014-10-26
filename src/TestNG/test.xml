@@ -29,4 +29,9 @@
 			<class name="TestNG.TestStationaryChess" />
 		</classes>
 	</test>
+	<test name="testNG test3">
+		<classes>
+			<class name="TestNG.TestRules" />
+		</classes>
+	</test>
 </suite>
