@@ -28,23 +28,23 @@ public class TestConfig {
 	 
 	@BeforeSuite
 	public void testBeforeSuite() {
-		System.out.println("testBeforeSuite()");
+		System.out.println("testBeforeSuite");
 	}
  
 	@AfterSuite
 	public void testAfterSuite() {
-		System.out.println("testAfterSuite()");
+		System.out.println("testAfterSuite");
 	}
  
 	@BeforeTest
 	public void testBeforeTest() {
 		// we may can create board here and access it.
-		System.out.println("testBeforeTest()");
+		System.out.println("testBeforeTest");
 	}
  
 	@AfterTest
 	public void testAfterTest() {
-		System.out.println("testAfterTest()");
+		System.out.println("testAfterTest");
 	}
  
 }

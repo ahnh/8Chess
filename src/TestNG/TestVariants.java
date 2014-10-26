@@ -24,20 +24,26 @@ import Model.Pieces.*;
 
 public class TestVariants {
 	
-	@BeforeTest
+	@BeforeTest(groups = "variants")
 	public void testBeforeTest() {
 		// setup board etcs
 		System.out.println("testBeforeVariants");
 	}
 	
+	@AfterTest(groups = { "variants", "Classic" })
+	public void testAfterTest() {
+		// idk, maybe clean up?
+		System.out.println("testAfterVariants - inc classic");
+	}
+	
 	@Test(groups = { "variants", "Classic" })
 	public void testClassic() {
+		System.out.println("Testing Classic variants");
+	}
+	
+	@Test(groups = { "variants", "brokenTests" })
+	public void testSomething() {
 		System.out.println("Testing Classic");
 	}
 	
-	@AfterTest
-	public void testAfterTest() {
-		// idk, maybe clean up?
-		System.out.println("testAfterVariants");
-	}
 }
