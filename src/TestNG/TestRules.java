@@ -379,5 +379,27 @@ public class TestRules {
 
 		
 	}
+	@Test
+	public void VanishTile(){
+		Board board = new Board();
+		
+
+		Stack<Move> moves = new Stack();
+		
+		Rule vanish = new Model.Rules.Move_VanishTile();
+		board.getTile(new Point(0,0)).setPiece(new King(1));
+		
+		//Set Move
+		Move move = new Move(new Point(0,0), new Point(0,1), board.getTile(new Point(0,0)).getPiece());
+		moves.push(move);
+		//Force Tile to vanish
+		board.getTile(new Point(0,1)).setExists(false);
+		
+		//Check if move is valid
+		boolean actual = (vanish.checkMove(board, moves)== Model.Rule.INVALID_MOVE  );
+		
+		Assert.assertEquals(actual,true,"Piece should not be able to move on missing tile");
+
+	}	
 	
 }
