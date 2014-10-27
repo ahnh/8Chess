@@ -6,7 +6,11 @@ import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertFalse;
 
+
+
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 import org.testng.annotations.Test;
@@ -236,10 +240,127 @@ public class TestRules {
 		
 		Rule stalemate = new Model.Rules.Stalemate();
 		boolean actual = (stalemate.checkMove(board, moves)==Model.Rule.GAME_OVER_TIE);
-		System.out.println(stalemate.checkMove(board, moves));
 		
 		//boolean actual = (()== Model.Rule.VALID_MOVE);
 		//Expecting True, king should not be allowed to move in check, if check is returned than state is correct
 		Assert.assertEquals(actual,true,"King is supposed to be flagged for stalemate");
 	}
+	
+	@Test
+	public void Absorb(){
+		Board board = new Board();
+		
+
+		Stack<Move> moves = new Stack();
+		
+		Rule absorb = new Model.Rules.Absorb();
+		
+		List<Piece> pieceList= new ArrayList<Piece>();
+		pieceList.add(new Rook(1));
+		pieceList.add(new Queen(1));		
+		pieceList.add(new Knight(1));			
+		pieceList.add(new Bishop(1));
+		
+
+		//Test Rook Absorb
+		Piece testPiece= new Rook(1);
+
+		for(int i=0;i<pieceList.size();i++)		
+		{
+			board.getTile(new Point(0,0)).setPiece(testPiece); 
+			if(testPiece.getName()!=pieceList.get(i).getName())
+			{
+			//Spawn Second Piece at Location
+			board.getTile(new Point(0,1)).setPiece(pieceList.get(i));			
+			Move move  = new Move(new Point(0, 0), new Point(0, 1), testPiece);	
+			moves.push(move);			
+			
+			//Check the Rule
+			absorb.checkMove(board, moves);
+			//True = no match
+			boolean actual = (board.getTile(new Point(0,1)).getPiece().getName()!=testPiece.getName());
+			moves.pop();
+			
+			if(!actual)
+			Assert.assertEquals(actual,true,"Absorb did not work with:"+testPiece.getName()+ "against:"+board.getTile(new Point(0,1)).getPiece().getName()+"is supposed to be flagged for stalemate");
+			
+			}
+		}
+		
+		//Test Queen Absorb
+		testPiece= new Queen(1);
+		
+		for(int i=0;i<pieceList.size();i++)		
+		{
+			board.getTile(new Point(0,0)).setPiece(testPiece); 
+			if(testPiece.getName()!=pieceList.get(i).getName())
+			{
+			//Spawn Second Piece at Location
+			board.getTile(new Point(0,1)).setPiece(pieceList.get(i));			
+			Move move  = new Move(new Point(0, 0), new Point(0, 1), testPiece);	
+			moves.push(move);			
+			
+			//Check the Rule
+			absorb.checkMove(board, moves);
+			//True = no match
+			boolean actual = (board.getTile(new Point(0,1)).getPiece().getName()!=testPiece.getName());
+			moves.pop();
+			
+			if(!actual)
+			Assert.assertEquals(actual,true,"Absorb did not work with:"+testPiece.getName()+ "against:"+board.getTile(new Point(0,1)).getPiece().getName()+"is supposed to be flagged for stalemate");
+			
+			}
+		}		
+		
+		//Test Bishop Absorb
+		testPiece= new Queen(1);
+		
+		for(int i=0;i<pieceList.size();i++)		
+		{
+			board.getTile(new Point(0,0)).setPiece(testPiece); 
+			if(testPiece.getName()!=pieceList.get(i).getName())
+			{
+			//Spawn Second Piece at Location
+			board.getTile(new Point(1,1)).setPiece(pieceList.get(i));			
+			Move move  = new Move(new Point(0, 0), new Point(1, 1), testPiece);	
+			moves.push(move);			
+			
+			//Check the Rule
+			absorb.checkMove(board, moves);
+			//True = no match
+			boolean actual = (board.getTile(new Point(1,1)).getPiece().getName()!=testPiece.getName());
+			moves.pop();
+			
+			if(!actual)
+			Assert.assertEquals(actual,true,"Absorb did not work with:"+testPiece.getName()+ "against:"+board.getTile(new Point(1,1)).getPiece().getName()+"is supposed to be flagged for stalemate");
+			
+			}
+		}	
+		
+		//Test Knight Absorb
+		testPiece= new Knight(1);
+		
+		for(int i=0;i<pieceList.size();i++)		
+		{
+			board.getTile(new Point(0,0)).setPiece(testPiece); 
+			if(testPiece.getName()!=pieceList.get(i).getName())
+			{
+			//Spawn Second Piece at Location
+			board.getTile(new Point(1,2)).setPiece(pieceList.get(i));			
+			Move move  = new Move(new Point(0, 0), new Point(1, 2), testPiece);	
+			moves.push(move);			
+			
+			//Check the Rule
+			absorb.checkMove(board, moves);
+			//True = no match
+			boolean actual = (board.getTile(new Point(1,2)).getPiece().getName()!=testPiece.getName());
+			moves.pop();
+			
+			if(!actual)
+			Assert.assertEquals(actual,true,"Absorb did not work with:"+testPiece.getName()+ "against:"+board.getTile(new Point(1,1)).getPiece().getName()+"is supposed to be flagged for stalemate");
+			}
+		}
+		
+	}	
+	
 }
