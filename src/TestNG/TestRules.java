@@ -363,4 +363,21 @@ public class TestRules {
 		
 	}	
 	
+	@Test
+	public void AtomicWin(){
+		Board board = new Board();
+		
+
+		Stack<Move> moves = new Stack();
+		
+		Rule atomicWin = new Model.Rules.AtomicWin();
+		board.getTile(new Point(0,0)).setPiece(new King(1));
+		
+		boolean actual = atomicWin.checkMove(board, moves) == Model.Rule.GAME_OVER_T2;
+		
+		Assert.assertEquals(actual,true,"A win should occur if a player lacks a king");
+
+		
+	}
+	
 }
