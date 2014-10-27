@@ -72,7 +72,7 @@ public class TestRules {
 		boolean actual = (collisionMove.checkMove(board, moves)==Model.Rule.VALID_MOVE);
 		//boolean actual = (()== Model.Rule.VALID_MOVE);
 		//Expecting False	
-		Assert.assertEquals(false,actual,"Pawn must not be able to move on this square");
+		Assert.assertEquals(actual,false,"Pawn must not be able to move on this square");
 	}
 	
 	@Test
@@ -95,7 +95,7 @@ public class TestRules {
 		boolean actual = (collisionMove.checkMove(board, moves)==Model.Rule.VALID_MOVE);
 		//boolean actual = (()== Model.Rule.VALID_MOVE);
 		//Expecting False	
-		Assert.assertEquals(false,actual,"Pawn must not be able to move on this square");
+		Assert.assertEquals(actual,false,"Pawn must not be able to move on this square");
 	}	
 	@Test
 	public void CollisionBishop(){
@@ -117,7 +117,7 @@ public class TestRules {
 		boolean actual = (collisionMove.checkMove(board, moves)==Model.Rule.VALID_MOVE);
 		//boolean actual = (()== Model.Rule.VALID_MOVE);
 		//Expecting False	
-		Assert.assertEquals(false,actual,"Pawn must not be able to move on this square");
+		Assert.assertEquals(actual,false,"Pawn must not be able to move on this square");
 	}
 	@Test
 	public void CollisionKingDiagonal(){
@@ -183,7 +183,63 @@ public class TestRules {
 		boolean actual = (checkMove.checkMove(board, moves)==Model.Rule.INVALID_MOVE);
 		//boolean actual = (()== Model.Rule.VALID_MOVE);
 		//Expecting True, king should not be allowed to move in check, if check is returned than state is correct
-		Assert.assertEquals(true,actual,"King is not allowed to place himself in check");
+		Assert.assertEquals(actual,true,"King is not allowed to place himself in check");
 	}
 	
+	@Test
+	public void CheckMate(){
+		Board board = new Board();
+		
+
+		Stack<Move> moves = new Stack();
+		
+		// Initialize Rooks
+		board.getTile(new Point(0,0)).setPiece(new Rook(1));
+		board.getTile(new Point(0,1)).setPiece(new Rook(1));	
+		board.getTile(new Point(0,2)).setPiece(new Rook(1));				
+
+		//Set an opposing King
+		board.getTile(new Point(1,1)).setPiece(new King(2));	
+
+
+		//Set the Move
+		Move move = new Move(new Point(1, 7), new Point(0, 7), board.getTile(new Point(0,0)).getPiece());	
+		moves.push(move);
+		
+		Rule checkmate = new Model.Rules.CheckMate();
+		boolean actual = (checkmate.checkMove(board, moves)==Model.Rule.GAME_OVER_T2);
+		//boolean actual = (()== Model.Rule.VALID_MOVE);
+		//Expecting True, king should not be allowed to move in check, if check is returned than state is correct
+		Assert.assertEquals(actual,true,"King is supposed to be flagged for checkmate");
+	}
+	
+	@Test
+	public void StaleMate(){
+		Board board = new Board();
+		
+
+		Stack<Move> moves = new Stack();
+		
+		// Initialize Rooks
+		board.getTile(new Point(0,0)).setPiece(new Rook(1));
+		board.getTile(new Point(2,0)).setPiece(new Rook(1));		
+		board.getTile(new Point(0,2)).setPiece(new Rook(1));				
+
+		//Set an opposing King
+		board.getTile(new Point(1,1)).setPiece(new King(2));	
+		
+		//Set King's AfterMove so it isn't allowed to castle ie escape this tight hold of rooks
+		board.getTile(new Point(1,1)).getPiece().afterMove();
+
+		//Set the Move
+
+		
+		Rule stalemate = new Model.Rules.Stalemate();
+		boolean actual = (stalemate.checkMove(board, moves)==Model.Rule.GAME_OVER_TIE);
+		System.out.println(stalemate.checkMove(board, moves));
+		
+		//boolean actual = (()== Model.Rule.VALID_MOVE);
+		//Expecting True, king should not be allowed to move in check, if check is returned than state is correct
+		Assert.assertEquals(actual,true,"King is supposed to be flagged for stalemate");
+	}
 }
