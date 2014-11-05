@@ -35,7 +35,7 @@ public class Board {
 
 	public Tile getTile(Point pos) {
 		
-		if ( pos.x == -1 || pos.y == -1 ){
+		if ( pos.x == -1 || pos.y == -1 || pos.x >= width || pos.y >= height){
 			
 			return null;
 		}
