@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AWTTestScript>
+  <component class="javax.swing.JButton" id="Accept" index="20" parent="Box Instance" text="Accept" window="Choose an Option" />
+  <component class="javax.swing.Box" id="Box Instance" index="1" parent="JPanel Instance" window="Choose an Option" />
+  <component class="javax.swing.JFrame" id="Choose an Option" root="true" title="Choose an Option" />
+  <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance" index="1" parent="JRootPane Instance" window="Choose an Option" />
+  <component class="javax.swing.JPanel" id="JPanel Instance" index="0" parent="JLayeredPane Instance" window="Choose an Option" />
+  <component class="javax.swing.JRootPane" id="JRootPane Instance" index="0" parent="Choose an Option" />
+  <launch args="[]" class="Controller.GameController" classpath=".;C:\Users\Horia\Desktop\abbot-1.2.0\8Chess.jar" desc="Launch Controller.GameController.main([1])" method="main" threaded="true" />
+  <terminate />
+</AWTTestScript>
+

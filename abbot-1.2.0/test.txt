@@ -1,0 +1,30 @@
+// Lines that start with two slashes or?
+-- two dashes are considered comments 
+/* C-style comments can end on the same line like this */ 
+/* A "block" comment may continue across?
+lines like this, as long as you started the first 
+line with the slash-star */ 
+But if you start the line with code you 
+can't continue across lines /* by commenting 
+??????????????????????????????? at the end of a line 
+??????????????????????????????? like this */ 
+Because you should // use trailing comments 
+                   // like this 
+                   // instead 
+
+/* Similarly, don't put code 
+you want counted */ after a close block comment like this
+
+We can't deal with nested block comments -- the first star-slash will 
+terminate the block (as do most compilers). 
+
+ /* 
+ Since there must be 4 or more non-blank characters on the 
+ line to be counted, the above 
+ line won't count (even if you are counting comments). 
+ Nor will the following: 
+ */ 
+
+ /**
+  * Won't count the above line opening Javadoc style block comments 
+  */
