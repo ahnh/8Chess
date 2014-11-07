@@ -27,11 +27,13 @@ public class Castling extends Rule {
 		if (currentPiece.hasMoved())
 			return Rule.VALID_MOVE;
 
-		if (currentMove.getDistanceY() < 2 && currentMove.getDistanceX() < 2)
+		if (currentMove.getDistanceX() < 2)
 			return Rule.VALID_MOVE;
+		
+		int col = currentMove.getPureDistanceX() > 0 ? 0 : 7;
+		if (currentMove.getDistanceX() == 2 && board.getTile(new Point(col, row)).getPiece() == null)
+			return Rule.INVALID_MOVE;
 
-		if (currentMove.getDistanceY() > 0 || currentMove.getDistanceX() != 2)
-			return Rule.VALID_MOVE;
 
 		// check valid move
 		Piece Rook = null;
@@ -46,7 +48,7 @@ public class Castling extends Rule {
 			for (int i = 1; i < 4; i++)
 				if (board.getTile(new Point(i, row)).getPiece() != null)
 					return Rule.VALID_MOVE;
-			if (board.getTile(new Point(0, row)).getPiece().getName()
+			if (board.getTile(new Point(0, row)).getPiece() != null && board.getTile(new Point(0, row)).getPiece().getName()
 					.compareTo("Rook") == 0) {
 				Rook = board.getTile(new Point(0, row)).getPiece();
 				newRookLocation.x++;
@@ -56,7 +58,7 @@ public class Castling extends Rule {
 			for (int i = 5; i < 7; i++)
 				if (board.getTile(new Point(i, row)).getPiece() != null)
 					return Rule.VALID_MOVE;
-			if (board.getTile(new Point(7, row)).getPiece().getName()
+			if (board.getTile(new Point(7, row)).getPiece() != null && board.getTile(new Point(7, row)).getPiece().getName()
 					.compareTo("Rook") == 0) {
 				Rook = board.getTile(new Point(7, row)).getPiece();
 				newRookLocation.x--;
@@ -66,13 +68,13 @@ public class Castling extends Rule {
 
 		// check rook is moved or not.
 		if (Rook == null || Rook.hasMoved())
-			return Rule.VALID_MOVE;
+			return Rule.INVALID_MOVE;
 
 		// move rook
 		board.getTile(newRookLocation).setPiece(Rook);
 		board.getTile(oldRookLocation).setPiece(null);
 		// moves.push(new Move(oldRookLocation, newRookLocation, Rook));
-
+		
 		return Rule.VALID_MOVE;
 	}
 
