@@ -1,19 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AWTTestScript>
   <component class="javax.swing.JButton" id="Accept" index="20" parent="Box Instance" text="Accept" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Bishop" index="12" parent="Panel Instance" text="Bishop" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Bishop 2" index="75" parent="Panel Instance" text="Bishop" window="Choose an Option" />
   <component class="javax.swing.Box" id="Box Instance" index="1" parent="JPanel Instance" window="Choose an Option" />
+  <component class="javax.swing.Box" id="Box Instance 2" index="1" parent="Box Instance" window="Choose an Option" />
+  <component class="javax.swing.Box" id="Box Instance 3" index="2" parent="Box Instance 2" window="Choose an Option" />
   <component class="javax.swing.JFrame" id="Choose an Option" root="true" title="Choose an Option" />
+  <component class="javax.swing.JLabel" id="Invalid move: No piece in the starting position." index="1" parent="Box Instance 3" text="Invalid move: No piece in the starting position." window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance" index="53" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 10" index="30" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 11" index="48" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 12" index="56" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 13" index="39" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 14" index="41" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 2" index="60" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 3" index="42" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 4" index="62" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 5" index="34" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 6" index="55" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 7" index="57" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 8" index="28" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 9" index="31" parent="Panel Instance" text="" window="Choose an Option" />
   <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance" index="1" parent="JRootPane Instance" window="Choose an Option" />
   <component class="javax.swing.JPanel" id="JPanel Instance" index="0" parent="JLayeredPane Instance" window="Choose an Option" />
   <component class="javax.swing.JRootPane" id="JRootPane Instance" index="0" parent="Choose an Option" />
+  <component class="javax.swing.JButton" id="Knight" index="79" parent="Panel Instance" text="Knight" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Knight 2" index="74" parent="Panel Instance" text="Knight" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Knight 3" index="11" parent="Panel Instance" text="Knight" window="Choose an Option" />
+  <component class="java.awt.Panel" id="Panel Instance" index="4" parent="Box Instance 2" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn" index="71" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 2" index="24" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 3" index="25" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 4" index="21" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 5" index="66" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Rook" index="80" parent="Panel Instance" text="Rook" window="Choose an Option" />
   <launch args="[]" class="Controller.GameController" classpath=".;C:\Users\Horia\Desktop\abbot-1.2.0\8Chess.jar" method="main" threaded="true" />
   <sequence>
     <wait args="Choose an Option" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
     <action args="Accept" class="javax.swing.AbstractButton" method="actionClick" />
   </sequence>
   <sequence>
+    <action args="Knight 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 6" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Knight 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 7" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Knight 3" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 8" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Bishop" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 9" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Pawn 4" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 10" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Pawn 5" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 11" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Bishop 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 12" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Pawn 4" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 13" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Knight 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 7" class="javax.swing.AbstractButton" method="actionClick" />
+  </sequence>
+  <sequence>
     <action args="Choose an Option" class="java.awt.Window" method="actionClose" />
   </sequence>
+  <sequence>
+    <action args="Choose an Option,(336%2c52)" class="javax.swing.JFrame" method="actionClick" />
+  </sequence>
+  <sequence>
+    <wait args="Choose an Option" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
+    <action args="Pawn" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Knight" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Pawn 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 3" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Knight" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Rook" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 4" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Pawn 3" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 5" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Rook" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 4" class="javax.swing.AbstractButton" method="actionClick" />
+  </sequence>
+  <assert args="Invalid move: No piece in the starting position." class="javax.swing.JLabel" method="getLabel" />
   <terminate />
 </AWTTestScript>
 
