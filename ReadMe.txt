@@ -93,4 +93,13 @@ Testing:
 										Abbot_TestGUI_Classic_PieceMovement
 										Abbot_TestGUI_Classic_Promotion
 										Abbot_TestGUI_Classic_Collision
-										Abbot_TestGUI_Classic_Collision_MoreInDepth																				
+										Abbot_TestGUI_Classic_Collision_MoreInDepth
+	
+	Aruba:
+		Environment setup:
+						Aruba requires Ruby to be installed on your machine, to install, follow these instructions: https://www.ruby-lang.org/en/installation/
+					 	Once you have Ruby installed, run the command `gem install bundler`
+		To Run Aruba:
+						Navigate to 8Chess on the command line
+						Run `bundle install`
+						Then run `cucumber` to run through the test cases	
