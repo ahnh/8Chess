@@ -6,7 +6,7 @@
   <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance" index="1" parent="JRootPane Instance" window="Choose an Option" />
   <component class="javax.swing.JPanel" id="JPanel Instance" index="0" parent="JLayeredPane Instance" window="Choose an Option" />
   <component class="javax.swing.JRootPane" id="JRootPane Instance" index="0" parent="Choose an Option" />
-  <launch args="[]" class="Controller.GameController" classpath=".;C:\Users\Horia\Desktop\abbot-1.2.0\8Chess.jar" desc="Launch Controller.GameController.main([1])" method="main" threaded="true" />
+  <launch args="[]" class="Controller.GameController" classpath="./8Chess.jar" desc="Launch Controller.GameController.main([1])" method="main" threaded="true" />
   <terminate />
 </AWTTestScript>
 

@@ -35,7 +35,7 @@
   <component class="javax.swing.JButton" id="Pawn 4" index="21" parent="Panel Instance" text="Pawn" window="Choose an Option" />
   <component class="javax.swing.JButton" id="Pawn 5" index="66" parent="Panel Instance" text="Pawn" window="Choose an Option" />
   <component class="javax.swing.JButton" id="Rook" index="80" parent="Panel Instance" text="Rook" window="Choose an Option" />
-  <launch args="[]" class="Controller.GameController" classpath=".;C:\Users\Horia\Desktop\abbot-1.2.0\8Chess.jar" method="main" threaded="true" />
+  <launch args="[]" class="Controller.GameController" classpath="./8Chess.jar" method="main" threaded="true" />
   <sequence>
     <wait args="Choose an Option" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
     <action args="Accept" class="javax.swing.AbstractButton" method="actionClick" />
