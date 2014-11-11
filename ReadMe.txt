@@ -80,3 +80,17 @@ Variants Chosen:
 		-Classic Rules excluding castling
 
 	
+
+
+
+Testing:
+
+	Abbot:
+		To Run Abbot:
+						Navigate to 8Chess/abbot-1.2.0/abbot-1.2.0/ and run abbot.jnlp. Say yes to any security questions regarding java. Select File->Open, and navigate 1 up and select any of the following files located there:
+										Abbot_TestGUI
+										Abbot_TestGUI_Classic
+										Abbot_TestGUI_Classic_PieceMovement
+										Abbot_TestGUI_Classic_Promotion
+										Abbot_TestGUI_Classic_Collision
+										Abbot_TestGUI_Classic_Collision_MoreInDepth																				

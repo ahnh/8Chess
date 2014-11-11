@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AWTTestScript>
+  <component class="javax.swing.JButton" id="Accept" index="20" parent="Box Instance" text="Accept" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Accept 2" index="12" parent="Box Instance 3" text="Accept" window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="Bishop" index="75" parent="Panel Instance" text="Bishop" window="Choose an Option 2" />
+  <component class="javax.swing.Box" id="Box Instance" index="1" parent="JPanel Instance" window="Choose an Option" />
+  <component class="javax.swing.Box" id="Box Instance 2" index="1" parent="Box Instance" window="Choose an Option" />
+  <component class="javax.swing.Box" id="Box Instance 3" index="1" parent="JPanel Instance 2" window="Choose an Option 2" />
+  <component class="javax.swing.Box" id="Box Instance 4" index="2" parent="Box Instance 2" window="Choose an Option 2" />
+  <component class="javax.swing.JFrame" id="Choose an Option" root="true" title="Choose an Option" />
+  <component class="javax.swing.JFrame" id="Choose an Option 2" root="true" title="Choose an Option" />
+  <component class="javax.swing.JLabel" id="Invalid move: Piece collides with another during movement." index="1" parent="Box Instance 4" text="Invalid move: Piece collides with another during movement." window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="JButton Instance" index="47" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 10" index="62" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 11" index="57" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 12" index="48" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 13" index="31" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 14" index="30" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 15" index="37" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 16" index="55" parent="Panel Instance" text="" window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="JButton Instance 17" index="56" parent="Panel Instance" text="" window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="JButton Instance 18" index="33" parent="Panel Instance" text="" window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="JButton Instance 19" index="59" parent="Panel Instance" text="" window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="JButton Instance 2" index="39" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 20" index="43" parent="Panel Instance" text="" window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="JButton Instance 21" index="60" parent="Panel Instance" text="" window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="JButton Instance 3" index="29" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 4" index="40" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 5" index="41" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 6" index="50" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 7" index="51" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 8" index="52" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="JButton Instance 9" index="61" parent="Panel Instance" text="" window="Choose an Option" />
+  <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance" index="1" parent="JRootPane Instance" window="Choose an Option" />
+  <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance 2" index="1" parent="JRootPane Instance 2" window="Choose an Option 2" />
+  <component class="javax.swing.JPanel" id="JPanel Instance" index="0" parent="JLayeredPane Instance" window="Choose an Option" />
+  <component class="javax.swing.JPanel" id="JPanel Instance 2" index="0" parent="JLayeredPane Instance 2" window="Choose an Option 2" />
+  <component class="javax.swing.JRootPane" id="JRootPane Instance" index="0" parent="Choose an Option" />
+  <component class="javax.swing.JRootPane" id="JRootPane Instance 2" index="0" parent="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="Knight" index="11" parent="Panel Instance" text="Knight" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Knight 2" index="74" parent="Panel Instance" text="Knight" window="Choose an Option 2" />
+  <component class="java.awt.Panel" id="Panel Instance" index="4" parent="Box Instance 2" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn" index="65" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 10" index="19" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 11" index="24" parent="Panel Instance" text="Pawn" window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="Pawn 12" index="25" parent="Panel Instance" text="Pawn" window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="Pawn 2" index="21" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 3" index="71" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 4" index="70" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 5" index="69" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 6" index="68" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 7" index="67" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 8" index="66" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Pawn 9" index="22" parent="Panel Instance" text="Pawn" window="Choose an Option" />
+  <component class="javax.swing.JButton" id="Queen" index="13" parent="Panel Instance" text="Queen" window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="Queen 2" index="76" parent="Panel Instance" text="Queen" window="Choose an Option 2" />
+  <component class="javax.swing.JButton" id="Rook" index="10" parent="Panel Instance" text="Rook" window="Choose an Option" />
+  <launch args="[]" class="Controller.GameController" classpath="./8Chess.jar" desc="Launch Controller.GameController.main([1])" method="main" threaded="true" />
+  <sequence>
+    <wait args="Choose an Option 2" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
+    <action args="Choose an Option 2,654,280" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,652,280" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,649,280" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,646,280" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,641,280" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,634,280" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,625,280" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,614,280" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,602,279" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,587,277" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,569,276" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,551,274" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,530,271" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,507,268" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,484,265" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,460,261" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,435,258" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,409,254" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,384,251" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,359,247" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,334,243" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,309,239" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,288,236" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,268,233" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,249,230" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,234,228" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,220,225" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,209,223" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,198,221" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,189,219" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,181,216" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,174,214" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,168,213" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,162,212" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,158,211" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,154,210" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,152,210" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,150,210" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,149,209" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,148,209" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,147,209" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,145,209" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,142,210" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,140,211" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,137,212" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,134,213" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,131,213" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,128,214" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,126,214" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,125,215" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,124,215" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,123,215" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,122,215" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,121,215" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,121,216" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,120,216" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,119,216" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,118,216" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,117,216" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,116,217" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,115,217" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,114,217" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,113,217" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,112,217" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,111,217" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,110,217" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,109,217" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,108,218" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,107,218" class="java.awt.Window" method="actionMove" />
+    <action args="Choose an Option 2,106,218" class="java.awt.Window" method="actionMove" />
+    <action args="Bishop" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 19" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Choose an Option 2,(443%2c55),POPUP_MASK" class="javax.swing.JFrame" method="actionClick" />
+    <action args="Choose an Option 2,(526%2c60)" class="javax.swing.JFrame" method="actionClick" />
+    <action args="Choose an Option 2,(526%2c52)" class="javax.swing.JFrame" method="actionClick" />
+  </sequence>
+  <sequence>
+    <action args="Choose an Option 2,(530%2c51)" class="javax.swing.JFrame" method="actionClick" />
+  </sequence>
+  <sequence>
+    <wait args="Choose an Option 2" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
+    <action args="Knight 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 11" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Pawn 9" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 4" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Bishop" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 16" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Pawn" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 17" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Bishop" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 16" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Queen" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 13" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Bishop" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 16" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Pawn 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 16" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Pawn 11" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 18" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Pawn 6" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 19" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Queen 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 8" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Pawn 12" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 20" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Queen 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 9" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 13" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 9" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 13" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 7" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Queen 2" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 21" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 13" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 9" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 21" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="JButton Instance 9" class="javax.swing.AbstractButton" method="actionClick" />
+  </sequence>
+  <assert args="Invalid move: Piece collides with another during movement." class="javax.swing.JLabel" method="getLabel" />
+  <terminate />
+</AWTTestScript>
+
