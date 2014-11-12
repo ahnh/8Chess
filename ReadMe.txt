@@ -103,3 +103,14 @@ Testing:
 						Navigate to 8Chess on the command line
 						Run `bundle install`
 						Then run `cucumber` to run through the test cases	
+						
+	Spock:
+		Using IDE Eclispe
+			Get Groovy Plugin from http://groovy.codehaus.org/Eclipse+Plugin
+			If you have latest eclipse version, our project already has Spock lib included in. If you are not running latest, please refer to https://code.google.com/p/spock/wiki/SpockVersionsAndDependencies to find the correct version for it.
+			Once you have the Groove plugin and the Spock lib included into project, you need to include JUnit 4 to run the test.
+			After that, you can launch the project using In Project Explorer, right-click HelloSpock and select Run As -> JUnit Test.
+			Here is guideline for older version of eclipse.
+			https://code.google.com/p/spock/wiki/GettingStarted
+			
+			
